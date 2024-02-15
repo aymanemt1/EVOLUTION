@@ -1,0 +1,89 @@
+:root {
+    --blackE: #0c010b;
+    --blueE: #0151e4;
+    --cityE : #1a9ff5;
+    --whiteE : #ffffff;
+    --grey : #eef0ef;
+    --radius : 10px;
+}
+.parentNavbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 70vw;
+    margin: auto;
+}
+.parentBrandLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius);
+}
+.parentBrandLogo img {
+    width: 120px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+.parentLinks {
+    display: flex;
+    padding-inline: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.loginBtn {
+    cursor: pointer;
+    background-color: var(--cityE) ;
+    border: 0.1rem solid var(--cityE);
+    color: var(--whiteE);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius);
+    transition: all .2s ;
+}
+.loginBtn:hover {
+    background-color: var(--whiteE) ;
+    border: 0.1rem solid var(--cityE);
+    color: var(--cityE);
+}
+.loginBtn:active {
+    background-color: var(--cityE) ;
+    border: 0.1rem solid var(--cityE);
+    transform: scale(0.95);
+    color: var(--whiteE);
+}
+.signupBtn {
+    cursor: pointer;
+    background-color: var(--cityE) ;
+    border: 0.1rem solid var(--cityE);
+    color: var(--whiteE);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius);
+    transition: all .2s;
+}
+.signupBtn:hover {
+    background-color: var(--whiteE);
+    color: var(--cityE);
+}
+.signupBtn:active {
+    background-color: var(--cityE);
+    border: 0.1rem solid var(--cityE);
+    color: var(--cityE);
+    transform: scale(0.95);
+}
+
+@media (max-width:570px) {
+    .parentNavbar {
+        width: 100vw;
+    }
+    .loginBtn {
+        font-size: 0.7rem;
+    }
+    .signupBtn {
+        font-size: 0.7rem;
+    }
+}

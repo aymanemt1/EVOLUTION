@@ -1,23 +1,10 @@
-import Evolution from './Evolution.png';
 import './App.css';
+import RouterApp from './Router/router';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={Evolution} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Evolution
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Evolution
-        </a>
-      </header>
+      <RouterApp />
     </div>
   );
 }
