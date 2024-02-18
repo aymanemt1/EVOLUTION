@@ -113,3 +113,14 @@ box-shadow: 0 0 5px var(--blueE);
         width: 500px;
     }
 }
+.input-box .icon2{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+
+}
+.input-box .icon2:hover{
+    width: 20px;
+}

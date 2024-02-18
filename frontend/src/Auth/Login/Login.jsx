@@ -29,10 +29,10 @@ export default function Login() {
               name="loginPassword"
             />
             <div
-              className="icon"
+              className="icon2"
               onClick={() => setType(type === "password" ? "text" : "password")}
             >
-              {type === "password" ? <FaEyeSlash /> :<FaEye /> }
+              {type === "password" ? <FaEye /> :<FaEyeSlash /> }
             </div>
           </div>
           <div className="remember-forgot">
