@@ -42,7 +42,6 @@ export const RegisterForm = () => {
             <div className="input-box">
                 <input onChange={handleSignupData} type="email" name="email" placeholder="Email" required/>
                 <FaMailBulk className="icon" />
-               
                 </div>
             <div className="input-box">
                 <input onChange={handleSignupData} type="password" name="password" placeholder="Password" required/>
