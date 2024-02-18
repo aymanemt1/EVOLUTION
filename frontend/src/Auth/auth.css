@@ -23,6 +23,7 @@ box-shadow: 0 0 5px var(--blueE);
 .Wrapper:hover{
     box-shadow: 0 0 10px var(--blueE);
 }
+
 .Wrapper h1{
     font-size: 33px;
     text-align: center;

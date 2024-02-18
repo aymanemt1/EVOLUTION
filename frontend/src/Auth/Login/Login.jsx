@@ -13,12 +13,14 @@ export default function Login() {
         <form action="">
           <h1>Member Access</h1>
           <div className="input-box">
+
             <input
               type="text"
               placeholder="Username"
               required
               name="loginUsername"
             />
+            
             <FaUser className="icon" />
           </div>
           <div className="input-box">
