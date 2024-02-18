@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "../auth.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Navbar from "../../LandingPage/navbar/navbar";
 export default function Login() {
   const [type, setType] = useState("password");
   return (
+    <>
+      <Navbar />
     <div className="Wrapper-Parent">
       <div className="Wrapper">
         <form action="">
@@ -40,7 +43,7 @@ export default function Login() {
             <a href="#">Forgot password?</a>
           </div>
           <button type="submit">Login</button>
-          <div className="register-link">
+          <div className="link">
             <p>
               D'ont have an account? <Link to="/signup">Register</Link>
             </p>
@@ -48,5 +51,7 @@ export default function Login() {
         </form>
       </div>
     </div>
+    </>
+
   );
 }

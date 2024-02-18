@@ -12,7 +12,7 @@ export default function Navbar(){
                     </Link>
                 </div>
                 <div className="parentLinks">
-                    <Link to='/signup'>
+                    <Link to='/register'>
                         <button className="signupBtn">Sign up</button>
                     </Link>
                     <Link to='/login'>

@@ -24,7 +24,7 @@ box-shadow: 0 0 5px var(--blueE);
     box-shadow: 0 0 10px var(--blueE);
 }
 .Wrapper h1{
-    font-size: 36px;
+    font-size: 33px;
     text-align: center;
     color: var(--blackE);
 }
@@ -47,7 +47,7 @@ box-shadow: 0 0 5px var(--blueE);
     padding: 20px 45px 20px 45px;
 }
 .input-box input:focus{
-   box-shadow: 0 0 20px var(--cityE);
+   box-shadow: 0 0 10px var(--cityE);
 }
 .input-box input::placeholder{
     color: var(--blackE);
@@ -63,11 +63,10 @@ box-shadow: 0 0 5px var(--blueE);
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
-    margin: -15px 0 15px;
+    margin: -20px 0 25px;
 }
 .remember-forgot label input{
     accent-color:var(--blueE) ;
-    margin-right: 4px;
 }
 .remember-forgot label input:focus{
     box-shadow: 0 0 10px var(--cityE);
@@ -80,7 +79,7 @@ box-shadow: 0 0 5px var(--blueE);
     text-decoration: underline;
 }
 .Wrapper button{
-    width: 100%;
+    width: 80%;
     height: 45px;
     background-color: #fff;
     outline: none;
@@ -96,7 +95,7 @@ box-shadow: 0 0 5px var(--blueE);
     background-color: var(--cityE);
     border: none;
 }
-.Wrapper .register-link{
+.Wrapper .link{
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
