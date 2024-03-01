@@ -8,15 +8,19 @@ export default function Navbar(){
             <div className="parentNavbar">
                 <div className="parentBrandLogo">
                     <Link to='/'>
-                        <img src="./EvolutionSimple.svg" alt="Evolution"  title="Evolution" />
+                        <img src="./EvolutionRemoveBg.png" alt="Evolution"  title="Evolution" />
                     </Link>
                 </div>
                 <div className="parentLinks">
-                    <Link to='/register'>
-                        <button className="signupBtn">Sign up</button>
+                    <Link to='/auth/signup'>
+                        <button className="signupBtn">
+                            Sign up
+                        </button>
                     </Link>
-                    <Link to='/login'>
-                        <button className="loginBtn">Login</button>
+                    <Link to='/auth/login'>
+                        <button className="loginBtn">
+                            Login
+                        </button>
                     </Link>
                 </div>
             </div>

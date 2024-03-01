@@ -9,7 +9,7 @@
 }
 
 .parentFooter {
-    background-color: var(--cityE);
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
 }
 .arraySocialMedia {
     padding-top: 2rem;

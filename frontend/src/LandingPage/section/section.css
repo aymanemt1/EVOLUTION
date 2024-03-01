@@ -2,7 +2,7 @@
     --blackE: #0c010b;
     --blueE: #0151e4;
     --cityE : #1a9ff5;
-    --cityEshadow : #1a9df573 ; 
+    --cityEshadow : #1a9df51b ; 
     --whiteE : #f2f1f5;
     --grey : #eef0ef;
     --radius : 10px;
@@ -34,8 +34,10 @@
     font-size: 3rem;
     font-weight: 800;
     margin-right: 10px;
-    color: var(--cityE);
     opacity: 1;
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 .paragraphe {
     opacity: 0.7;
@@ -49,6 +51,7 @@
     width: 150px;
     height: 160px;
     object-fit: cover;
+    box-sizing: border-box;
 }
 .parentLeftImg {
     display: flex;
@@ -93,8 +96,11 @@
 }
 .parentCicle i {
     position: absolute;
-    color: var(--cityE);
     font-size: 5rem;
+    /* color: var(--cityE); */
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 .textCicle {
     display: grid;
@@ -103,15 +109,21 @@
     width: 100%;
     height: 100%;
     animation: effect 10s linear infinite;
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 .textCicle p span {
     position: absolute;
     left: 50%;
     top: 7.5%;
     transform-origin: 0 3rem;
-    color: var(--cityE);
+    /* color: var(--cityE); */
     font-size: 0.6rem;
     font-weight: 900;
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 @keyframes effect {
@@ -124,18 +136,22 @@
 }
 .IMG1 { 
     animation: jump 3s infinite ease-in-out;
+    box-sizing: content-box;
 }
 .IMG2 { 
     animation: jump 4s infinite ease-in-out;
     animation-delay: 1s;
+    box-sizing: content-box;
 }
 .IMG3 { 
     animation: jump 6s infinite ease-in-out;
     animation-delay: 3s;
+    box-sizing: content-box;
 }
 .IMG4 { 
     animation: jump 5s infinite ease-in-out;
     animation-delay: 2s;
+    box-sizing: content-box;
 }
 
 @keyframes jump {

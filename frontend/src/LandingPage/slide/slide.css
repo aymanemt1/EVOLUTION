@@ -23,8 +23,10 @@
     text-align: start;
 }
 .textItem1 h1 {
-    color: var(--cityE);
     font-size: 3rem;
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 .textItem1 p {
     color: #0c010b;
@@ -43,8 +45,10 @@
 
 }
 .textItem2 h1{
-    color: var(--cityE);
     font-size: 3rem;
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 .textItem2 p{
     color: var(--blackE);
@@ -76,6 +80,11 @@
     padding: 1rem;
     opacity: 0.8;
 }
+.calories h3{
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
+}
 .bar {
     width: 28%;
     overflow: hidden;
@@ -87,11 +96,17 @@
     border-radius: var(--radius);
     color: var(--cityE);
 }
+.bar h3{
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
+}
 .bar p{
     font-size: 0.8rem;
     width: 100%;
     padding: 1rem;
     opacity: 0.8;
+    
 }
 .community {
     width: 28%;
@@ -110,7 +125,11 @@
     padding: 1rem;
     opacity: 0.8;
 }
-
+.community h3{
+    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    -webkit-background-clip: text;
+    color: transparent;
+}
 
 @media (max-width:820px) {
     .parentSlide {
