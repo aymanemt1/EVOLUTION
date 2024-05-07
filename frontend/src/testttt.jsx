@@ -4,6 +4,7 @@ export default function testttt() {
   return (
     <div>
       test talibi
+      <p>taaat</p>
     </div>
   )
 }
