@@ -1,0 +1,81 @@
+.storehome{
+    width: 97%;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+#leftstorehome{
+    width: 66vw;
+    margin-left: 6rem;
+    
+}
+
+#storehomeparent{
+    width: 80%;
+     
+ } 
+#storehomeparent .storeCover img{
+   margin-left: 6rem;
+     
+   width: 85vw;
+ } 
+.storeCover img{
+   height: 88vh;
+   object-fit: cover;
+    width: 98.4vw;
+}
+
+.storeCover{
+
+    width: 80%;
+}
+.left-store-home{
+    background-image: url(/public/store/Storehome/image\ 3.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 88vh;
+    position: absolute;
+    width: 65%;
+    left: 0;
+    opacity: 98%;
+}
+.homecontent{
+    color: white;
+    width: 60%;
+   padding-top: 9rem;
+   padding-left: 4rem;
+}
+.homecontent h1{
+    font-size: 38px;
+   text-align: left;
+    width: 66%;
+}
+.homecontent p{
+     margin-top: 0.6rem;
+   text-align: left;
+    width: 86%;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.btnStorehome{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    padding-block: 0.5rem;
+    padding-inline: 1.55rem;
+    margin-top: 2rem;
+    border-radius: 7px;
+    display: flex;
+    background: #0153DF;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffff;
+    gap: 10px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    font-size: 15px;
+}

@@ -6,6 +6,7 @@ export default function Navbar(){
     return(
         <Fragment>
             <div className="parentNavbar">
+               
                 <div className="parentBrandLogo">
                     <Link to='/'>
                         <img src="./EvolutionRemoveBg.png" alt="Evolution"  title="Evolution" />
