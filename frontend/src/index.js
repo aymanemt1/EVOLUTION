@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+<<<<<<< HEAD
 import { MenuContext, MenuProvider } from './Context/MenuContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -10,9 +11,16 @@ root.render(
   <MenuProvider>
     <App />
   </MenuProvider>
+=======
+import CaloriesContext from './CaloriesCalCulator/CaloriesContext';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <CaloriesContext>
+    <App />
+  </CaloriesContext>
+>>>>>>> b81111bfcdb5f23ee0cadae4f96e03dc8a2ef847
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();
