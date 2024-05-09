@@ -1,0 +1,62 @@
+.StoreNavbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+    width: 93%;
+    align-items: center;
+}
+.leftNav{
+    width: 30%;
+}
+.leftNav i{
+    font-size: 30px;
+    position: absolute;
+    top: 1.6rem;
+    left: 3rem;
+    cursor: pointer;
+}
+
+
+nav{
+    height: 4.5rem;
+}
+.storelogo img{
+    
+    width: 170px;
+    margin: 0.4rem 0 0 5rem;
+    height: 58px;
+    object-fit: cover;
+}
+
+.sorelinks{
+    justify-content: end;
+    align-items: center;
+   
+}
+#linksbar{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    list-style-type: none;
+}
+.iconsbar{
+    margin-left: 3rem;
+}
+
+.iconsbar i{
+    margin-left: 1.8rem;
+    font-size: 1.5rem;
+    margin-top: -0.1rem;
+}
+
+.nav-link{
+  color: black;
+    padding-left: 2rem;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+nav .active{
+    font-weight: 600;
+   color:#0153DF;
+}
+
