@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { CaloriesContextt } from "./CaloriesContext";
 
-const Q2 = ({ onAnswered2 }) => {
-  const [height, setHeight] = useState("");
-  const navigation = useNavigate();
+const Q2 = ({ NextQ2,BackQ2 }) => {
+  const {height,setHeight}=useContext(CaloriesContextt)
 
   const handleChange = (e) => {
     setHeight(e.target.value);
@@ -14,14 +13,10 @@ const Q2 = ({ onAnswered2 }) => {
     if (parseInt(height) < 1) {
       alert("Height cannot be negative or neutral.");
     }else {
-      onAnswered2(height);
-      navigation("/CaloriesCalculator/Q3");
+     NextQ2()
     }
   };
 
-  const Back = () => {
-    navigation('/CaloriesCalculator/Q1');
-  };
 
   return (
     <div className="caloriesCalculatorQ2">
@@ -43,7 +38,7 @@ const Q2 = ({ onAnswered2 }) => {
                 required
               />
               <div className="caloriesCalculatorActions">
-                <button onClick={Back} className="Back">Back</button>
+                <button onClick={BackQ2} className="Back">Back</button>
                 <button type="submit" className="Next">Next</button>
               </div>
             </form>

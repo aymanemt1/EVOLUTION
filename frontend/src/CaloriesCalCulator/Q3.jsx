@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { CaloriesContextt } from "./CaloriesContext";
 
-const Q3 = ({ onAnswered3}) => {
-  const [weight, setWeight] = useState("");
+const Q3 = ({ BackQ3,NextQ3}) => {
+  const {weight,setWeight}=useContext(CaloriesContextt)
 
   const handleChange = (e) => {
     setWeight(e.target.value);
@@ -13,13 +13,9 @@ const Q3 = ({ onAnswered3}) => {
     if (parseInt(weight) < 1) {
       alert("Weight cannot be negative or neutral.");
     }else {
-    onAnswered3(weight);
-    navigation("/CaloriesCalculator/Q4")}
-  };
-  const navigation=useNavigate()
-  const Back=()=>{
-    navigation('/CaloriesCalculator/Q2')
-  }
+      NextQ3()
+  };}
+
 
   return (
     <div className="caloriesCalculatorQ2">
@@ -40,7 +36,7 @@ const Q3 = ({ onAnswered3}) => {
                 onChange={handleChange}
                 required
               />
-              <div className="caloriesCalculatorActions"><button onClick={Back} className="Back">Back</button><button type="submit" className="Next">Next</button> </div>
+              <div className="caloriesCalculatorActions"><button onClick={BackQ3} className="Back">Back</button><button type="submit" className="Next">Next</button> </div>
               
             </form>
             <div className="erreorCalculator2 "> *required field</div>

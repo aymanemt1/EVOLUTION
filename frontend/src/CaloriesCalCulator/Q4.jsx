@@ -1,27 +1,22 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { CaloriesContextt } from "./CaloriesContext";
 
-const Q4 = ({ onAnswered4 }) => {
-  const [selectedOption, setSelectedOption] = useState('');
-  const navigation = useNavigate();
+const Q4 = ({ NextQ4,BackQ4}) => {
+  const {goal,setGoal}=useContext(CaloriesContextt)
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
+    setGoal(option);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(selectedOption !== '') {
-      onAnswered4(selectedOption);
-      navigation("/CaloriesCalculator/Q4");
+    if(goal !== '') {
+      NextQ4()
     } else {
       alert("Please select an option.");
     }
   };
 
-  const Back = () => {
-    navigation('/CaloriesCalculator/Q3');
-  };
 
   return (
     <div className="caloriesCalculatorQ2">
@@ -34,22 +29,22 @@ const Q4 = ({ onAnswered4 }) => {
             </div>
             <h2 className="caloriesCalculatorContentHeader4" >What is your goal?</h2>
             <div className="options">
-              <div className={`optionQ4 ${selectedOption === 'Losing weight' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Losing weight')}>
+              <div className={`optionQ4 ${goal === 'Losing weight' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Losing weight')}>
                 Losing weight
               </div>
-              <div className={`optionQ4 ${selectedOption === 'Maintaining weight' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Maintaining weight')}>
+              <div className={`optionQ4 ${goal === 'Maintaining weight' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Maintaining weight')}>
                 Maintaining weight
               </div>
-              <div className={`optionQ4 ${selectedOption === 'Gaining weight' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Gaining weight')}>
+              <div className={`optionQ4 ${goal === 'Gaining weight' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Gaining weight')}>
                 Gaining weight
               </div>
-              <div className={`optionQ4 ${selectedOption === 'Build muscle' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Build muscle')}>
+              <div className={`optionQ4 ${goal === 'Build muscle' ? 'selectedQ4' : ''}`} onClick={() => handleOptionClick('Build muscle')}>
                 Build muscle
               </div>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="caloriesCalculatorActions">
-                <button onClick={Back} className="Back">Back</button>
+                <button onClick={BackQ4} className="Back">Back</button>
                 <button type="submit" className="Next">Next</button>
               </div>
             </form>

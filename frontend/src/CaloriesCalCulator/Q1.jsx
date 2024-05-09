@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import  { CaloriesContextt } from "./CaloriesContext";
 
-const Q1 = ({ onAnswered1 }) => {
-  const [birthday, setBirthday] = useState("");
-  const navigation = useNavigate();
+const Q1 = ({ NextQ1 }) => {
+  const {birthday,setBirthday}=useContext(CaloriesContextt)
 
   const handleChange = (e) => {
     setBirthday(e.target.value);
@@ -14,8 +13,7 @@ const Q1 = ({ onAnswered1 }) => {
     if (new Date(birthday) > new Date()) {
       alert("Birthday cannot be in the future.");
     } else {
-      onAnswered1(birthday);
-      navigation("/CaloriesCalculator/Q2");
+      NextQ1()
     }
   };
 
