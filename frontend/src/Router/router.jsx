@@ -22,10 +22,12 @@ export default function RouterApp(){
                         <Route path="signup" element={<Signup />} />
                     </Route>
                     <Route path="/CaloriesCalculator" element={<CaloriesCalCulator/>}/>
-                </Routes>
-                <Routes>
                     <Route path='/store' element={<Storeparent />} />
+
                 </Routes>
+ 
+   
+
             </BrowserRouter>
         </Fragment>
     );
