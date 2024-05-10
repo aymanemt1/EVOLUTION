@@ -5,6 +5,7 @@ export default function CaloriesContext({children}) {
     const[height,setHeight]=useState('')
     const [weight,setWeight]=useState('')
     const [goal,setGoal]=useState('')
+
   return (
     <CaloriesContextt.Provider value={{birthday,setBirthday,height,setHeight,weight,setWeight,goal,setGoal}}>
       {children}

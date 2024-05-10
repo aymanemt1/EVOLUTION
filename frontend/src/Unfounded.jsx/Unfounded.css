@@ -1,6 +1,7 @@
 .NotFound{
     width: 100vw;
     height: 100vh;
+    text-align: center;
 }
 .notFoundImagee{
     width: 90vw;

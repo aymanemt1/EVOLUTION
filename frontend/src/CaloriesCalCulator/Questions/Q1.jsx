@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import  { CaloriesContextt } from "./CaloriesContext";
+import  { CaloriesContextt } from "../../Context/CaloriesContext";
 
 const Q1 = ({ NextQ1 }) => {
   const {birthday,setBirthday}=useContext(CaloriesContextt)

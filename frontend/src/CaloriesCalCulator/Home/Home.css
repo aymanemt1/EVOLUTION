@@ -1,0 +1,19 @@
+.caloriesHome-active{
+    background-color: blue;
+    width: 91%;
+    height: 70vh;
+  
+    
+}
+.Calories-Home{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin-right: 2%;
+}
+.caloriesHome-inActive{
+    width: 96%;
+    background-color: blue;
+    height: 70vh;
+    margin-left: 2%;
+}

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import "./CaloriesCalCulator.css";
-import Q1 from "./Q1";
-import Q2 from "./Q2";
-import Q3 from "./Q3";
-import Q4 from "./Q4";
-import { CaloriesContextt } from './CaloriesContext';
-import CaloriesCalculatorMain from './CaloriesCalculatorMain';
+import Q1 from "./Questions/Q1";
+import Q2 from "./Questions/Q2";
+import Q3 from "./Questions/Q3";
+import Q4 from "./Questions/Q4";
+import { CaloriesContextt } from '../Context/CaloriesContext';
+import CaloriesCalculatorMain from './Home/CaloriesCalculatorMain';
 
 export default function CaloriesCalCulator() {
   const { birthday, height, weight, goal } = useContext(CaloriesContextt);

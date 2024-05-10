@@ -6,8 +6,7 @@ import { MenuContext, MenuProvider } from '../../Context/MenuContext';
 export const Navbar = () => {
 
     const {isactive,setisactive} = useContext(MenuContext)
-   console.log(isactive)
-    const handleMenu  =()=>{
+      const handleMenu  =()=>{
         setisactive(!isactive)
     }
 
