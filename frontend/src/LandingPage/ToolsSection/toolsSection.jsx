@@ -28,7 +28,7 @@ export default function ToolsSection() {
         <div className="parentArrow">
           <img src="/assets/toolsPNGS/Arrow.png" className="arrowTools" />
           <div className="parentSubscribe">
-            <h1>Welcome to our community</h1>
+            <h1 id="titleSubscribeTools">Welcome to our community</h1>
             <Link to="/">
               <button>Subscribe</button>
               <img src="/assets/toolsPNGS/click.png" className="clickPNG" />

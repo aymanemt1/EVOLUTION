@@ -226,7 +226,7 @@
   
 
 @media (max-width:820px){
-    .parentNavbar {
+    #parentNavbarExercices {
         display: none;
     }
     .parentNavbarMenu {

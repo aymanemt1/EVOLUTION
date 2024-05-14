@@ -73,6 +73,11 @@
     padding-top: 0.5rem;
 }
 
+.rightSectionImages {
+    display: flex;
+    justify-content: center;
+}
+
 .rightSectionImages .fitbodyPNG {
     width: 500px;
 }

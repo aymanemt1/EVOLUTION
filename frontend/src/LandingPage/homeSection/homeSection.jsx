@@ -66,7 +66,6 @@ export default function HomeSection() {
         <div className="sectionHomeRow2">
           <div className="parentCicle">
             <div className="textCicle">
-              {/* Render rotated text */}
               <p className="rotatedText">{rotatedText}</p>
             </div>
             <i id="arrowSectionHome" className='bx bx-right-arrow-alt'></i>

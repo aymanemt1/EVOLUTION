@@ -9,6 +9,11 @@
     margin: auto;
     display: flex;
     align-items: center;
+    margin-top: 0.5rem;
+}
+.parentBrandLogo {
+    display: flex;
+    align-items: center;
     padding: 1rem 0; 
 }
 

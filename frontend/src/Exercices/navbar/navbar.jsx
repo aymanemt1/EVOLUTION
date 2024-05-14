@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <Fragment>
-      <div className="parentNavbar">
+      <div className="parentNavbar" id="parentNavbarExercices">
         <div className="leftNavbar">
           <Link to="/home">
             <span>
