@@ -144,6 +144,12 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+        <div className="parentSerachBarMenu" style={{display: window.innerWidth <= 820 ? 'block' : 'none'}}>
+          <div className="parentFormSearchBarMenu">
+            <input type="text" placeholder="Search Something"/>
+            <button><i className='bx bx-search-alt'></i></button>
+          </div>
+        </div>
     </Fragment>
   );
 }
