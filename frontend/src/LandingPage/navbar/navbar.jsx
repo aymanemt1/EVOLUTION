@@ -1,27 +1,32 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import './navbar.css';
 
+
 export default function Navbar(){
-    return(
+    return (
         <Fragment>
             <div className="parentNavbar">
-                <div className="parentBrandLogo">
+                <div className="leftNavbar">
                     <Link to='/'>
-                        <img src="./EvolutionRemoveBg.png" alt="Evolution"  title="Evolution" />
+                        <span>
+                            <img src="/assets/logos/logoRM.png" alt="Evolution" title="Evolution"/>
+                        </span>
                     </Link>
                 </div>
-                <div className="parentLinks">
-                    <Link to='/auth/signup'>
-                        <button className="signupBtn">
-                            Sign up
-                        </button>
-                    </Link>
-                    <Link to='/auth/login'>
-                        <button className="loginBtn">
-                            Login
-                        </button>
-                    </Link>
+                <div className="RightNavbar">
+                    <ul className="parentULnavbar">
+                        <li>
+                            <Link to='/auth/sign-up'>
+                                <button className="btnSignup">Sign up</button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/auth/log-in'>
+                                <button className="btnLogin">Log in</button>
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </Fragment>

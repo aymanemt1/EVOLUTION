@@ -1,18 +1,18 @@
 import { Fragment } from "react";
 import Navbar from "./navbar/navbar";
-import Section from "./section/section";
-import Slide from "./slide/slide";
+import HomeSection from "./homeSection/homeSection";
+import CaloriesText from "./caloriesText/caloriesText";
+import ToolsSection from "./ToolsSection/toolsSection";
 import Footer from "./footer/footer";
 
 export default function LandingPage(){
-    return(
+    return (
         <Fragment>
-            <div className="trigger">
-                <Navbar />
-                <Section />
-                <Slide />
-                <Footer />
-            </div>
+            <Navbar />
+            <HomeSection />
+            <CaloriesText />
+            <ToolsSection /> 
+            <Footer />
         </Fragment>
     )
 }
