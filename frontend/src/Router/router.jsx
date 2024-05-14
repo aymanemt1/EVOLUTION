@@ -5,6 +5,7 @@ import Signup from "../Auth/signup/signup";
 import Auth from "../Auth/auth";
 import Home from "../Home/home";
 import LandingPage from "../LandingPage/landingPage";
+import Exercices from "../Exercices/exercices";
 export default function RouterApp(){
     return (
         <Fragment>
@@ -16,6 +17,9 @@ export default function RouterApp(){
                         <Route path="sign-up" element={<Signup />} />
                     </Route>
                     <Route path='/home' element={<Home />} />
+                    <Route path='/exercices' element={<Exercices />} >
+                        
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </Fragment>
