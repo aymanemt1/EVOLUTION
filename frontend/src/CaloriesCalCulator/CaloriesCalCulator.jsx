@@ -9,11 +9,11 @@ import CaloriesCalculatorMain from './Home/CaloriesCalculatorMain';
 
 export default function CaloriesCalCulator() {
   const { birthday, height, weight, goal } = useContext(CaloriesContextt);
-  const [Q1Display, setQ1Display] = useState(false);
+  const [Q1Display, setQ1Display] = useState(true);
   const [Q2Display, setQ2Display] = useState(false);
   const [Q3Display, setQ3Display] = useState(false);
   const [Q4Display, setQ4Display] = useState(false);
-  const [contentVisible, setContentVisible] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
 
   const NextQ1 = () => { setQ1Display(false); setQ2Display(true); }
   const NextQ2 = () => { setQ2Display(false); setQ3Display(true); }

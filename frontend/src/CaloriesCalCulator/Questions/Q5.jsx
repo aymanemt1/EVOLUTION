@@ -21,7 +21,7 @@ const Q4 = ({ NextQ4,BackQ4}) => {
   return (
     <div className="caloriesCalculatorQ2">
       <div className="caloriesCalculatorQ4Form">
-        <div className="caloriesCalculatorText" style={{margin:'0'}}>
+        <div className="caloriesCalculatorText">
           <h1>Calorie Calculator - Daily Caloric <br /> Needs</h1>
           <div className="caloriesCalculatorContent4">
             <div className="progress-bar">
