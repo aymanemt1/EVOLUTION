@@ -8,7 +8,7 @@ import Auth from "../Auth2/auth";
 import { Storeparent } from "../Store/Storeparent";
 import CaloriesCalCulator from "../CaloriesCalCulator/CaloriesCalCulator";
 import Unfounded from "../Unfounded.jsx/Unfounded";
-import AddMeal from "../CaloriesCalCulator/Home/AddMeal";
+import CaloriesCalculatorMain from "../CaloriesCalCulator/Home/CaloriesCalculatorMain";
 
 
 export default function RouterApp(){
@@ -22,7 +22,7 @@ export default function RouterApp(){
                         <Route path="login" element={<Login />} />
                         <Route path="signup" element={<Signup />} />
                     </Route>
-                    <Route path="/CaloriesCalculator" element={<CaloriesCalCulator/>}/>
+                    <Route path="/CaloriesCalculator" element={<CaloriesCalculatorMain/>}/>
                        
                     <Route path='/store' element={<Storeparent />} />
 

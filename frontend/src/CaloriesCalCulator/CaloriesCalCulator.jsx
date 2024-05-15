@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import "./CaloriesCalCulator.css";
-import Q1 from "./Questions/Q1";
-import Q2 from "./Questions/Q2";
-import Q3 from "./Questions/Q3";
-import Q4 from "./Questions/Q4";
+import Q1 from "./Questions/Q1"
+import Q2 from "./Questions/Q2"
+import Q3 from "./Questions/Q3"
+import Q4 from "./Questions/Q4"
 import { CaloriesContextt } from '../Context/CaloriesContext';
 import CaloriesCalculatorMain from './Home/CaloriesCalculatorMain';
 
