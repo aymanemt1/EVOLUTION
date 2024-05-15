@@ -1,0 +1,134 @@
+:root {
+    --blueChelsea : #0153DF;
+    --blueCity : #3F85FF;
+    --blackNewcastle : #000000;
+}
+
+
+
+.parentComposantPersonalTraining {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 34%;
+    height: 550px;
+    padding: 0 0.5rem;
+    border: 0.07rem solid rgba(0, 0, 0, 0.856);
+    border-radius: 5px;
+    padding-bottom: 0.7rem;
+}
+
+.parentComposantPersonalTraining h3 {
+    padding: 0.5rem 0.4rem;
+    font-weight: 600;
+}
+
+.parentComposantPersonalTraining ul {
+    display: flex;
+    list-style: none;
+    gap: 0.3rem;
+    margin: auto;
+}
+
+.parentComposantPersonalTraining ul li button {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-weight: 400;
+    border: none;
+    font-size: 0.7rem;
+    outline: none;
+    padding: 0.1rem 0.4rem;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 0.05rem solid var(--blueCity);
+    box-sizing: border-box;
+}
+
+#clearAllBtn {
+    background-color: rgb(240, 240, 240);
+    color: black;
+    font-weight: 400;
+    border: none;
+    font-size: 0.7rem;
+    outline: none;
+    padding: 0.1rem 0.4rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#activeBtnPersonalTraining {
+    background-color: var(--blueCity);
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    border: none;
+    font-size: 0.7rem;
+    outline: none;
+    padding: 0.1rem 0.4rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+.imgThubmnailExercicesPT {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.parentExercicesPersonalTrainngMap table tbody tr{
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+
+}
+
+.parentExercicesPersonalTrainngMap table tbody td {
+    width: 50%;
+    margin-bottom: 0.3rem;
+}
+
+.parentExercicesPersonalTrainngMap table tbody td div {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;    
+}
+
+
+.parentExercicesPersonalTrainngMap table tbody td h6 {
+    white-space: pre-wrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+}
+.parentExercicesPersonalTrainngMap table {
+    width: 100%;
+}
+
+.parentExercicesPersonalTrainngMap table tbody td p {
+    font-size: 0.6rem;
+    margin-top: -0.1rem;
+    color: grey;
+}
+.parentExercicesPersonalTrainngMap table tbody td span {
+    color: var(--blueChelsea);
+}
+
+.paginationPersonalTraining {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+#btnPaginate {
+    background-color: var(--blueChelsea);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border: none;
+}
