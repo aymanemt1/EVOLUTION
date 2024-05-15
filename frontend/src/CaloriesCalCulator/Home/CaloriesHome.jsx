@@ -1,10 +1,27 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { FaMinus } from "react-icons/fa";
 import { TiEquals } from "react-icons/ti";
+import { CaloriesContextt } from "../../Context/CaloriesContext";
 
 export default function CaloriesHome() {
   const { isactive, setisactive } = useContext(MenuContext);
+  const {
+    goalCalories,
+    consumedCalories,
+    proteinsGoal,
+    setPreoteinsGoal,
+    consumedProtein,
+    setConsumedProtein,
+    carbsGoal,
+    setCarbsGoal,
+    consumedCrabs,
+    setConsumedCarbs,
+    fatsGoal,
+    setFatsGoal,
+    ConsumedFats,
+    setConsumedFats,
+  } = useContext(CaloriesContextt);
   const [selectedMenu, setSelectedMenu] = useState("macros");
 
   return (
@@ -32,9 +49,25 @@ export default function CaloriesHome() {
 }
 
 function MacrosContent() {
-  const proteinPercentage = 60;
-  const fatPercentage = 60;
-  const carbsPercentage = 60;
+  const {
+    goalCalories,
+    consumedCalories,
+    proteinsGoal,
+    setPreoteinsGoal,
+    consumedProtein,
+    setConsumedProtein,
+    carbsGoal,
+    setCarbsGoal,
+    consumedCrabs,
+    setConsumedCarbs,
+    fatsGoal,
+    setFatsGoal,
+    ConsumedFats,
+    setConsumedFats,
+  } = useContext(CaloriesContextt);
+  const proteinPercentage = (consumedProtein / proteinsGoal) * 100;
+  const fatPercentage = (ConsumedFats / fatsGoal) * 100;
+  const carbsPercentage = (consumedCrabs / carbsGoal) * 100;
 
   return (
     <div className="MacrosContent">
@@ -49,8 +82,12 @@ function MacrosContent() {
             style={{
               width: `${proteinPercentage}%`,
               backgroundColor: "#007bff",
+              color: "white",
+              textAlign: "center",
             }}
-          ></div>
+          >
+            {`${proteinPercentage.toFixed(2)}%`}
+          </div>
         </div>
       </div>
       <div className="macro-content">
@@ -61,8 +98,15 @@ function MacrosContent() {
         <div className="fat-progress-bar">
           <div
             className="fat-bar"
-            style={{ width: `${fatPercentage}%`, backgroundColor: "#ffc93f" }}
-          ></div>
+            style={{
+              width: `${fatPercentage}%`,
+              backgroundColor: "#ffc93f",
+              color: "white",
+              textAlign: "center",
+            }}
+          >
+            {`${fatPercentage.toFixed(2)}%`}
+          </div>
         </div>
       </div>
       <div className="macro-content">
@@ -73,8 +117,15 @@ function MacrosContent() {
         <div className="carbs-progress-bar">
           <div
             className="carbs-bar"
-            style={{ width: `${carbsPercentage}%`, backgroundColor: "#ff3f9b" }}
-          ></div>
+            style={{
+              width: `${carbsPercentage}%`,
+              backgroundColor: "#ff3f9b",
+              color: "white",
+              textAlign: "center",
+            }}
+          >
+            {`${carbsPercentage.toFixed(2)}%`}
+          </div>
         </div>
       </div>
     </div>
@@ -82,18 +133,21 @@ function MacrosContent() {
 }
 
 function CaloriesContent() {
-  const goalCalories = 2777;
-  const consumedCalories = 2000;
+  const { goalCalories, consumedCalories } = useContext(CaloriesContextt);
   const netCalories = goalCalories - consumedCalories;
-  const [positiveNet,setPositiveNet]=useState(true);
+  const [positiveNet, setPositiveNet] = useState(true);
   const [warningMessage, setWarningMessage] = useState("");
 
   useEffect(() => {
     if (consumedCalories > goalCalories) {
-      setWarningMessage("Warning! You've exceeded your target calories. Time to reassess your intake.");
-      setPositiveNet(false)
+      setWarningMessage(
+        "Warning! You've exceeded your target calories. Time to reassess your intake."
+      );
+      setPositiveNet(false);
     } else {
-      setWarningMessage("Congratulations! You're staying below your target calories. Keep going!");
+      setWarningMessage(
+        "Congratulations! You're staying below your target calories. Keep going!"
+      );
     }
   }, [consumedCalories, goalCalories]);
 
@@ -102,19 +156,24 @@ function CaloriesContent() {
   return (
     <div className="caloriesContentSection">
       <div className="caloriesFormule">
-      <div className="CaloriesGoal">
+        <div className="CaloriesGoal" style={{textAlign:"center"}}>
           <div className="caloriesGoalNumber">{goalCalories}</div>
           <span className="caloriesGoalText">Goal</span>
         </div>
-        <FaMinus className="caloriesFormuuleMinus"/>
-        <div className="caloriesFood">
-          <div  className="caloriesFoodNumber">{consumedCalories}</div>
+        <FaMinus className="caloriesFormuuleMinus" />
+        <div className="caloriesFood" style={{textAlign:"center"}}>
+          <div className="caloriesFoodNumber">{consumedCalories.toFixed(2)}</div>
           <span className="caloriesFoodText">Consumed</span>
         </div>
-        <TiEquals className="caloriesFormuuleEqual"/>
-        <div className="caloriesNet">
-          <div className="caloriesNetNumber" style={{color: !positiveNet && 'red'}}>{netCalories}</div>
-          <span className="caloriesNetText" >Net</span>
+        <TiEquals className="caloriesFormuuleEqual" />
+        <div className="caloriesNet" style={{textAlign:"center"}}>
+          <div
+            className="caloriesNetNumber"
+            style={{ color: !positiveNet && "red" }}
+          >
+            {netCalories.toFixed(2)}
+          </div>
+          <span className="caloriesNetText">Net</span>
         </div>
       </div>
       <div className="progress">
@@ -129,11 +188,12 @@ function CaloriesContent() {
           {progressPercentage.toFixed(2)}%
         </div>
       </div>
-      <div className="CaloriesWarningMessage" style={{ color: positiveNet ? 'green' : 'red' }}>
+      <div
+        className="CaloriesWarningMessage"
+        style={{ color: positiveNet ? "green" : "red" }}
+      >
         {warningMessage}
-      </div> 
+      </div>
     </div>
   );
 }
-
-

@@ -229,4 +229,138 @@
     right: 20%;
     top: 10%;
     box-shadow: 0 0 25px rgb(64, 151, 237);
+    padding: 4vh 4vw;
+
+  }
+  .AddMealContent h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--blueE);
+  }
+  
+  .AddMealContent label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .AddMealContent input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .addMealButtons{
+    display: flex;
+    justify-content: space-between;
+  }
+  .AddButt{width: 40%;
+    padding: 10px;
+    background-color: rgb(167, 167, 167);
+    color: white;
+    border: none;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;}
+  .DoneButt{width: 40%;
+    padding: 10px;
+    background-color: var(--cityE);
+    color: white;
+    border: none;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;}
+    .AddButt:hover{
+     background-color: #ffc93f;
+    }
+    .DoneButt:hover{
+       background-color: #0066EE;
+    }
+  
+  .AddMealContent table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .AddMealContent th,
+  .AddMealContent td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .AddMealContent th {
+    background-color: #f2f2f2;
+  }
+  
+  .addMealClosePopUp{
+    color:var(--blueE);
+    font-size: 1.5rem;
+  }
+
+  .addMealClosePopUp:hover{
+    color: red;
+    transform: scale(1.1);
+  }
+
+  .AchivedGoal{
+    background-color: rgba(113, 113, 113, 0.334);
+    text-align: center;
+    position: absolute;
+    z-index: 100000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .AchivedGoalContent{
+    background-color: white;
+    border-radius: 10px;
+    width:40%;
+    height: 70%;
+    position: absolute;
+    z-index: 1000000;
+    top: 15%;
+    box-shadow: 0 0 25px rgb(64, 151, 237);
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  .ligneSuccess{
+    width: 0.2vw;
+    height: 100%;
+    position: absolute;
+    z-index: 1000001;
+    background-color: #0066EE;
+    overflow: hidden;
+    left: 50%;
+    bottom: 0%;
+    box-shadow: 0 0 10px var(--cityE);
+
+  }
+  .blueSuccessContent{
+position: absolute;
+z-index: 1000002;
+background-color: #007bff;
+height: 78%;
+width: 80%;
+padding:7% auto;
+border-radius: 10px;
+top: 11%;
+  }
+  .blueSuccessContent .textSuccess{
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 4%;
+  }
+  .blueSuccessContent .successIcon{
+    font-size: 7rem;
+    margin-top: 5vh;
+    color: white;
   }

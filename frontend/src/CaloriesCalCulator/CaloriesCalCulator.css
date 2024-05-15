@@ -31,7 +31,7 @@
   border-radius: 5px;
   border-top: 0;
   box-shadow: 0 0 10px grey;
-  height: 30vh;
+  height: 35vh;
 }
 .progress-bar {
   width: 100%;
@@ -174,18 +174,18 @@
   position: absolute;
   margin: 5vh 15vw;
   border-radius: 15px;
-  padding: 5%;
+  padding: 1%;
   margin-bottom: 3vh;
   box-shadow: 0 0 20px var(--blueE);
 }
 
 .caloriesCalculatorContent4 {
   width: 80%;
-  margin: 10vh auto;
+  margin: 5vh auto;
   border-radius: 5px;
   border-top: 0;
   box-shadow: 0 0 10px grey;
-  height: 50vh;
+  height: 60vh;
 }
 .optionQ4 {
   border: 1px solid var(--cityE);
@@ -200,8 +200,9 @@
 }
 .caloriesCalculatorContentHeader4 {
   font-weight: bold;
+  font-size: 1.1rem;
   color: black;
-  margin: 2vh 0;
+  margin: 0vh 0;
 }
 
 .erreorCalculator4 {

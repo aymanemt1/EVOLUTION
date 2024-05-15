@@ -7,15 +7,17 @@ import { GiCupcake } from "react-icons/gi";
 import CaloriesHome from "./CaloriesHome";
 import { Menu } from "../../Components/Menu/Menu";
 import AddMeal from "./AddMeal";
+import { CaloriesContextt } from "../../Context/CaloriesContext";
+import AchivedGoal from "./AchivedGoal";
 export default function CaloriesCalculatorMain() {
   const { isactive, setisactive } = useContext(MenuContext);
-  const [addMeal, setAddMeal] = useState(false);
+  const{addMealPopUp,setAddMealPopUp,acheivedGoal,setAchievvedGoal}=useContext(CaloriesContextt)
   const [mealTitle, setMealTitle] = useState("");
   console.log(mealTitle)
   return (
-    <div style={{height: addMeal && '100vh',overflow: addMeal && 'hidden'}}>
-      {addMeal && <AddMeal title={mealTitle} />}
-
+    <div style={{ height: (addMealPopUp || acheivedGoal) ? '100vh' : 'auto', overflow: (addMealPopUp || acheivedGoal) && 'hidden' }}>
+      {addMealPopUp && <AddMeal title={mealTitle} />}
+      {acheivedGoal && <AchivedGoal/>}
       <Navbar />
       <div className="Calories-Home" >
         {isactive && <Menu />}
@@ -27,7 +29,7 @@ export default function CaloriesCalculatorMain() {
             className="addBreakfast addMeal"
             onClick={() => {
               setMealTitle("BreakFast");
-              setAddMeal(true)
+              setAddMealPopUp(true)
             }}
           >
             <FaSquarePlus className="addMealIcon" />
@@ -37,7 +39,7 @@ export default function CaloriesCalculatorMain() {
             className="addLunch addMeal"
             onClick={() => {
               setMealTitle("Lunch");
-              setAddMeal(true)
+              setAddMealPopUp(true)
             }}
           >
             <FaSquarePlus className="addMealIcon" />
@@ -47,7 +49,7 @@ export default function CaloriesCalculatorMain() {
             className="addDinner addMeal"
             onClick={() => {
               setMealTitle("Dinner");
-              setAddMeal(true)
+              setAddMealPopUp(true)
             }}
           >
             <FaSquarePlus className="addMealIcon" />
@@ -59,7 +61,7 @@ export default function CaloriesCalculatorMain() {
             className="addSnack"
             onClick={() => {
               setMealTitle("Snack");
-              setAddMeal(true)
+              setAddMealPopUp(true)
             }}
           >
             <span className="snack">Snack</span>
@@ -69,7 +71,7 @@ export default function CaloriesCalculatorMain() {
             className="addSnack"
             onClick={() => {
               setMealTitle("Snack");
-              setAddMeal(true)
+              setAddMealPopUp(true)
             }}
 
           >
@@ -80,7 +82,7 @@ export default function CaloriesCalculatorMain() {
             className="addSnack"
             onClick={() => {
               setMealTitle("Snack");
-              setAddMeal(true)
+              setAddMealPopUp(true)
             }}
           >
             <span className="snack">Snack</span>
