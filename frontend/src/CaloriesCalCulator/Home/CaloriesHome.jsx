@@ -21,6 +21,7 @@ export default function CaloriesHome() {
     setFatsGoal,
     ConsumedFats,
     setConsumedFats,
+    acheivedGoal,setAchievvedGoal
   } = useContext(CaloriesContextt);
   const [selectedMenu, setSelectedMenu] = useState("macros");
 
