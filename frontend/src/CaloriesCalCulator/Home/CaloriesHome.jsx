@@ -1,12 +1,139 @@
-import React, { useContext } from 'react'
-import { MenuContext } from '../../Context/MenuContext';
+import React, { useContext, useState,useEffect } from "react";
+import { MenuContext } from "../../Context/MenuContext";
+import { FaMinus } from "react-icons/fa";
+import { TiEquals } from "react-icons/ti";
 
 export default function CaloriesHome() {
+  const { isactive, setisactive } = useContext(MenuContext);
+  const [selectedMenu, setSelectedMenu] = useState("macros");
 
-    const { isactive, setisactive } = useContext(MenuContext);
   return (
-    <div className={isactive?'caloriesHome-active':'caloriesHome-inActive'}>
-      
+    <div className={isactive ? "caloriesHome-active" : "caloriesHome-inActive"}>
+      <div className="menu-calories">
+        <button
+          onClick={() => setSelectedMenu("macros")}
+          className={selectedMenu === "macros" ? "active" : ""}
+        >
+          Macros
+        </button>
+        <button
+          onClick={() => setSelectedMenu("calories")}
+          className={selectedMenu === "calories" ? "active" : ""}
+        >
+          Calories
+        </button>
+      </div>
+      <div className="content-calories">
+        {selectedMenu === "macros" && <MacrosContent />}
+        {selectedMenu === "calories" && <CaloriesContent />}
+      </div>
     </div>
-  )
+  );
 }
+
+function MacrosContent() {
+  const proteinPercentage = 60;
+  const fatPercentage = 60;
+  const carbsPercentage = 60;
+
+  return (
+    <div className="MacrosContent">
+      <div className="macro-content">
+        <div className="prot-rectangle"></div>
+        <span className="macro-text" style={{ color: "#007bff" }}>
+          PROTEIN
+        </span>
+        <div className="prot-progress-bar">
+          <div
+            className="prot-bar"
+            style={{
+              width: `${proteinPercentage}%`,
+              backgroundColor: "#007bff",
+            }}
+          ></div>
+        </div>
+      </div>
+      <div className="macro-content">
+        <div className="fat-rectangle"></div>
+        <span className="macro-text" style={{ color: "#ffc93f" }}>
+          FAT
+        </span>
+        <div className="fat-progress-bar">
+          <div
+            className="fat-bar"
+            style={{ width: `${fatPercentage}%`, backgroundColor: "#ffc93f" }}
+          ></div>
+        </div>
+      </div>
+      <div className="macro-content">
+        <div className="carbs-rectangle"></div>
+        <span className="macro-text" style={{ color: "#ff3f9b" }}>
+          CARBS
+        </span>
+        <div className="carbs-progress-bar">
+          <div
+            className="carbs-bar"
+            style={{ width: `${carbsPercentage}%`, backgroundColor: "#ff3f9b" }}
+          ></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CaloriesContent() {
+  const goalCalories = 2777;
+  const consumedCalories = 2000;
+  const netCalories = goalCalories - consumedCalories;
+  const [positiveNet,setPositiveNet]=useState(true);
+  const [warningMessage, setWarningMessage] = useState("");
+
+  useEffect(() => {
+    if (consumedCalories > goalCalories) {
+      setWarningMessage("Warning! You've exceeded your target calories. Time to reassess your intake.");
+      setPositiveNet(false)
+    } else {
+      setWarningMessage("Congratulations! You're staying below your target calories. Keep going!");
+    }
+  }, [consumedCalories, goalCalories]);
+
+  const progressPercentage = (consumedCalories / goalCalories) * 100;
+
+  return (
+    <div className="caloriesContentSection">
+      <div className="caloriesFormule">
+      <div className="CaloriesGoal">
+          <div className="caloriesGoalNumber">{goalCalories}</div>
+          <span className="caloriesGoalText">Goal</span>
+        </div>
+        <FaMinus className="caloriesFormuuleMinus"/>
+        <div className="caloriesFood">
+          <div  className="caloriesFoodNumber">{consumedCalories}</div>
+          <span className="caloriesFoodText">Consumed</span>
+        </div>
+        <TiEquals className="caloriesFormuuleEqual"/>
+        <div className="caloriesNet">
+          <div className="caloriesNetNumber" style={{color: !positiveNet && 'red'}}>{netCalories}</div>
+          <span className="caloriesNetText" >Net</span>
+        </div>
+      </div>
+      <div className="progress">
+        <div
+          className="progress-bar"
+          role="progressbar"
+          style={{ width: `${progressPercentage}%` }}
+          aria-valuenow={progressPercentage}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          {progressPercentage.toFixed(2)}%
+        </div>
+      </div>
+      <div className="CaloriesWarningMessage" style={{ color: positiveNet ? 'green' : 'red' }}>
+        {warningMessage}
+      </div> 
+    </div>
+  );
+}
+
+

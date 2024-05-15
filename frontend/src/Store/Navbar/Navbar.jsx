@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import './Navbar.css'
 import { Link, NavLink } from "react-router-dom";
-import { MenuContext, MenuProvider } from '../../Context/MenuContext';
+import { MenuContext } from '../../Context/MenuContext';
 
 export const Navbar = () => {
 
