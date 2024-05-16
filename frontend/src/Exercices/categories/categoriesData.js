@@ -316,4 +316,66 @@ export const DataCategories = {
       ],
     },
   ],
+  exercices : [
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+    {
+      name : 'Push Ups',
+      duree : '30',
+      img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
+    },
+  ]
 };

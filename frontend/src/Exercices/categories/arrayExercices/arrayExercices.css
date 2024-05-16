@@ -1,0 +1,43 @@
+:root {
+    --blueChelsea : #0153DF;
+    --blueCity : #3F85FF;
+    --blackNewcastle : #000000;
+}
+
+
+#ulExercicesCategories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.parentComposantPersonalTraining h3 {
+    display: block;
+}
+
+.parentArrayExercices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.parentArrayExercices .arrowArrayExercices{
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    background-color: rgb(217, 217, 217);
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+.parentArrayExercices .arrowArrayExercices img{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+
+}
+.parentArrayExercices .arrowArrayExercices span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

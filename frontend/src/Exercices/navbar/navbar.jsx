@@ -23,7 +23,6 @@ export default function Navbar() {
   };
 
 
-  console.log(menuOpen)
 
   return (
     <Fragment>
