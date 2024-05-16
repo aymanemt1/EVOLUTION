@@ -1,17 +1,29 @@
-import { Fragment, useState } from "react";
-import { DataCategories } from "../categoriesData";
-import "./personalTraining.css";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from 'axios';
+import './personalTraining.css';
 
 export default function PersonalTraining() {
-  // Function of Personal training
-  const { personalTraining } = DataCategories;
+  const [exercises, setExercises] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentLevel, setCurrentLevel] = useState("");
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json');
+        setExercises(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const filteredData = currentLevel
-    ? personalTraining.filter((item) => item.level === currentLevel)
-    : personalTraining;
+    ? exercises.filter((item) => item.level === currentLevel)
+    : exercises;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -36,11 +48,13 @@ export default function PersonalTraining() {
   return (
     <Fragment>
       <div className="parentComposantPersonalTraining">
+        <div>
+
         <h3>Personal Training</h3>
         <ul>
           <li>
             <button onClick={handleClearAll} id="clearAllBtn">
-              Clear All
+              All
             </button>
           </li>
           <li>
@@ -49,26 +63,24 @@ export default function PersonalTraining() {
               id={
                 currentLevel === "beginner" ? "activeBtnPersonalTraining" : ""
               }
-            >
+              >
               Beginner
             </button>
           </li>
           <li>
             <button
-              onClick={() => handleLevelClick("medium")}
-              id={currentLevel === "medium" ? "activeBtnPersonalTraining" : ""}
-            >
-              Medium
+              onClick={() => handleLevelClick("intermediate")}
+              id={currentLevel === "intermediate" ? "activeBtnPersonalTraining" : ""}
+              >
+              Intermediate
             </button>
           </li>
           <li>
             <button
-              onClick={() => handleLevelClick("advanced")}
-              id={
-                currentLevel === "advanced" ? "activeBtnPersonalTraining" : ""
-              }
+              onClick={() => handleLevelClick("expert")}
+              id={currentLevel === "expert" ? "activeBtnPersonalTraining" : ""}
             >
-              Advanced
+              Expert
             </button>
           </li>
         </ul>
@@ -80,47 +92,51 @@ export default function PersonalTraining() {
                   <tr key={index}>
                     <td>
                       <div>
+                        <div className="parentImageExercicesPersonalT">
                         <img
-                          src={item.thumbnail}
-                          alt={item.title}
+                          src={`https://ik.imagekit.io/yuhonas/${item.images[0]}`}
+                          alt={item.name}
                           className="imgThubmnailExercicesPT"
-                        />
-                        <h6>{item.title}</h6>
+                          />
+                          </div>
+                        <h6>{item.name}</h6>
                         <p>
-                          <span>{item.level}</span>, {item.duree}min
+                          <span>{item.level}</span>, {item.category}
                         </p>
                       </div>
                     </td>
                     {currentItems[index + 1] && (
                       <td>
                         <div>
+                        <div className="parentImageExercicesPersonalT">
                           <img
-                            src={currentItems[index + 1].thumbnail}
-                            alt={currentItems[index + 1].title}
+                            src={`https://ik.imagekit.io/yuhonas/${currentItems[index + 1].images[0]}`}
+                            alt={currentItems[index + 1].name}
                             className="imgThubmnailExercicesPT"
-                          />
-                          <h6>{currentItems[index + 1].title}</h6>
+                            />
+                          </div>
+                          <h6>{currentItems[index + 1].name}</h6>
                           <p>
-                            <span>{currentItems[index + 1].level}</span>,{" "}
-                            {currentItems[index + 1].duree}min
+                            <span>{currentItems[index + 1].level}</span>, {currentItems[index + 1].category}
                           </p>
                         </div>
                       </td>
                     )}
                   </tr>
-                ) : null
+                  ) : null
               )}
             </tbody>
           </table>
         </div>
+          </div>
         <div className="pagination">
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
-          >
+            >
             {"<"}
           </button>
-          <div className="currentPage">{currentPage}</div>
+          <div className="currentPage">{currentPage} of {totalPages}</div>
           <button
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === totalPages}

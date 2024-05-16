@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 34%;
-    height: 550px;
+    height: 570px;
     padding: 0 0.5rem;
     border: 0.07rem solid rgba(0, 0, 0, 0.856);
     border-radius: 5px;
@@ -71,13 +71,23 @@
     box-sizing: border-box;
 }
 
+.parentImageExercicesPersonalT {
+    overflow: hidden;
+    border-radius: 5px;
+    border: 0.01rem solid rgba(0, 0, 0, 0.532);
+}
 
 .imgThubmnailExercicesPT {
     width: 100%;
-    height: 90px;
+    height: 65px;
     object-fit: cover;
     border-radius: 5px;
+    transition: all .2s ease-in-out;
 }
+
+.imgThubmnailExercicesPT:hover {
+    transform: scale(1.2);
+ }
 
 .parentExercicesPersonalTrainngMap table tbody tr{
     display: flex;
@@ -104,7 +114,10 @@
     max-width: 100%;
     text-overflow: ellipsis;
     margin-bottom: 0;
+    font-size: 0.6rem;
+    margin-top: 0.2rem;
 }
+
 .parentExercicesPersonalTrainngMap table {
     width: 100%;
 }

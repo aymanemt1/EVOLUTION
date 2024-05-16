@@ -25,10 +25,9 @@ export default function MyWorkouts() {
     );
   }
 
-  // Function to filter today's workouts
   function filterTodayWorkouts() {
-    const today = new Date().toLocaleDateString("en-GB"); // Get today's date in the format "dd/mm/yyyy"
-    const formattedToday = today.split("/").reverse().join("-"); // Convert format to "dd-mm-yyyy"
+    const today = new Date().toLocaleDateString("en-GB"); 
+    const formattedToday = today.split("/").reverse().join("-"); 
     return groupedWorkouts
       .map(({ date, workouts }) => ({
         date,
@@ -45,7 +44,7 @@ export default function MyWorkouts() {
   const [toggleWorkout, setToggleWorkout] = useState({});
   const [showToday, setShowToday] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const workoutsPerPage = 3; // Number of workouts to display per page
+  const workoutsPerPage = 3; 
 
   function handleToggleWorkout(date, workoutIndex, exerciseIndex) {
     setToggleWorkout((prevState) => {
@@ -74,7 +73,7 @@ export default function MyWorkouts() {
   return (
     <Fragment>
       <div className="parentComposantPersonalTraining">
-        <div className="headerMyWorkoutsCategories">
+        <div>
           <h3>My workouts</h3>
           {/* <button title="Add workout">
             <i className="bx bx-book-add"></i>
@@ -105,7 +104,6 @@ export default function MyWorkouts() {
             </button>
           </li>
         </ul>
-          </div>
         </div>
         <div className="parentMappingWorkouts">
           {currentWorkouts.map(({ date, workouts }) => (
@@ -152,20 +150,20 @@ export default function MyWorkouts() {
                           </label>
                           {exercise.isPast ? (
                             <i
-                              className="bx bx-x-circle"
-                              id="exerciseDisabledIcon"
+                            className="bx bx-x-circle"
+                            id="exerciseDisabledIcon"
                             ></i>
                           ) : null}
                           <input
                             type="radio"
                             name="workoutRadio"
                             disabled={exercise.isPast}
-                          />
+                            />
                         </span>
                       </div>
                     ))}
                   </div>
-                ))}
+                  ))}
               </div>
             </div>
           ))}
@@ -176,6 +174,7 @@ export default function MyWorkouts() {
             <span>Add Workout</span>
           </button>
         )}
+          </div>
         <div className="pagination">
           {showToday ? null : (
             <Fragment>
@@ -185,7 +184,7 @@ export default function MyWorkouts() {
               >
                 {"<"}
               </button>
-              <div className="currentPage">{currentPage}</div>
+              <div className="currentPage">{currentPage} of {workoutsPerPage-1}</div>
               <button
                 onClick={() => paginate(currentPage + 1)}
                 disabled={
