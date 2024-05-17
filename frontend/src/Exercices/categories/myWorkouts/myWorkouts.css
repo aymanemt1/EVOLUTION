@@ -174,9 +174,10 @@
 }
 
 .pagination button{
-    background-color: var(--blueChelsea);
-    color: white;
+    background-color: rgb(230, 230, 230);
+    color: var(--blueChelsea);
     border: none;
+    font-weight: 600;
     outline: none;
     width: 25px;
     height: 25px;

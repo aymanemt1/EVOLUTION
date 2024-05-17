@@ -24,6 +24,12 @@
 }
 
 
+.menuOfFilter {
+    background-color: var(--blueChelsea);
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
 .ulArrayExercices {
     position: relative;
     bottom: 1rem;

@@ -377,5 +377,47 @@ export const DataCategories = {
       duree : '30',
       img : 'https://i.pinimg.com/564x/52/d3/4d/52d34d76b7a28e8cad6d4bcd921b6910.jpg',
     },
+  ],
+  weightTracking : [
+    {
+      weight : 96,
+      date : '12-04-2024',
+      time : '08:30 AM',
+    },
+    {
+      weight : 97,
+      date : '12-05-2024',
+      time : '08:30 AM',
+    },
+    {
+      weight : 98,
+      date : '30-05-2024',
+      time : '08:30 AM',
+    },
+    {
+      weight : 97.5,
+      date : '10-06-2024',
+      time : '08:30 AM',
+    },
+    {
+      weight : 99.5,
+      date : '10-07-2024',
+      time : '08:30 AM',
+    },
+    {
+      weight : 94.02,
+      date : '13-09-2024',
+      time : '08:30 AM',
+    },
+    {
+      weight : 88.12,
+      date : '23-09-2024',
+      time : '08:30 AM',
+    },
+    {
+      weight : 95.12,
+      date : '31-09-2024',
+      time : '08:30 AM',
+    },
   ]
 };

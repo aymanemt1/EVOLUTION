@@ -10,6 +10,8 @@ import Unfounded from "../Unfounded.jsx/Unfounded";
 import CaloriesCalCulator from "../CaloriesCalCulator/CaloriesCalCulator";
 import { Storeparent } from "../Store/Storeparent";
 import Categories from "../Exercices/categories/categories";
+import Profile from "../Profile/profile";
+import ExercicesList from "../Exercices/exercicesList/exercicesList";
 
 export default function RouterApp() {
     return (
@@ -25,6 +27,8 @@ export default function RouterApp() {
                     <Route path='/home' element={<Home />} />
                     <Route path='/exercices' element={<Exercices />}>
                         <Route path="categories" element={<Categories />} />
+                        <Route path="profile" element={<Profile />} />
+                        <Route path="list" element={<ExercicesList />} />
                     </Route>
                     <Route path="/CaloriesCalcuator" element={<CaloriesCalCulator />} />
                     <Route path='/store' element={<Storeparent />} />

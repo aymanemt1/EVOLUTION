@@ -24,7 +24,7 @@ export default function Sidebar(){
                     </li>
                     <li>
                         <Link to='/exercices/profile' className="Link">
-                            <button>
+                            <button id={location.pathname == '/exercices/profile' ? "btnSideBarActive" : null}>
                                 <span>
                                 <i className='bx bxs-user-detail'></i> <span>Profile</span>
                                 </span>
@@ -33,8 +33,8 @@ export default function Sidebar(){
                         </Link>
                     </li>
                     <li>
-                        <Link to='/exercices/exercices' className="Link">
-                            <button>
+                        <Link to='/exercices/list' className="Link">
+                            <button id={location.pathname == '/exercices/list' ? "btnSideBarActive" : null}>
                                 <span>
                                 <i className='bx bx-dumbbell'></i> <span>Exercices</span>
                                 </span>

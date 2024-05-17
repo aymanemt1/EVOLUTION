@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from 'axios';
 import './arrayExercices.css';
+import Modal from './modal/modal';
 
 export default function ArrayExercices() {
   const muscles = ['abdominals', 'shoulders', 'glutes', 'quadriceps', 'biceps', 'forearms', 'triceps', 'chest', 'lower back', 'traps', 'lats', 'middle back', 'calves'];
@@ -8,7 +9,9 @@ export default function ArrayExercices() {
   const [selectedMuscle, setSelectedMuscle] = useState('All');
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisesPerPage = 7;
+  const [showModal, setShowModal] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState(null);
+  const exercisesPerPage = filterMenuOpen ? 5 : 7;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,11 +33,21 @@ export default function ArrayExercices() {
   const handleMuscleClick = (muscle) => {
     setSelectedMuscle(muscle);
     setFilterMenuOpen(false);
-    setCurrentPage(1); // Reset to the first page whenever a new muscle group is selected
+    setCurrentPage(1); 
   };
 
   const handlePageChange = (direction) => {
     setCurrentPage(prevPage => prevPage + direction);
+  };
+
+  const handleInfoClick = (exercise) => {
+    setSelectedExercise(exercise);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedExercise(null);
   };
 
   const filteredExercises = selectedMuscle === 'All' 
@@ -50,13 +63,15 @@ export default function ArrayExercices() {
   return (
     <Fragment>
       <div className="parentComposantPersonalTraining">
+        <div>
+
         <h3>Exercises</h3>
         <ul id="ulExercicesCategories">
           <li>
-            <button onClick={() => setSelectedMuscle('All')}>All Exercises</button>
+            <button onClick={() => setSelectedMuscle('All')} id="clearAllBtn">All Exercises</button>
           </li>
           <li>
-            <button onClick={handleFilterClick}><i className='bx bx-filter'></i> Filter</button>
+            <button onClick={handleFilterClick} id={filterMenuOpen ? "activeBtnPersonalTraining" : null}><i className={!filterMenuOpen ? 'bx bx-filter' : 'bx bx-exit-fullscreen'}></i> Filter</button>
           </li>
           <div className="menuOfFilter" style={{ display: filterMenuOpen ? 'block' : 'none' }}>
             <ul>
@@ -84,30 +99,34 @@ export default function ArrayExercices() {
                   <ul id="buttonsExercicesCategories">
                     <li>
                       <button><i className='bx bx-heart'></i></button>
-                      <button><i className='bx bx-info-circle'></i></button>
+                      <button onClick={() => handleInfoClick(exercise)}><i className='bx bx-info-circle'></i></button>
                     </li>
                   </ul>
                 </div>
               </li>
             ))}
           </ul>
+            </div>
           <div className="pagination">
             <button 
               onClick={() => handlePageChange(-1)} 
               disabled={currentPage === 1}
-            >
+              >
               &lt;
             </button>
             <span>{currentPage} of {totalPages}</span>
             <button 
               onClick={() => handlePageChange(1)} 
               disabled={currentPage === totalPages}
-            >
+              >
               &gt;
             </button>
           </div>
         </div>
       </div>
+      {showModal && selectedExercise && (
+        <Modal exercise={selectedExercise} onClose={handleCloseModal} />
+      )}
     </Fragment>
   );
 }
