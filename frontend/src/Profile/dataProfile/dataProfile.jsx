@@ -9,7 +9,7 @@ export default function DataProfile() {
         <div className="dataProfile">
           <div className="headerDataProfile">
             <div>
-              <img src="/assets/toolsPNGS/img3.png" />
+            <img src="/assets/toolsPNGS/img3.png" onError={(e) => e.target.src = '/assets/references/profile.png'}/>
               <div className="namesProfile">
                 <h5>Youssef Talibi</h5>
                 <p>@youceEtalibi</p>

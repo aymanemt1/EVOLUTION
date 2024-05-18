@@ -49,7 +49,6 @@ export default function PersonalTraining() {
     <Fragment>
       <div className="parentComposantPersonalTraining">
         <div>
-
         <h3>Personal Training</h3>
         <ul>
           <li>
