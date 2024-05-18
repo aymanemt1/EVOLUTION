@@ -9,6 +9,7 @@ import { Menu } from "../../Components/Menu/Menu";
 import AddMeal from "./AddMeal";
 import { CaloriesContextt } from "../../Context/CaloriesContext";
 import AchivedGoal from "./AchivedGoal";
+import Footer from "../../LandingPage/footer/footer";
 export default function CaloriesCalculatorMain() {
   const { isactive, setisactive } = useContext(MenuContext);
   const{addMealPopUp,setAddMealPopUp,acheivedGoal,setAchievvedGoal}=useContext(CaloriesContextt)
@@ -90,6 +91,7 @@ export default function CaloriesCalculatorMain() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -25,7 +25,7 @@ const Q4 = ({ NextQ4,BackQ4}) => {
           <h1>Calorie Calculator - Daily Caloric <br /> Needs</h1>
           <div className="caloriesCalculatorContent4">
             <div className="progress-bar">
-              <div className="progress" style={{ width: "100%" }}></div>
+              <div className="progress" style={{ width: "80%" }}></div>
             </div>
             <h2 className="caloriesCalculatorContentHeader4" >What is your goal?</h2>
             <div className="options">

@@ -25,7 +25,7 @@ const Q2 = ({ NextQ2,BackQ2 }) => {
           <h1>Calorie Calculator - Daily Caloric <br /> Needs</h1>
           <div className="caloriesCalculatorContent2">
             <div className="progress-bar">
-              <div className="progress" style={{ width: "50%" }}></div>
+              <div className="progress" style={{ width: "40%" }}></div>
             </div>
             <h2 className="caloriesCalculatorContentHeader" >What is your height?</h2>
             <form onSubmit={handleSubmit}>
