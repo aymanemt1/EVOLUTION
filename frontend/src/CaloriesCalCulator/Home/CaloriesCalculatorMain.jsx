@@ -21,7 +21,7 @@ export default function CaloriesCalculatorMain() {
       {acheivedGoal && <AchivedGoal/>}
       <Navbar />
       <div className="Calories-Home" >
-        {isactive && <Menu />}
+        {isactive && <Menu className="caloriesMenu"/>}
         <CaloriesHome />
       </div>
       <div className="addMeals">
@@ -58,27 +58,6 @@ export default function CaloriesCalculatorMain() {
           </div>
         </div>
         <div className="addMealsRightSide">
-          <div
-            className="addSnack"
-            onClick={() => {
-              setMealTitle("Snack");
-              setAddMealPopUp(true)
-            }}
-          >
-            <span className="snack">Snack</span>
-            <GiCupcake className="snackIcon" />
-          </div>
-          <div
-            className="addSnack"
-            onClick={() => {
-              setMealTitle("Snack");
-              setAddMealPopUp(true)
-            }}
-
-          >
-            <span className="snack">Snack</span>
-            <GiCupcake className="snackIcon" />
-          </div>
           <div
             className="addSnack"
             onClick={() => {

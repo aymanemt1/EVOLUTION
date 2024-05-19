@@ -4,8 +4,8 @@ export const CaloriesContextt = createContext();
 
 export default function CaloriesContext({ children }) {
   const [birthday, setBirthday] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState(0);
   const [goal, setGoal] = useState("");
   const [activite, setActivite] = useState("");
   const [addMealPopUp, setAddMealPopUp] = useState(false);
@@ -21,6 +21,7 @@ export default function CaloriesContext({ children }) {
   const [acheivedGoal, setAchievvedGoal] = useState(false);
   const [activityMultiplier, setActivityMultiplier] = useState(1.2); // Default multiplier for sedentary
   const [goalCaloriesAdjustment, setGoalCaloriesAdjustment] = useState(0); // Adjustment for goal calories
+  const [editedMode,setEditMode]=useState(false)
 
   useEffect(() => {
     if (consumedCalories >= goalCalories) {
@@ -117,8 +118,9 @@ export default function CaloriesContext({ children }) {
       (4.799 * parseFloat(height) || 0) -
       (5.677 * age) * activityMultiplier +
       goalCaloriesAdjustment; // Adjusted for activity multiplier and goal adjustment
-    setGoalCalories(calculatedGoalCalories.toFixed(2));
+    setGoalCalories(parseFloat(calculatedGoalCalories.toFixed(2)));
   }, [height, weight, age, activityMultiplier, goalCaloriesAdjustment]);
+
   
   return (
     <CaloriesContextt.Provider
@@ -130,6 +132,7 @@ export default function CaloriesContext({ children }) {
         weight,
         setWeight,
         goal,
+        editedMode,setEditMode,
         setGoal,
         addMealPopUp,
         setAddMealPopUp,

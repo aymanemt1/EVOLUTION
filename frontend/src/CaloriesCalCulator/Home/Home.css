@@ -1,11 +1,11 @@
 .caloriesHome-active {
   background: linear-gradient(to bottom, #77c4ef, #fadcff);
-  width: 82%;
+  width: 81%;
   height: 60vh;
   border: 12px solid #0066EE;
   border-radius: 10px;
   box-sizing: border-box;   
-  margin-left: 2%;
+  margin-left: 3%;
   padding: 20PX;
 }
 .Calories-Home {
@@ -95,19 +95,74 @@
   }
   .addMeals{
     padding: 6vh 10vw;
-  display: flex;
-  justify-content: space-between;
+    
   width: 100%;
   margin-bottom: 5vh;
   }
   .addMealLeftSide{
-    width:100%;
-    height:80vh;
+    width:96%;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media only screen and (max-width: 768px) {
+    .addMealLeftSide {
+      flex-direction: column;
+      width: 96%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    .caloriesHome-active {
+      margin-left:0%;
+    }
+    .Calories-Home{
+      justify-content: space-between;
+    }
+    .addMealLeftSide div{
+      width: 96%;
+    }
+    .AddMeal .AddMealContent{
+      width: 80%;
+      right: 10%;
+    }
+    .Calories-Home.caloriesMenu{
+      position: absolute;
+      background-color: #007bff;
+    }
+    div.addBreakfast.addMeal {
+      width: 96%;
+      text-align: center;
+    }
+    div.addLunch.addMeal{
+      width: 96%;
+    }
+    div.addDinner.addMeal{
+      width: 96%;
+    }
+    div.addSnack{
+      height: 10vh;
+      padding: 0%;
+      width: 94%;
+      box-sizing: border-box;
+    }
+    .snack{
+      font-size: 1.4rem;
+    }
+    .snackIcon{
+      font-size: 1.4rem;
+    }
+  }
+
+  @media only screen and (max-width: 450px){
+    .AddMeal .AddMealContent{
+      width: 95%;
+      right: 2.5%;
+    }
   }
 
   .addMealLeftSide div{
-    width: 85%;
-    height:30%;
+    width: 30%;
+    height:10vh;
     background: linear-gradient(to top,#f0dff3,#b0c9db);
     border-radius: 10px;
     margin-top:5vh ;
@@ -125,32 +180,34 @@
   .addMeal span{
     color: #3F85FF;
     font-weight: 700;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
   .addMeal:hover{
     cursor: pointer;
     border: 1px solid #3F85FF;
   }
-  .addMealsRightSide{
-    width: 40%;
-  }
+  
   .addSnack{
    
-    height: 30%;
+   
+    width: 96%;
     background-color: #0066EE ;
     color: white;
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-weight: 700;
     border-radius: 10px;
-    margin-top:5vh ;
+    margin-top:8vh ;
     box-shadow: 0 0 5px grey;
     text-align: center  ;
     align-items: center;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 7% 0;
+    height: 20vh;
+    box-sizing: border-box;
+    padding:2vh 0;
   }
+ 
   .addSnack:hover{
     border: 2px solid  white;
     cursor: pointer;
