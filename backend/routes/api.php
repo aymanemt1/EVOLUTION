@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyWorkoutsController;
+use App\Http\Controllers\FavoriteExerciceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::controller(FavoriteExerciceController::class)->group(function () {
+    Route::get('favorite-exercice/{id}', 'index');
+    Route::post('/favorite-exercice', 'store');
+    Route::delete('/favorite-exercice/{memberId}/{exerciseId}', 'destroy');
+});
+
+
+Route::controller(MyWorkoutsController::class)->group(function () {
+    Route::get('/my-workouts/{id}', 'index');
+});
+

@@ -9,9 +9,9 @@ export default function Categories() {
   return (
     <Fragment>
       <div className="parentCategoriresExercices">
-        <PersonalTraining />
         <MyWorkouts />
         <ArrayExercices /> 
+        <PersonalTraining />
       </div>
     </Fragment>
   );

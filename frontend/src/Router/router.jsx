@@ -10,8 +10,9 @@ import Unfounded from "../Unfounded.jsx/Unfounded";
 import CaloriesCalCulator from "../CaloriesCalCulator/CaloriesCalCulator";
 import { Storeparent } from "../Store/Storeparent";
 import Categories from "../Exercices/categories/categories";
-import Profile from "../Profile/profile";
+import Profile from "../Exercices/Profile/profile";
 import ExercicesList from "../Exercices/exercicesList/exercicesList";
+import Workouts from "../Exercices/workouts/workouts";
 
 export default function RouterApp() {
     return (
@@ -29,6 +30,7 @@ export default function RouterApp() {
                         <Route path="categories" element={<Categories />} />
                         <Route path="profile" element={<Profile />} />
                         <Route path="list" element={<ExercicesList />} />
+                        <Route path="my-workouts" element={<Workouts />} />
                     </Route>
                     <Route path="/CaloriesCalcuator" element={<CaloriesCalCulator />} />
                     <Route path='/store' element={<Storeparent />} />

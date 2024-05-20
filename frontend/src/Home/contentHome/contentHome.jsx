@@ -23,7 +23,7 @@ export default function ContentHome(){
                                 </div>
                                 <div>
                                     <button>
-                                        <Link to='/exercices' className="LinkComposant">
+                                        <Link to='/exercices/categories' className="LinkComposant">
                                         <span>
                                             See more
                                         </span>

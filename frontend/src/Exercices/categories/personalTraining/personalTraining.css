@@ -146,3 +146,43 @@
     height: 20px;
     border: none;
 }
+
+.btnFavoriteEx {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin-top: 2rem;
+    position: absolute;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+
+.btnFavoriteEx:hover {
+    font-size: 1.5rem;
+    color: var(--blueCity);
+}
+.btnFavoriteEx:active {
+    font-size: 1.5rem;
+    color: var(--blackNewcastle);
+}
+
+.parentFavoriteNotExiste {
+    width: 200%;
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.parentFavoriteNotExiste i {
+    font-size: 10rem;
+    color: rgb(199, 199, 199);
+}
+.parentFavoriteNotExiste h6 {
+    color: rgb(199, 199, 199);
+    width: 100%;
+    text-align: center;
+}

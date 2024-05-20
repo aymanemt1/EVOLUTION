@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import "./weightTracking.css";
-import { DataCategories } from "../../Exercices/categories/categoriesData";
+import { DataCategories } from "../../categories/categoriesData";
 
 ChartJS.register(
   CategoryScale,

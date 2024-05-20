@@ -44,7 +44,7 @@ export default function Sidebar(){
                     </li>
                     <li>
                         <Link to='/exercices/my-workouts' className="Link">
-                            <button>
+                            <button id={location.pathname == '/exercices/my-workouts' ? "btnSideBarActive" : null}>
                                 <span>
                                     <i className='bx bxs-timer'></i> <span>My workouts</span>
                                 </span>
