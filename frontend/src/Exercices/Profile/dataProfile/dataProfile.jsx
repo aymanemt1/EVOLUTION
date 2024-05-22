@@ -1,24 +1,44 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 import "./dataProfile.css";
 import { Link } from "react-router-dom";
 
 export default function DataProfile() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/user/1')
+      .then(response => {
+        setUser(response.data[0]);
+      })
+      .catch(error => {
+        console.error("There was an error fetching the user's weight data!", error);
+      });
+  }, []);
+
+  if (!user) {
+    return <div>
+      <span class="loaderProfile"></span>
+      <span class="loaderProfile"></span>
+    </div>;
+  }
+
   return (
     <Fragment>
       <div className="parentDataProfile">
         <div className="dataProfile">
           <div className="headerDataProfile">
             <div>
-            <img src="/assets/toolsPNGS/img3.png" onError={(e) => e.target.src = '/assets/references/profile.png'}/>
+              <img src={user.profile} alt="Profile" onError={(e) => e.target.src = '/assets/references/profile.png'} />
               <div className="namesProfile">
-                <h5>Youssef Talibi</h5>
-                <p>@youceEtalibi</p>
+                <h5>{user.fullname}</h5>
+                <p>{user.fullname}</p>
               </div>
             </div>
             <div>
                 <Link to='/'>
                     <button>
-                        <i className='bx bxs-cog' ></i>
+                        <i className='bx bxs-cog'></i>
                     </button>
                 </Link>
             </div>
@@ -27,32 +47,32 @@ export default function DataProfile() {
             <ul>
                 <li>
                     <span>Name</span>
-                    <span>Youssef Talibi</span>
+                    <span>{user.fullname}</span>
                 </li>
                 <li>
                     <span>Weight</span>
-                    <span>96kg</span>
+                    <span>{user.weight}Kg</span>
                 </li>
                 <li>
                     <span>Height</span>
-                    <span>184cm</span>
+                    <span>{user.height}cm</span>
                 </li>
                 <li>
                     <span>Fat</span>
-                    <span>23.02%</span>
+                    <span>{user.fat}%</span>
                 </li>
             </ul>
           </div>
         </div>
         <div className="SendEmailForTeam">
             <h4>Subscribe to our Newsletter</h4>
-            <p>Subscribe to our Newsletter for the last updates Subscribe to our Newsletter for the last updates</p>
+            <p>Subscribe to our Newsletter for the latest updates</p>
             <div className="parentInputParent">
-                <i className='bx bx-envelope' ></i>
-                <input type="text" placeholder="Email Adress"/>
+                <i className='bx bx-envelope'></i>
+                <input type="text" placeholder="Email Address"/>
             </div>
             <div className="parentbtnSubscribe">
-              <button>Subscribe<i className='bx bxl-telegram' ></i></button>
+              <button>Subscribe<i className='bx bxl-telegram'></i></button>
             </div>
         </div>
       </div>

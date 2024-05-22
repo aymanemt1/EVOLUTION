@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\MyWorkoutsController;
+use App\Http\Controllers\WeightTrackingController;
 use App\Http\Controllers\FavoriteExerciceController;
 
 /*
@@ -31,4 +33,18 @@ Route::controller(FavoriteExerciceController::class)->group(function () {
 Route::controller(MyWorkoutsController::class)->group(function () {
     Route::get('/my-workouts/{id}', 'index');
 });
+
+
+
+Route::controller(WeightTrackingController::class)->group(function () {
+    Route::get('/weight-tracking/{id}', 'index');
+    Route::post('/weight-tracking', 'store');
+});
+
+
+
+Route::controller(UserInfoController::class)->group(function () {
+    Route::get('/user/{id}', 'index');
+});
+
 

@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\membre;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class membre extends Model
+class WeightTracking extends Model
 {
     use HasFactory;
-    protected $fillable = ['username', 'fullname', 'email', 'password'];
+
+    protected $fillable = [
+        'membre_id', 'weight', 'date', 'time'
+    ];
 
     public function member()
     {
