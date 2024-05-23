@@ -16,7 +16,7 @@ export default function Sidebar(){
                         <Link to='/exercices/categories' className="Link">
                             <button id={location.pathname == '/exercices/categories' ? "btnSideBarActive" : null}>
                                 <span>
-                                <i className='bx bxs-category-alt' ></i> <span>Categories</span>
+                                <i className='bx bxs-category-alt' ></i> <span>Overview</span>
                                 </span>
                             <i className='bx bx-right-arrow-alt' id="arrowSideBarExercices"></i>
                             </button>
