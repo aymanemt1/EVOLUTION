@@ -80,7 +80,7 @@ export default function MyWorkouts() {
                 </p> 
                 : 
                 <p id="successWorkout">
-                  <strong><i className='bx bx-check-circle'></i> The exercise is not complete!</strong>
+                  <strong><i className='bx bx-x-circle' ></i> The exercise is not complete!</strong>
                 </p> 
               }
               <div className='parentRowWorkout'>
