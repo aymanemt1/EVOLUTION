@@ -4,184 +4,192 @@
     --blackNewcastle : #000000;
 }
 
-.headerMyWorkoutsCategories {
+
+.headerWorkout {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    color: rgb(183, 183, 183);
+    font-size: 0.7rem;
 }
 
-#ulHeaderWorkoutsCategories  {
-    display: block;
+.headerWorkout span {
+    color: var(--blueCity);
+    font-weight: 500;
+    font-size: 0.8rem;
 }
 
-.headerMyWorkoutsCategories button {
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 0.2rem;
-    padding-top: 0.4rem;
-    border-radius: 5px;
-    transition: all .2s ease-in-out;
+.parentRowWorkout {
+    display: flex;
+    font-size: 0.8rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    margin-top: -.5rem;
 }
 
-.headerMyWorkoutsCategories button:hover {
-    background-color: rgb(243, 243, 243);
-}
-.headerMyWorkoutsCategories button:active {
-    background-color: rgb(170, 170, 170);
-}
-
-.headerMyWorkoutsCategories button i {
-    color: var(--blueChelsea);
-    font-size: 1.4rem;
-}
-
-.parentMappingWorkouts {
+.parentRowWorkout span {
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    color: var(--blueCity);
+    font-size: 0.7rem;
 }
 
-.rowWorkouts {
-    /* background-color: aqua; */
-    margin-bottom: 0.5rem;
-    width: 100%;
+.parentRowWorkout {
+    margin-bottom: .3rem;
 }
 
-.rowWorkouts header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
+.parentRowWorkout span p:first-child {
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
-.rowWorkouts header span {
+#levelWorkOut {
+    color: var(--blueChelsea);
     font-size: 0.6rem;
+    margin-left: .4rem;
+    margin-top: -.2rem;
 }
 
-
-.rowWorkouts header span:first-child {
-    font-weight: 500;
-}
-.rowWorkouts header span:last-child {
-    font-weight: 400;
-    color: rgb(137, 137, 137);
-}
-
-.workoutGroup .workout div {
-    justify-content: space-between;
+.RowExerciceWorkout {
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;  
+    background-color: var(--blueCity);
+    margin-bottom: 0.3rem;
     padding: 0.2rem;
+    border-radius: 5px;
+    
+}
+
+#parentImgExWorkout {
+    width: 50px;
+    height: 50px;
     border-radius: 5px;
 }
 
-.parentImgInfoWorkout {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.parentImgInfoWorkout h4 {
-    color: white;
-}
-
-.workoutGroup .workout img {
+.RowExerciceWorkout img {
     width: 50px;
     height: 50px;
-    border-radius: 10px;
     border-radius: 5px;
     object-fit: cover;
 }
 
-.workoutGroup .workout {
-    margin-top: -0.7rem;
+.infoRowExercice p{
+    color: black;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-align: start;
 }
 
-.workoutGroup .workout div {
-    background-color: var(--blueCity);
-    margin-bottom: 0.5rem;
+.infoRowExercice h4{
+    color: white;
+    text-align: start;
+}
+
+.elementInfoImgExerciceWorkout {
     display: flex;
+    gap: 0.4rem;
+    align-items: center;
 }
 
-.parentCheckRadioWorkout {
-    width: 13%;
-    display: grid;
-    place-items: center;
+.parentRowWorkoutSuccess {
+    background-color: rgb(61, 228, 19);
+    border-radius: 5px;
+    padding: 0.2rem;
+    margin-bottom: 0.2rem;
 }
 
-.circleRadioLabelWorkout {
-    position: absolute;
+.parentRowWorkoutSuccess header {
+    color: white;
+}
+
+.parentRowWorkoutSuccess header span{
+    color: white;
+}
+
+
+.parentRowWorkoutSuccess .parentRowWorkout {
+    color: white;
+}
+
+.parentRowWorkoutSuccess .parentRowWorkout span p{
+    color: white;
+}
+
+.parentRowWorkoutSuccess .parentRowWorkout span #levelWorkOut{
+    color: white;
+}
+
+
+#successWorkout {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: -.6rem;
+    font-size: 0.8rem;
+    background-color: white;
+    color: rgb(61, 228, 19);
+    border-radius: 5px;
+}
+
+#inputCheckExercice {
+    display: none;
+}
+
+#labelCheckExercice {
     width: 20px;
     height: 20px;
-    border-radius: 50%;
     background-color: white;
-    cursor: pointer;
-}
-
-#checkRadioIcon {
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding: 0.2rem;
-    margin-top: -0.4rem;
-    margin-left: -0.3rem;
-}
-
-
-#activeBtnPersonalTraining {
-    background-color: var(--blueCity);
-    color: rgb(255, 255, 255);
-    font-weight: 400;
-    border: none;
-    font-size: 0.7rem;
-    outline: none;
-    padding: 0.1rem 0.4rem;
-    border-radius: 30px;
-    cursor: pointer;
-    box-sizing: border-box;
-}
-
-
-.addWorkoutIfheDidntHaveBtn {
-    width: 100%;
-    height: 400px;
-    margin-top: 1.5rem;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    background-color: rgb(244, 244, 244);
-    transition: all .15s ease-in-out;
-}
-
-.addWorkoutIfheDidntHaveBtn:hover {
-    background-color: rgb(209, 209, 209);
-    color: var(--blueChelsea);
-}
-
-.addWorkoutIfheDidntHaveBtn i{
-    font-size: 5rem;
-    display: block;
-    color: var(--blueChelsea);
-}
-
-
-.pagination {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.pagination button{
-    background-color: rgb(230, 230, 230);
-    color: var(--blueChelsea);
-    border: none;
-    font-weight: 600;
-    outline: none;
-    width: 25px;
-    height: 25px;
-    padding: 0.2rem;
+    position: absolute;
     border-radius: 50%;
     cursor: pointer;
+    margin-left: -1.5rem;
+    margin-top: -.5rem;
+}
+
+
+#labelCheckExercice i {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+
+.bx-checkWhite {
+    color: white;
+}
+
+.parentRowWorkoutYellow  {
+    background-color: rgb(255, 217, 0);
+    color: black;
+}
+
+.parentRowWorkoutYellow header{
+    color: black;
+}
+.parentRowWorkoutYellow header span {
+    color: black;
+}
+.parentRowWorkoutYellow #successWorkout{
+    color: rgb(244, 187, 0) ;
+}
+.parentRowWorkoutYellow .parentRowWorkout{
+    color: black ;
+}
+.parentRowWorkoutYellow .parentRowWorkout span p{
+    color: black ;
+}
+.parentRowWorkoutYellow .parentRowWorkout span #levelWorkOut {
+    color: black ;
+}
+
+.parentRowWorkoutRed {
+    background-color: red;
+}
+
+.parentRowWorkoutRed #successWorkout{
+    color: red;
 }
