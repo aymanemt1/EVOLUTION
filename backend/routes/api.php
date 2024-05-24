@@ -41,6 +41,7 @@ Route::controller(UserInfoController::class)->group(function () {
 Route::controller(WorkoutController::class)->group(function () {
     Route::get('/workouts', 'index');
     Route::get('/workouts/{id}', 'show');
-    Route::patch('/workouts/{id}/done', [WorkoutController::class, 'updateWorkoutDone']);
-    Route::patch('/workout_exercices/{id}/done', [WorkoutController::class, 'updateExerciseDone']);
+    Route::post('/workouts', 'store');
+    Route::patch('/workouts/{id}/done', 'updateWorkoutDone');
+    Route::patch('/workout_exercices/{id}/done', 'updateExerciseDone');
 });

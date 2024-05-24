@@ -44,7 +44,6 @@ class WorkoutController extends Controller
         $exercise->done = $request->done;
         $exercise->save();
 
-        // Recalculate the workout's done status
         $workout = $exercise->workout;
         $allDone = $workout->workoutExercices->every(function ($ex) {
             return $ex->done;
@@ -54,5 +53,18 @@ class WorkoutController extends Controller
         $workout->save();
 
         return response()->json($exercise);
+    }
+
+
+    public function store(Request $request)
+    {
+
+        $workout = Workout::create($request->all());
+
+        if ($workout) {
+            return response()->json(['message' => 'Workout created successfully', 'workout' => $workout], 201);
+        } else {
+            return response()->json(['message' => 'Failed to create workout'], 500);
+        }
     }
 }
