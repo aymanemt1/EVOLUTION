@@ -14,7 +14,7 @@ export const Essentiel = () => {
                     </h1>
                     <p>ILorem ipsum is a placeholder text commonly
                         used to demonstrate the visual form of a documen</p>
-                    <button className='btnStorehome'>
+                    <button className='btnEssentiel'>
                         Add to cart
                     </button>
                 </div>

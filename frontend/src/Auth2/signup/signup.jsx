@@ -1,31 +1,118 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './signup.css'
-
+import axios from "axios";
+import Cookies from 'js-cookie';
+import { AuthContext } from "../../Context/AuthContext";
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 
 export default function Signup() {
-  const usernameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+  const {profile,setProfile} =useContext(AuthContext)
+    const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      password: "",
+    });
 
-  function handleSubmit(e) {
-    e.preventDefault();
+    const [errors, setErrors] = useState({});
+    
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: '' });
+      };
+    
+       
+    const validateForm = () => {
+      const validationErrors = {};
 
-    const username = usernameRef.current.value;
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+      if (formData.name.trim() === '') {
+        validationErrors.name = "Le username est requis";
+    }
+    if (formData.email.trim() === '') {
+        validationErrors.email = 'Le email est requis';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        validationErrors.email = "L\'email doit être valide";
+    }
+    if (formData.password.trim() === '') {
+        validationErrors.password = 'Le mot de passe est requis';
+    } else if (formData.password.length < 7 ) {
+        validationErrors.password = "au moins 7 caractères";
+    }
+     
 
-    // console.log("Username:", username, "Email:", email, "Password:", password);
+      setErrors(validationErrors);
 
-    navigate("/auth/login");
-  }
+      return Object.keys(validationErrors).length === 0;
+  };
+
+    const handleSignup = async (e) => {
+        e.preventDefault()
+      
+        if (!validateForm()) {
+      
+          return; 
+      }
+      const isFormValid = validateForm();
+
+      try {
+                const response = await axios.post('http://127.0.0.1:8000/api/signup',formData
+                )
+                const token = response.data.token;
+                const userid = response.data.userid;
+                const user = response.data.user;
+                const idseller = response.data.idseller;
+
+                var userData = JSON.stringify(user);
+                localStorage.setItem('user', userData);
+                localStorage.setItem('token', token);
+                localStorage.setItem('id_active', userid);
+               localStorage.setItem('seller_id', idseller);
+
+                navigate('/store');
+
+            } catch (error) {
+                console.log(error)
+            }
+    }
+
+    const signup = useGoogleLogin({
+      onSuccess: async (codeResponse) => {
+        try {
+          const res = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${codeResponse.access_token}`, {
+            headers: {
+              Authorization: `Bearer ${codeResponse.access_token}`,
+              Accept: 'application/json'
+            }
+          });
+          const googleUser = res.data;
+    
+          const response = await axios.post('http://127.0.0.1:8000/api/google-signup', {
+            name: googleUser.name,
+            email: googleUser.email
+          });
+          console.log(response)
+          
+          const token = response.data.token;
+          const user = response.data.user;
+          const userid = response.data.userid;
+          setProfile(user);
+          var userData = JSON.stringify(user);
+          localStorage.setItem('user', userData);
+          localStorage.setItem('token', token);
+          localStorage.setItem('id_active', userid);
+
+          navigate('/store');
+    
+        } catch (error) {
+          console.error('Google signup error:', error);
+        }
+      },
+      onError: (error) => console.log('Signup Failed:', error)
+    });
+
+
 
   function ShowHidePassword() {
     const [toggle, setToggle] = useState(false);
@@ -81,23 +168,20 @@ export default function Signup() {
             </div>
           </div></div>
         <div className="parentForm">
-          <form action="" className="formLogin" onSubmit={handleSubmit}>
+          <form action="" className="formLogin" onSubmit={handleSignup}>
             <h1>Member Access</h1>
             <div className="box">
               <div className="input-box">
                 <label htmlFor="username">
-                  Username <i className="bx bxs-user-circle"></i>
+                  Name <i className="bx bxs-user-circle"></i>
                 </label>
                 <input
                   type="text"
-                  name="signupUsername"
-                  id="username"
+                  name="name"
+                  id="name"
                   placeholder="example_123"
-                  ref={usernameRef}
-                  value={formData.username}
-                  onChange={(e) =>
-                    setFormData({ ...formData, username: e.target.value })
-                  }
+                  value={formData.name}
+                  onChange={handleChange}
                 />
                 <br />
                 <label htmlFor="email">
@@ -105,14 +189,11 @@ export default function Signup() {
                 </label>
                 <input
                   type="email"
-                  name="signupEmail"
+                  name="email"
                   id="email"
                   placeholder="example@example.com"
-                  ref={emailRef}
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={handleChange}
                 />
                 <br />
                 <label htmlFor="password">
@@ -120,14 +201,11 @@ export default function Signup() {
                 </label>
                 <input
                   type="password"
-                  name="signupPassword"
+                  name="password"
                   id="password"
                   placeholder="password..."
-                  ref={passwordRef}
                   value={formData.password}
-                  onChange={(e) =>
-                    setFormData({ ...formData, password: e.target.value })
-                  }
+                 onChange={handleChange}
                 />
                 <ShowHidePassword />
                 <br />
@@ -139,7 +217,7 @@ export default function Signup() {
                 </button>
               </div>
               <div className="submit-box">
-                <button type="button" className="googleBtn">
+                <button  onClick={() => signup()} type="button" className="googleBtn">
                   <i className="bx bxl-google"></i> Sign up with Google
                 </button>
               </div>
