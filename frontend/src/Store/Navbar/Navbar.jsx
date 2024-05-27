@@ -1,6 +1,6 @@
 
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import './Navbar.css'
+import './Navbarstore.css'
 import { Link } from 'react-router-dom'
 import { DrawerCart } from '../Cart/Drawer/DrawerCart'
 import { MenuContext } from '../../Context/MenuContext'
@@ -11,6 +11,7 @@ import { WishlistContext } from '../../Context/WishlistContext'
 import { IconButton } from '@mui/material'
 import Profile from '../../Components/Profile/Profile'
 export const Navbar = () => {
+
 
    const { isactive, setisactive } = useContext(MenuContext);
    const { deletedItem,addedtocart,count  } = useContext(CartContext);
@@ -387,9 +388,6 @@ export const Navbar = () => {
 </nav>
 
   )
-     
 }
-
- 
 
  

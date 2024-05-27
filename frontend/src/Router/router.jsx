@@ -28,10 +28,6 @@ import Sellersidebar from "../Store/Seller/Sellerprofile/Sidebarseller/Sidebasel
 import { Sellerprofile } from "../Store/Seller/Sellerprofile/SellerProfile/Sellerprofile";
 import { Sellerproducts } from "../Store/Seller/Sellerprofile/Sellerproducts/Sellerproducts";
 
-import CaloriesCalCulator from "../CaloriesCalCulator/CaloriesCalCulator";
-
-import ChangeGoal from "../CaloriesCalCulator/ChangeGoal/ChangeGoal";
-import CaloriesCalculatorMain from "../CaloriesCalCulator/Home/CaloriesCalculatorMain";
 import Unfounded from "../Unfounded/Unfounded";
 
 export default function RouterApp(){
