@@ -462,6 +462,3 @@ export const ProductsShop = (props) => {
 
   )
 }
-
-
-

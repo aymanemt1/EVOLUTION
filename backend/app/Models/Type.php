@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type extends Model
 {
-<<<<<<< HEAD
     use HasFactory;
-=======
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     protected $fillable = ['name'];
 
     public function category()

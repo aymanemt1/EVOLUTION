@@ -16,7 +16,6 @@ class User extends Authenticatable
 {
     return $this->hasMany(Review::class);
 }
-<<<<<<< HEAD
 
 public function client()
 {
@@ -27,8 +26,6 @@ public function seller()
 {
     return $this->hasOne(Seller::class);
 }
-=======
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     
     protected $fillable = [
         'name',
