@@ -24,10 +24,11 @@ const Q1 = ({ NextQ1 }) => {
           <h1>Calorie Calculator - Daily Caloric <br /> Needs</h1>
           <div className="caloriesCalculatorContent">
             <div className="progress-bar">
-              <div className="progress" style={{ width: "25%" }}></div>
+              <div className="progress" style={{ width: "20%" }}></div>
             </div>
             <h2 className="caloriesCalculatorContentHeader" >What is your birth day?</h2>
             <form onSubmit={handleSubmit}>
+             
               <input
                 type="date"
                 value={birthday}

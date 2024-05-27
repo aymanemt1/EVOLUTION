@@ -1,0 +1,43 @@
+header.sellerHeader {
+  height: 95px;
+  padding-top: 0%;
+  margin-top: 0%;
+  padding-left: 3vw;
+}
+.sellerLogoo img {
+  height: 95px;
+  margin-top: 0%;
+}
+.seller .topSection {
+  background-color: var(--cityE);
+  height: 80vh;
+}
+.seller .topSectionContent{
+    display: flex;
+    justify-content: space-between;
+    padding: 5vh 10vw;
+
+}
+.topSectionContent .topSectionPicture{
+height: 35vh;
+width: 40vh;
+text-align: center;
+}
+.topSectionContent .topSectionPicture img.imm{
+    height: 30vh;
+    border-radius: 3px;
+}
+.topSectionContent .topSectionPicture img.moooney{
+    position:relative;
+    height:10vh ;
+    width: 10vh;
+    left: -16vh;
+    bottom: 20vh;
+}
+.topSectionContent .topSectionPicture img.jewerly{
+    position:relative;
+    height:5vh ;
+    width: 5vh;
+    left: 9vh;
+    bottom: 35vh;
+}

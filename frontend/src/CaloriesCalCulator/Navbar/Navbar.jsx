@@ -2,14 +2,15 @@ import React, { useContext, useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import { MenuContext } from "../../Context/MenuContext";
 import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
+import { GoGoal } from "react-icons/go";
 const DropdownMenu = () => {
   return (
     <div className="dropdown-menu">
       <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
+        <Link to="/CaloriesCalculator/change-goal" style={{textDecoration:'none'}}><li><GoGoal style={{color:'black',marginRight:"10px",textDecoration:"none"}} />Goal</li></Link>
+        <li><FaUserCircle style={{color:"black",marginRight:"10px" ,marginTop:"0"}} />Profile</li>
       </ul>
     </div>
   );
@@ -48,7 +49,7 @@ export default function Navbar() {
           <i className="bx bx-menu-alt-left" onClick={handleMenu}></i>
         </div>
         <div className="storelogo">
-          <Link to="/store">
+          <Link to="/CaloriesCalculator/home">
             <img src="/logo.svg" alt="Evolution" title="Evolution" />
           </Link>
         </div>
@@ -58,8 +59,8 @@ export default function Navbar() {
         onClick={handleUserClick}
         ref={userMenuRef}
       >
-        <div className="userName">Talibi</div>
-        <img src="imageProfileExample.png" alt="" className="user-image" />
+        <div className="userName">Ibrahim</div>
+        <img src="/imageProfileExample.jpg" alt="" className="user-image" />
         {userMenuActive && <DropdownMenu />}
       </div>
     </div>
