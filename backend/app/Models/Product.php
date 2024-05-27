@@ -9,7 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
+    protected $fillable = ['title','sub_description', 'description', 'price','image', 'stock', 'category_id', 'gender_id','type_id',"seller_id"];
+=======
     // protected $fillable = ['name', 'description', 'price', 'stock', 'category_id', 'gender_id'];
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
     public function category()
     {
@@ -52,4 +56,12 @@ class Product extends Model
     {
         return $this->hasMany(Orderitem::class);
     }
+<<<<<<< HEAD
+
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+=======
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 }

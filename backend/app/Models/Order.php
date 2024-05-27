@@ -13,6 +13,14 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+<<<<<<< HEAD
+    
+    public function delivery()
+    {
+        return $this->belongsTo(Delivery::class);
+    }
+=======
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
     public function items()
     {

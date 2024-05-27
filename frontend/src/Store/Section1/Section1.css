@@ -1,5 +1,5 @@
 #section1-store{
-    margin-top: 6.4rem;
+    margin-top: 12.4rem;
 }
 .section1-images{
     width: 100%;
@@ -14,11 +14,15 @@
 .section1shoes{
     width: 430px;
     right: 25rem;
-    margin-top:12.4rem;
+    margin-top:15.4rem;
     position: absolute;
+    display: none;
+
 }
 .section1-title{
     text-align: center;
+    filter: drop-shadow(0 0 68px  #0153DF);
+
 }
 .section1-title h1{
     text-transform: uppercase;
@@ -34,7 +38,8 @@
 }
 .shopNowSection{
     display: flex;
-    margin:10rem auto 2rem auto;
+
+    margin:13rem auto 2rem auto;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
@@ -46,6 +51,8 @@
    text-align: center;
    font-size: 1rem;
    opacity: 0.7;
+   filter: drop-shadow(0 0 58px  #0153DF);
+
 }
 .shopNowSection h2:hover{
    opacity: 1;
@@ -74,7 +81,7 @@
 }
 .section1-apparel{
     display: flex;
-    margin: 5rem auto;
+    margin: 7rem auto;
     width: 98%;
     justify-content: space-evenly;
     gap: 10px;
@@ -82,6 +89,7 @@
 .section1-apparel div{
     width: 34%;
     display: flex;
+
     flex-direction: column;
 }
 .section1-apparel h3{
@@ -92,8 +100,57 @@
 }
 .menimage,.womenimage{
     width: 400px;
+
 }
 
 #section2-store img{
     width:100%;
+    margin: 2rem 0;
+}
+
+@media (max-width : 767px){
+    .section1img{
+    width: 100%;
+    rotate: 90deg;
+    margin: 0;
+    display: none;
+    }
+    .section1-images{
+        display: block;
+    }
+    .section1-title{
+        width: auto;
+        text-align: center;
+    }
+    .section1-title h1{
+      left: 0;
+    }
+    #section1-store{
+   margin-top: 7rem;
+    } 
+    .shopNowSection{
+        margin-top: 3rem;
+        gap: 20px;
+        flex-direction: column;
+        width: 80%;
+    }
+    .shopNowSection h2{
+        width: 100%;
+    }
+    .section1-apparel{
+        flex-direction: column;
+        margin: 3rem auto;
+        width: 88%;
+        text-align: center;
+    }
+    .menimage, .womenimage{
+        width: 99%;
+    }
+    .section1-apparel h3{
+        width: auto;
+    }
+    .section1-apparel div{
+        margin: 2rem 0;
+        width: auto;
+    }
 }

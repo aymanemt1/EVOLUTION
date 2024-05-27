@@ -6,6 +6,23 @@ use App\Models\Category;
 use App\Models\Categorytype;
 use App\Models\Color;
 use App\Models\Gender;
+<<<<<<< HEAD
+use App\Models\Order;
+use App\Models\Orderitem;
+use App\Models\Plan;
+use App\Models\Product;
+use App\Models\Seller;
+use App\Models\Size;
+use App\Models\Type;
+use App\Models\Wishlist;
+use DateTime;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+use function PHPSTORM_META\type;
+
+=======
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\Type;
@@ -13,26 +30,42 @@ use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 class ProductController extends Controller
 {
     public function create()
     {
         $productsData = [
             [
+<<<<<<< HEAD
+                'title' => "Cap",
+                'sub_description' => "High performance road cap ",
+                'description' => "These custom road cap offer the best in comfort, performance, and style. Featuring a lightweight design and breathable materials, they are perfect for long rides and races.",
+=======
                 'title' => "Shoes",
                 'sub_description' => "High performance road shoes for women",
                 'description' => "These custom road shoes offer the best in comfort, performance, and style. Featuring a lightweight design and breathable materials, they are perfect for long rides and races.",
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
                 'price' => 120,
                 'stock' => 40
             ],
          
         ];
           $images = [
+<<<<<<< HEAD
+        'cap1.png',
+        'cap2.png',
+        'cap3.png',
+        'cap4.png',
+        'cap5.png',
+        'cap6.png',
+=======
         'shoes20.png',
         'shoes21.png',
         'shoes22.png',
         'shoes23.png',
         'shoes25.png',
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     ];
     
         for ($i = 0; $i < 18; $i++) {
@@ -45,9 +78,15 @@ class ProductController extends Controller
             $product->price = $productData['price'];
             $product->image =$images[array_rand($images)];;
             $product->stock = $productData['stock'];
+<<<<<<< HEAD
+            $product->gender_id = 1; 
+            $product->category_id = 2;
+            $product->type_id = 6; 
+=======
             $product->gender_id = 2; // Randomly assign gender_id between 1 and 2
             $product->category_id = 1; // All products have category_id 1
             $product->type_id = rand(1,2); // Randomly assign type_id between 1 and 3
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     
             $product->save();
         }
@@ -105,10 +144,30 @@ public function getProductsShop()
     $allProducts = Product::select('products.*', DB::raw('(CASE WHEN wishlists.product_id IS NOT NULL THEN true ELSE false END) as in_wishlist'))
                     ->leftJoin('wishlists', 'products.id', '=', 'wishlists.product_id')
                     ->with('color', 'size','category','type')
+<<<<<<< HEAD
+                    ->paginate($productCount);
+
+                    // $filteredProducts = []; 
+                    // foreach($allProducts as $product) {
+                    //     if($product->seller_id) {
+                    //         $seller = Seller::find($product->seller_id);
+                            
+                    //         if($seller->show_publish === 1) {
+                    //             $filteredProducts[] = $product;
+                    //         }
+                    //     }
+                    // }
+                    // $allProducts->setCollection(collect($filteredProducts));            
+
+    return response()->json([
+        'products' => $allProducts,
+        // 'filteredProducts' => $filteredProducts,
+=======
                     ->paginate($productCount); 
 
     return response()->json([
         'products' => $allProducts,
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
         'genders' => $genders,
         'categories' => $categories,
         'productSizes' => $productSizes,
@@ -137,9 +196,16 @@ public function show($id) {
     ->with('type','category') 
     ->paginate($count);
 
+<<<<<<< HEAD
+    // Check if the product is in the wishlist table
+    $isInWishlist = Wishlist::where('product_id', $id)
+    ->exists();
+
+=======
 
     // Check if the product is in the wishlist table
     $isInWishlist = Wishlist::where('product_id', $id)->exists();
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
     return response()->json([
         'product' => $product,
@@ -153,4 +219,250 @@ public function show($id) {
 }
 
 
+<<<<<<< HEAD
+public function showformproduct(){
+
+    $categories = Category::all();
+    $genders = Gender::all();
+    $types = type::all();
+        
+    return response()->json(
+        [
+            'categories' => $categories,
+            'genders' => $genders,
+            'types' => $types,
+            ]
+
+    );
+}
+public function createproducts(Request $request){
+    $requestData = $request->all();
+    $sellerid = $request->seller_id;
+
+
+    $seller = Seller::find($sellerid);
+
+    if (!$seller) {
+        return response()->json(['error' => 'Seller not found.'], 404);
+    }
+
+    if ($request->hasFile('image')) {
+        $profileImage = $request->file('image');
+        $imageName = date('His') . '.' . $profileImage->getClientOriginalExtension();
+
+        $profileImage->move(public_path('storage/store/collections'), $imageName);
+
+        $requestData['image'] = $imageName;
+    }
+
+
+    if ($seller->plan_id === 1) {
+        $productsellercount= Product::where('seller_id', $sellerid)
+                        ->count();
+
+                        if ($seller->plan_id == 1) {
+                            $planStartDate = $seller->plan_start_date;
+                            if ($planStartDate) {
+                                // Convert $planStartDate to a DateTime object
+                                $planStartDate = new DateTime($planStartDate);
+                                $oneMonthAgo = new DateTime();
+                                $oneMonthAgo->modify('-1 month');
+                        
+                                if ($planStartDate < $oneMonthAgo) {
+                                    return response()->json(['error' => 'You have reached the maximum product limit for your plan. Please upgrade your plan to add more products.'], 403);
+                                }
+                            }
+                        }
+                        
+        if ($productsellercount >= 20) {
+            return response()->json(['error' => 'You have reached the maximum product limit for your plan. Please upgrade your plan to add more products.'], 403);
+        }
+    }
+
+    // Proceed with creating the product
+    $product = Product::create($requestData);
+
+    return response()->json(['product' => $product], 201);
+}
+
+public function updateProduct(Request $request){
+    $requestData = $request->all();
+    $prod = Product::findOrFail($requestData['id']); 
+    if ($request->hasFile('image')) {
+        $profileImage = $request->file('image');
+        $imageName = date('His') . '.' . $profileImage->getClientOriginalExtension();
+
+        $profileImage->move(public_path('storage/store/collections'), $imageName);
+
+        $requestData['image'] = $imageName;
+    }
+    $prod->update($requestData);
+
+    return response()->json(['success' => 'Product updated successfully.']);
+}
+
+
+
+public function getproductseller(Request $request){
+    $sellerid = $request->query('id');
+    $seller = Seller::find($sellerid);
+
+
+    if (!$sellerid) {
+        return response()->json(['error' => 'User ID is required'], 400);
+    }
+    
+    $productseller = Product::where('seller_id', $sellerid)
+
+                        ->with(['category', 'type'])
+                        ->get();
+
+    $product_sale = Product::where('seller_id', $sellerid)
+                        ->where('is_sale', true)
+                        ->with(['category', 'type','gender'])
+                        ->get();
+    
+    $total_count = $productseller->count();
+    $sale_count = $product_sale->count();
+    
+    $sale_percentage = $total_count > 0 ? ($sale_count / $total_count) * 100 : 0;
+
+    $prod = Orderitem::all();
+   
+$saleProductIds = $product_sale->pluck('id')->toArray();
+$matchedItems = $prod->filter(function ($item) use ($saleProductIds) {
+    return in_array($item->product_id, $saleProductIds);
+});
+
+$productEarnings = $matchedItems->map(function ($item) {
+    return $item->quantity * $item->product->price;
+});
+
+// Sum up the earnings
+$totalEarnings = $productEarnings->sum();
+
+
+    $matchedItems = [];
+    $productIds = $prod->pluck('product_id')->toArray();
+    
+    foreach ($productIds as $productId) {
+        if (in_array($productId, $saleProductIds)) {
+            $matchedItem = $prod->firstWhere('product_id', $productId);
+            
+            if ($matchedItem) {
+                $matchedItems[] = $matchedItem;
+            }
+        }
+    }
+
+ 
+    $matchedItemsCount = collect($matchedItems)->groupBy('product_id')->map(function ($items) {
+        $product = $items->first()->product;
+        $totalQuantity = $items->sum('quantity');
+        $totalEarnings = $totalQuantity * $product->price; 
+        return [
+            'product' => $product,
+            'count' => $items->count(),
+            'total_quantity' => $totalQuantity,
+            'total_earnings' => $totalEarnings,
+        ];
+    })->values();
+
+
+
+    $sortedMatchedItems = $matchedItemsCount->sortByDesc('count')->values();
+    $totalEarningsSum = $matchedItemsCount->sum('total_earnings');
+   
+    $plan = Plan::where('plan_type_id', 2)->first();
+    if ($seller->plan_id == 2) {
+        $planStartDate = $seller->plan_start_date;
+        if ($planStartDate) {
+            $planStartDate = new DateTime($planStartDate);
+            $oneMonthAgo = new DateTime();
+            $oneMonthAgo->modify('-1 month');
+            
+            if ($planStartDate < $oneMonthAgo) {
+                $totalEarnings -= $plan->price;
+            }
+        }
+    }
+    
+    if ($seller->plan_id == 1) {
+        $planStartDate = $seller->plan_start_date;
+        if ($planStartDate) {
+            $planStartDate = new DateTime($planStartDate);
+            $oneMonthAgo = new DateTime();
+            $oneMonthAgo->modify('-1 month');
+    
+            if ($planStartDate < $oneMonthAgo) {
+                return response()->json(['error' => 'You have reached the maximum product limit for your plan. Please upgrade your plan to add more products.'], 403);
+            }
+        }
+    }
+
+    return response()->json([ 
+        'productseller' => $productseller,
+        'product_sale' => $product_sale,
+        'sale_percentage' => $sale_percentage,
+        'matchedItems' => $matchedItems,
+        'sortedMatchedItems' => $sortedMatchedItems,
+        'totalEarningsSum' => $totalEarningsSum,
+    ], 201);
+}
+
+
+public function getProductImage($imageName)
+    {
+        $imagePath = public_path('store/collections' . $imageName);
+
+        if (file_exists($imagePath)) {
+            return response()->file($imagePath);
+        }else {
+            return response()->json(['message' => 'file not existe']);
+        }
+    }
+
+
+public function edit($id) {
+    $product = Product::find($id);
+
+    if(!$product){
+        return response()->json(['error' => 'product ID is required'], 400);
+        
+    }
+    return response()->json(['product' => $product], 200);
+}
+
+
+public function update(Request $request)
+{
+    $product = Product::findOrFail($request->id); 
+
+    $product->update(
+    [ $product->title = $request->title,
+     $product->sub_description = $request->sub_description,
+     $product->description = $request->description,
+     $product->price = $request->price,
+     $product->image = $request->image,
+     $product->stock = $request->stock,
+     $product->category_id = $request->category_id,
+     $product->gender_id = $request->gender_id,
+     $product->type_id = $request->type_id,
+     ]
+ );
+
+    return response()->json(['product' => $product], 200);
+}
+
+public function deleteprod($id){
+    $product = Product::findOrFail($id); 
+    if($product){
+        $product->delete();
+    }
+    return response()->json(["message" =>'product deleted avec success'], 200);
+    
+}
+  
+=======
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 }

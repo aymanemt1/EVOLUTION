@@ -9,6 +9,10 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProdVariant;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
+use Illuminate\Support\Facades\Auth;
+=======
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -49,11 +53,23 @@ class CartController extends Controller
         return response()->json(['message' => 'Item added to cart successfully'], 200);
     }
     
+<<<<<<< HEAD
+    public function getCartItem(Request $request)
+    {
+        $userId = $request->query('id');
+
+        if (!$userId) {
+            return response()->json(['error' => 'User ID is required'], 400);
+        }
+        $cartItems = Cart::with('product')->where('user_id',$userId)->get();
+        $cartCount = $cartItems->count();
+=======
     public function getCartItem()
     {
         $userId = 1;
     
         $cartItems = Cart::with('product')->where('user_id', $userId)->get();
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
         
         $totalPrice = 0;
         $cartItemsWithPrices = $cartItems->map(function ($cartItem) use (&$totalPrice) {
@@ -74,6 +90,11 @@ class CartController extends Controller
 
         $totalCartPrice = $cartItemsWithPrices->sum('total_price');
     
+<<<<<<< HEAD
+                return response()->json(['cartItems' => $cartItemsWithPrices, 'totalPrice' => $totalPrice,'totalCartPrice'=>$totalCartPrice,'cartCount' => $cartCount,], 200);
+    }
+
+=======
         return response()->json(['cartItems' => $cartItemsWithPrices, 'totalPrice' => $totalPrice,'totalCartPrice'=>$totalCartPrice], 200);
     }
 
@@ -82,6 +103,7 @@ class CartController extends Controller
         return response()->json(['countCart'=>$countCart], 200);
 
     }
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     public function DeleteCart($id)
     {
         $cart = Cart::find($id);

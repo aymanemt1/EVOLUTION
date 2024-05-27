@@ -1,5 +1,6 @@
 import React from 'react'
 import './Section1.css'
+import { Link } from 'react-router-dom'
 export const Section1 = () => {
     return (
         <div id='section1-store'>
@@ -9,7 +10,7 @@ export const Section1 = () => {
             </div>
             <div className='section1-images'>
                 <img src="/store/section1.png" className='section1img' alt="" />
-                <img src="/store/shoes.png" className='section1shoes' alt="" />
+                <img src="/store/shoes.png"  className='section1shoes' alt="" />
             </div>
             <div className='shopNowSection'>
                 <h2>
@@ -29,24 +30,30 @@ export const Section1 = () => {
                     HIGH-QUALITY SNEAKER    </h2>
 
             </div>
+            <Link to="/shop">
             <button className='btnStoreSection1'>
                 Shop Now
             </button>
+            </Link>
             <div className='section1-apparel'>
                 <div>
                     <img src="/store/menimage.png" className='menimage' alt="" />
                     <h3>Men apparel</h3>
+            <Link to="/store/shop-mens">
                     <button className='btnStoreSection1'>
                         Shop Now
                     </button>
+            </Link>
                 </div>
 
                 <div>
                     <img src="/store/womenimage.png" className='womenimage' alt="" />
                     <h3>Women apparel</h3>
+            <Link to="/store/shop-womens">
                     <button className='btnStoreSection1'>
                         Shop Now
                     </button>
+            </Link>
                 </div>
             </div>
             <div id='section2-store'>
