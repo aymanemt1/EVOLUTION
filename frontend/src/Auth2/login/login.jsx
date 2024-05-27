@@ -1,28 +1,139 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import "./login.css";
+import { useNavigate } from "react-router";
+import Cookies from 'js-cookie';
+import axios from "axios";
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import { MenuContext } from "../../Context/MenuContext";
+import { AuthContext } from "../../Context/AuthContext";
 
 export default function Login() {
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const navigate = useNavigate();
+  const {profile, setProfile,user,setUser} =useContext(AuthContext)
 
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
-  function handleSubmit(e) {
+  const [errors, setErrors] = useState({
+    emailError: "",
+    passwordError: "",
+  });
+
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 1;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
-
-    // console.log("Username:", username, "Password:", password);
-
-    setFormData({
-      username,
-      password,
+  
+    setErrors({
+      emailError: "",
+      passwordError: "",
     });
+  
+    let isValid = true;
+  
+    if (!validateEmail(formData.email)) {
+      setErrors((prevState) => ({
+        ...prevState,
+        emailError: "Format d'email invalide",
+      }));
+      isValid = false;
+    }
+
+  
+    if (!validatePassword(formData.password)) {
+      setErrors((prevState) => ({
+        ...prevState,
+        passwordError: "Le mot de passe doit contenir au moins 1 caractère",
+      }));
+    }
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/signin",
+        formData
+      );
+      console.log(response.data.user);
+    
+      const token = response.data.token;
+      const userid = response.data.userid;
+      const user = response.data.user;
+      const idseller = response.data.idseller;
+    
+      // Convert user data to a JSON string
+      var userData = JSON.stringify(user);
+    
+      // Store data in localStorage
+      localStorage.setItem('user', userData);
+      localStorage.setItem('token', token);
+      localStorage.setItem('id_active', userid);
+      localStorage.setItem('seller_id', idseller);
+    
+      // Navigate to the store page
+      navigate('/store');
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  
   }
+    
+
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {setUser(codeResponse)},
+    onError: (error) => console.log('Login Failed:', error)
+  });
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+          headers: {
+            Authorization: `Bearer ${user.access_token}`,
+            Accept: 'application/json'
+          }
+        })
+        .then(async (res) => {
+          const User = res.data;
+          try {
+            const checkResponse = await axios.post('http://127.0.0.1:8000/api/check-user', {
+              email: User.email
+            });
+         
+            if (checkResponse.data.exists) {
+              var userDataString = JSON.stringify(User);
+             const token = checkResponse.data.token;
+             const idseller = checkResponse.data.idseller;
+
+              const userid = checkResponse.data.userid;
+              localStorage.setItem('user', userDataString);
+              localStorage.setItem('token', token);
+              localStorage.setItem('id_active', userid);
+               localStorage.setItem('seller_id', idseller);
+
+              navigate('/store');
+            } else {
+              console.error('User not registered');
+              alert('User not registered');
+            }
+          } catch (error) {
+            console.error('Error checking user registration:', error);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+  
 
   function ShowHidePassword() {
     const [toggle, setToggle] = useState(false);
@@ -83,34 +194,32 @@ export default function Login() {
             <h1>Member Access</h1>
             <div className="box">
               <div className="input-box">
-                <label htmlFor="username">
-                  Username <i className="bx bxs-user-circle"></i>
+                <label htmlFor="email">
+                  Email <i className="bx bxs-user-circle"></i>
                 </label>
                 <input
                   type="text"
-                  name="LoginUserName"
-                  id="username"
+                  name="email"
+                  id="email"
                   placeholder="example_123"
-                  ref={usernameRef}
-                  value={formData.username}
-                  onChange={(e) =>
-                    setFormData({ ...formData, username: e.target.value })
-                  }
+                  
+                  value={formData.email}
+                  onChange={handleChange}
                 />
                 <br />
                 <label htmlFor="password">
                   Password <i className="bx bxs-lock-alt"></i>
                 </label>
                 <input
+
                   type="password"
-                  name="loginPassword"
+                  name="password"
                   id="password"
                   placeholder="password..."
-                  ref={passwordRef}
+                 
                   value={formData.password}
-                  onChange={(e) =>
-                    setFormData({ ...formData, password: e.target.value })
-                  }
+                  onChange={handleChange}
+
                 />
                 <ShowHidePassword />
                 <br />
@@ -134,7 +243,7 @@ export default function Login() {
                 <a href="#">Forget password ?</a>
               </div>
               <div className="submit-box">
-                <button type="button" className="googleBtn">
+                <button type="button" onClick={() => login()} className="googleBtn">
                   <i className="bx bxl-google"></i> Connecte with Google
                 </button>
               </div>

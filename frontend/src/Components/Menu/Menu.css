@@ -5,12 +5,6 @@
 }
 .listIcons li img{
    width: 45px;
-   animation-duration: 1s;
-   animation-fill-mode: both;
-   -webkit-animation-duration: 1s;
-   -webkit-animation-fill-mode: both;
    margin-top: 1rem;
    height: 45px;
 }
-
-
