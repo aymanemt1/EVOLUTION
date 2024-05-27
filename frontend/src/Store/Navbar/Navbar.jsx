@@ -6,7 +6,11 @@ import { MenuContext } from '../../Context/MenuContext';
 export const Navbar = () => {
 
     const {isactive,setisactive} = useContext(MenuContext)
+<<<<<<< HEAD
       const handleMenu  =()=>{
+=======
+    const handleMenu  =()=>{
+>>>>>>> talibi-dev
         setisactive(!isactive)
     }
 
