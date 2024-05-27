@@ -3,10 +3,10 @@ import './ChangeGoal.css';
 import axios from 'axios'; // Import Axios library
 
 import { FaTimes } from "react-icons/fa";
-import { CaloriesContextt } from '../../Context/CaloriesContext';
+import { CaloriesProvider } from '../../Context/CaloriesContext';
 
 export default function ChangeGoalEdit() {
-  const { setEditMode, weight, setWeight, height, setHeight, goal, setGoal, activity, setActivity } = useContext(CaloriesContextt);
+  const { setEditMode, weight, setWeight, height, setHeight, goal, setGoal, activity, setActivity } = useContext(CaloriesProvider);
   const [editedWeight, setEditedWeight] = useState(weight);
   const [editedHeight, setEditedHeight] = useState(height);
   const [editedGoal, setEditedGoal] = useState(goal);

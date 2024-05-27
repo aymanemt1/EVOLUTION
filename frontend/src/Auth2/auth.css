@@ -1,0 +1,100 @@
+:root {
+    --blackE: #0c010b;
+    --blueE: #0151e4;
+    --cityE : #1a9ff5;
+    --cityEgradient : rgba(60, 177, 255, 0.888);
+    --whiteE : white;
+    --grey : #eef0ef;
+    --radius : 10px;
+}
+.parentNavbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 85vw;
+    margin: auto;
+}
+.parentBrandLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius);
+}
+.parentBrandLogo img {
+    width: 220px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+.parentLinks {
+    display: flex;
+    padding-inline: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.loginBtn {
+    cursor: pointer;
+    /* background-color: var(--cityE) ; */
+    background-image: linear-gradient(37deg, rgb(1,81,228),rgb(112,199,255));
+    border : none ;
+    color: var(--whiteE);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius);
+    transition: all .2s ;
+    width: 110px;
+    height: 35px;
+}
+.loginBtn:hover {
+    background-color: var(--cityEgradient) ;
+    border: 0.1rem solid var(--cityEgradient);
+    color: var(--whiteE);
+}
+.loginBtn:active {
+    background-color: var(--cityE) ;
+    border: 0.1rem solid var(--cityE);
+    transform: scale(0.95);
+    color: var(--whiteE);
+}
+.signupBtn {
+    cursor: pointer;
+    background-color:transparent;
+    border: 0.1rem solid var(--cityE);
+    color: var(--cityE);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius);
+    transition: all .2s;
+    width: 110px;
+    height: 35px;
+}
+.signupBtn:hover {
+    background-color: var(--whiteE);
+    color: var(--cityE);
+}
+.signupBtn:active {
+    background-color: var(--cityE);
+    border: 0.1rem solid var(--cityE);
+    color: var(--whiteE);
+    transform: scale(0.95);
+}
+
+.iconsNavbar {
+    font-size: 1.2rem;
+    position: absolute;
+}
+
+@media (max-width:570px) {
+    .parentNavbar {
+        width: 100vw;
+    }
+    .loginBtn {
+        font-size: 0.7rem;
+    }
+    .signupBtn {
+        font-size: 0.7rem;
+    }
+}

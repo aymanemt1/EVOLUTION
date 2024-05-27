@@ -4,12 +4,12 @@ import ChangeGoalEdit from "./ChangeGoalEdit";
 import { Link } from "react-router-dom";
 
 import Footer from "../../LandingPage/footer/footer";
-import { CaloriesContextt } from "../../Context/CaloriesContext";
+import { CaloriesProvider } from "../../Context/CaloriesContext";
 
 export default function ChangeGoal() {
   const { goalCalories, proteinsGoal, carbsGoal, fatsGoal ,
     weight,height,goal,activite , editedMode ,setEditMode
-  } = useContext(CaloriesContextt);
+  } = useContext(CaloriesProvider);
 
 
   const handleEditedMode=()=>{

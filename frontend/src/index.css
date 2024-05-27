@@ -1,0 +1,18 @@
+:root {
+  --blackE: #0c010b;
+  --blueE: #0151e4;
+  --cityE : #1a9ff5;
+  --whiteE : #f2f1f5;
+  --grey : #eef0ef;
+  --radius : 10px;
+}
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background-color: var(--blackE);
+  color: var(--cityE);
+}

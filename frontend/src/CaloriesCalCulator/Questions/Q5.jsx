@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { CaloriesContextt } from "../../Context/CaloriesContext";
+import { CaloriesProvider } from "../../Context/CaloriesContext";
 
 const Q5 = ({ NextQ5, BackQ5 }) => {
-  const { activity, setActivity } = useContext(CaloriesContextt);
+  const { activity, setActivity } = useContext(CaloriesProvider);
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleOptionClick = (option) => {

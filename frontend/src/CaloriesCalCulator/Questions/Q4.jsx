@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { CaloriesContextt } from "../../Context/CaloriesContext";
+import { CaloriesProvider } from "../../Context/CaloriesContext";
 
 const Q4 = ({ NextQ4,BackQ4}) => {
-  const {goal,setGoal}=useContext(CaloriesContextt)
+  const {goal,setGoal}=useContext(CaloriesProvider)
 
   const handleOptionClick = (option) => {
     setGoal(option);

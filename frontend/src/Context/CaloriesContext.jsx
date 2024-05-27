@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
-export const CaloriesContextt = createContext();
+export const CaloriesProvider = createContext();
 
 export default function CaloriesContext({ children }) {
   const [birthday, setBirthday] = useState("");
@@ -123,7 +123,7 @@ export default function CaloriesContext({ children }) {
 
   
   return (
-    <CaloriesContextt.Provider
+    <CaloriesProvider.Provider
       value={{
         birthday,
         setBirthday,
@@ -160,6 +160,6 @@ export default function CaloriesContext({ children }) {
       }}
     >
       {children}
-    </CaloriesContextt.Provider>
+    </CaloriesProvider.Provider>
   );
 }

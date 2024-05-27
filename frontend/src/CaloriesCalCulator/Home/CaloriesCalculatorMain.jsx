@@ -8,13 +8,13 @@ import { GiCupcake } from "react-icons/gi";
 import CaloriesHome from "./CaloriesHome";
 import { Menu } from "../../Components/Menu/Menu";
 import AddMeal from "./AddMeal";
-import { CaloriesContextt } from "../../Context/CaloriesContext";
+import { CaloriesProvider } from "../../Context/CaloriesContext";
 import AchivedGoal from "./AchivedGoal";
 import Footer from "../../LandingPage/footer/footer";
 
 export default function CaloriesCalculatorMain() {
   const { isactive} = useContext(MenuContext);
-  const { addMealPopUp, setAddMealPopUp, acheivedGoal, birthday } = useContext(CaloriesContextt);
+  const { addMealPopUp, setAddMealPopUp, acheivedGoal, birthday } = useContext(CaloriesProvider);
   const [mealTitle, setMealTitle] = useState("");
   const navigate = useNavigate();
 
