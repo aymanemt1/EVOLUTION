@@ -4,17 +4,15 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Sidebar(){
 
-
     const location = useLocation();
-
 
     return (
         <Fragment>
             <div className="parentSideBarExercices">
                 <ul>
                     <li>
-                        <Link to='/exercices/categories' className="Link">
-                            <button id={location.pathname == '/exercices/categories' ? "btnSideBarActive" : null}>
+                        <Link to='/exercices/overview' className="Link">
+                            <button id={location.pathname == '/exercices/overview' ? "btnSideBarActive" : null}>
                                 <span>
                                 <i className='bx bxs-category-alt' ></i> <span>Overview</span>
                                 </span>

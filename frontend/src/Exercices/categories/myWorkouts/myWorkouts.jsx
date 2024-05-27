@@ -2,6 +2,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import "./myWorkouts.css";
 import { Link } from "react-router-dom";
+import ModalCreateWO from "../../workouts/Modal/modal";
+import UpdateModal from "./UpdateModal/updateModal";
 
 export default function MyWorkouts() {
   const [workouts, setWorkouts] = useState([]);
@@ -9,6 +11,31 @@ export default function MyWorkouts() {
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(2);
   const [filter, setFilter] = useState("history");
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [updateModalVisible, setUpdateModalVisible] = useState(false);
+  const [selectedWorkout, setSelectedWorkout] = useState(null);
+
+  const [openMenuId, setOpenMenuId] = useState(null); 
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const openUpdateModal = (workout) => {
+    setSelectedWorkout(workout);
+    setUpdateModalVisible(true);
+    setOpenMenuId(null); 
+  };
+
+  const closeUpdateModal = () => {
+    setUpdateModalVisible(false);
+    setSelectedWorkout(null);
+  };
 
   useEffect(() => {
     axios
@@ -82,6 +109,17 @@ export default function MyWorkouts() {
     return "parentRowWorkoutSuccess parentRowWorkoutRed";
   };
 
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this workout?")) {
+      axios
+        .delete(`http://127.0.0.1:8000/api/workouts/${id}`)
+        .then((response) => {
+          setWorkouts(workouts.filter((workout) => workout.id !== id));
+        })
+        .catch((error) => console.error("Error deleting workout:", error));
+    }
+  };
+
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
   const currentDate = new Date().toISOString().split("T")[0];
@@ -103,16 +141,13 @@ export default function MyWorkouts() {
         <div>
           <span className="spanHEaderWorkout">
             <h3>My workouts</h3>
-            <Link to="/exercices/my-workouts">
-              <button><i className="bx bxs-add-to-queue"></i></button>
-            </Link>
+            <button onClick={openModal}>
+              <i className="bx bxs-add-to-queue"></i>
+            </button>
           </span>
           <ul>
             <li>
-              <button
-                id="clearAllBtn"
-                onClick={() => setFilter("history")}
-              >
+              <button id="clearAllBtn" onClick={() => setFilter("history")}>
                 History
               </button>
             </li>
@@ -128,19 +163,39 @@ export default function MyWorkouts() {
 
           {filter === "today" && filteredWorkouts.length === 0 && workouts.length > 0 ? (
             <div className="addWorkoutNotExiste">
-              <Link to='/' className="Link">
-                <button>
-                <i className='bx bx-add-to-queue'></i>
+              <button onClick={openModal}>
+                <i className="bx bx-add-to-queue"></i>
                 <h4>Add workout</h4>
-                </button>
-              </Link>
+              </button>
             </div>
           ) : (
             currentExercises.map((workout) => (
               <div key={workout.id} className={getClassName(workout)}>
+                <button
+                  id="buttonMoreToolWO"
+                  onClick={() => setOpenMenuId(openMenuId === workout.id ? null : workout.id)} // Toggle menu visibility for specific workout
+                >
+                  {openMenuId === workout.id ? <i className="bx bx-x"></i> : <i className="bx bx-dots-vertical-rounded"></i>}
+                </button>
+                {openMenuId === workout.id && ( // Render menu only if openMenuId matches workout id
+                  <div className="MenuButtonMoreToolWO">
+                    <ul>
+                      <li>
+                        <button onClick={() =>openUpdateModal(workout)}>
+                          <i className="bx bxs-edit-alt"></i> Update
+                        </button>
+                      </li>
+                      <li>
+                        <button onClick={() => handleDelete(workout.id)}>
+                          <i className="bx bxs-trash-alt"></i> Delete
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                )}
                 <header className="headerWorkout">
-                  <span>{workout.date}</span> Exercices,{" "}
-                  {workout.workout_exercices.length}
+                  <span>{workout.date}</span>
+                  <p>Exercices, {workout.workout_exercices.length}</p>
                 </header>
                 {workout.done ? (
                   <p id="successWorkout">
@@ -151,8 +206,7 @@ export default function MyWorkouts() {
                 ) : (
                   <p id="successWorkout">
                     <strong>
-                      <i className="bx bx-x-circle"></i> The exercise is not
-                      complete!
+                      <i className="bx bx-x-circle"></i> The exercise is not complete!
                     </strong>
                   </p>
                 )}
@@ -162,13 +216,11 @@ export default function MyWorkouts() {
                       <i className="bx bxs-cuboid"></i> {workout.name}
                     </p>
                     <p id="levelWorkOut">
-                      <i className="bx bx-radio-circle-marked"></i>{" "}
-                      {workout.level.label}
+                      <i className="bx bx-radio-circle-marked"></i> {workout.level.label}
                     </p>
                   </span>
                   <p>
-                    <i className="bx bxs-alarm-add"></i>{" "}
-                    {formatTime(workout.alarm)}
+                    <i className="bx bxs-alarm-add"></i> {formatTime(workout.alarm)}
                   </p>
                 </div>
                 <div>
@@ -187,7 +239,8 @@ export default function MyWorkouts() {
                               </div>
                             )}
                             <div className="infoRowExercice">
-                              <p>{exercise.category}</p>
+                             
+                            <p>{exercise.category}</p>
                               <h4>{exercise.name}</h4>
                             </div>
                           </div>
@@ -199,15 +252,8 @@ export default function MyWorkouts() {
                               id={`inputCheckExercice_${we.id}`}
                               style={{ display: "none" }}
                             />
-                            <label
-                              htmlFor={`inputCheckExercice_${we.id}`}
-                              id="labelCheckExercice"
-                            >
-                              {we.done ? (
-                                <i className="bx bx-check"></i>
-                              ) : (
-                                <i className="bx bx-checkWhite"></i>
-                              )}
+                            <label htmlFor={`inputCheckExercice_${we.id}`} id="labelCheckExercice">
+                              {we.done ? <i className="bx bx-check"></i> : <i className="bx bx-checkWhite"></i>}
                             </label>
                           </div>
                         </div>
@@ -244,10 +290,24 @@ export default function MyWorkouts() {
             onClick={() => paginate(currentPage + 1)}
             disabled={indexOfLastExercise >= filteredWorkouts.length}
           >
-            &gt;
+            &gt;  
           </button>
         </div>
       </div>
+      {modalVisible && <ModalCreateWO closeModal={closeModal} />}
+      {updateModalVisible && (
+        <UpdateModal
+          closeModal={closeUpdateModal}
+          workout={selectedWorkout}
+          updateWorkout={(updatedWorkout) => {
+            setWorkouts((prevWorkouts) =>
+              prevWorkouts.map((workout) =>
+                workout.id === updatedWorkout.id ? updatedWorkout : workout
+              )
+            );
+          }}
+        />
+      )}
     </Fragment>
   );
 }

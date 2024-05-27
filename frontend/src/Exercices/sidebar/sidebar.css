@@ -52,9 +52,53 @@
 }
 
 #btnSideBarActive {
-    background-color: var(--blueChelsea);
+    background-color: var(--blueChelsea) ;
     color: white;
 }
 #btnSideBarActive #arrowSideBarExercices{
     display: none;
+}
+
+
+
+@media (max-width:775px){
+    .parentSideBarExercices {
+        background-color: var(--blueChelsea);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        width: 100vw;
+        padding: .7rem;
+    }
+    .parentSideBarExercices ul{
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        margin: auto;
+    }
+
+    .parentSideBarExercices ul li{
+        width: 25%;
+    }
+
+    .parentSideBarExercices ul li button {
+        border: none;
+    }
+
+    .parentSideBarExercices ul li button span { 
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .parentSideBarExercices ul li button #arrowSideBarExercices{
+        display: none;
+    }
+
+    .parentSideBarExercices ul li #btnSideBarActive{
+        font-size: 1.3rem;
+    }
 }

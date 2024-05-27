@@ -186,3 +186,23 @@
     width: 100%;
     text-align: center;
 }
+
+@media (max-width:1045px){
+    .parentComposantPersonalTraining {
+        height: 100%;
+    }
+    .imgThubmnailExercicesPT {
+        height: 150px;
+    }
+}
+
+@media (max-width:775px){
+    .parentComposantPersonalTraining {
+        width: 150%;
+        height: 100%;
+        position: relative;
+        margin: auto;
+        margin-bottom: 5rem;
+    }
+
+}

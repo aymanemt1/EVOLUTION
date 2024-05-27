@@ -55,19 +55,6 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/activity" className="Link">
-                <button
-                  className={
-                    location.pathname == "activity"
-                      ? "btnNavbarExercicesActivity"
-                      : "btnNavbarExercices"
-                  }
-                >
-                  <i className="bx bx-street-view"></i> <span>Activity</span>
-                </button>
-              </Link>
-            </li>
-            <li>
               <div className="parentSearchBarExercices">
                 <i className="bx bx-search-alt"></i>
                 <input type="text" />
@@ -104,20 +91,6 @@ export default function Navbar() {
                     >
                       <i className="bx bxs-binoculars"></i>{" "}
                       <span>Overview</span>
-                    </button>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/activity" className="Link" onClick={toggleMenu}>
-                    <button
-                      className={
-                        location.pathname == "activity"
-                          ? "btnNavbarExercicesActivity"
-                          : "btnNavbarExercices"
-                      }
-                    >
-                      <i className="bx bx-street-view"></i>{" "}
-                      <span>Activity</span>
                     </button>
                   </Link>
                 </li>

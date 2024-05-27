@@ -10,9 +10,8 @@ class WorkoutExercice extends Model
     use HasFactory;
 
     protected $fillable = [
-        'workout_id', 'exercice_workout_api_id', 'repetition', 'duration', 'done',
+        'workout_id', 'exercice_work_out_api_id', 'repetition', 'duration', 'done',
     ];
-
     public function workout()
     {
         return $this->belongsTo(workout::class);

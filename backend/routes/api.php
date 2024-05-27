@@ -2,11 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\MyWorkoutsController;
 use App\Http\Controllers\WeightTrackingController;
+use App\Http\Controllers\WorkoutExerciceController;
 use App\Http\Controllers\FavoriteExerciceController;
-use App\Http\Controllers\WorkoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +38,13 @@ Route::controller(WeightTrackingController::class)->group(function () {
 Route::controller(UserInfoController::class)->group(function () {
     Route::get('/user/{id}', 'index');
 });
-
 Route::controller(WorkoutController::class)->group(function () {
     Route::get('/workouts', 'index');
     Route::get('/workouts/{id}', 'show');
     Route::post('/workouts', 'store');
     Route::patch('/workouts/{id}/done', 'updateWorkoutDone');
     Route::patch('/workout_exercices/{id}/done', 'updateExerciseDone');
+    Route::put('/workouts/{id}', 'update');
+    Route::delete('/workouts/{id}', 'destroy');
+    Route::get('/workouts/{id}/exercises', 'getWorkoutExercises');
 });

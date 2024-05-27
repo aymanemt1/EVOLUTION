@@ -96,9 +96,6 @@ export default function MyWorkouts() {
         <div>
           <span className="spanHEaderWorkout">
             <h3>My workouts</h3>
-            <Link to="/exercices/my-workouts">
-              <button><i className="bx bxs-add-to-queue"></i></button>
-            </Link>
           </span>
           <ul>
             <li>

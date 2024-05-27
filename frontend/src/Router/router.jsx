@@ -27,7 +27,7 @@ export default function RouterApp() {
                     </Route>
                     <Route path='/home' element={<Home />} />
                     <Route path='/exercices' element={<Exercices />}>
-                        <Route path="categories" element={<Categories />} />
+                        <Route path="overview" element={<Categories />} />
                         <Route path="profile" element={<Profile />} />
                         <Route path="list" element={<ExercicesList />} />
                         <Route path="my-workouts" element={<Workouts />} />

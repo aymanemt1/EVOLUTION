@@ -106,6 +106,7 @@
 
 .parentRowWorkoutSuccess header {
     color: white;
+    margin-top: -1rem;
 }
 
 .parentRowWorkoutSuccess header span{
@@ -264,4 +265,66 @@
 
 .addWorkoutNotExiste button i {
     font-size: 10rem;
+}
+
+#buttonMoreToolWO {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    margin-right: -.5rem;
+    width: 100%;
+    text-align: end;
+    padding: 0 .1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+#buttonMoreToolWO:hover {
+    text-shadow: 0 0 10px black;
+}
+
+.MenuButtonMoreToolWO {
+    background-color: var(--blueCity);
+    width: fit-content;
+    padding: .2rem ;
+    border-radius: 0 5px 5px 5px;
+    position: absolute;
+    margin-left: 15rem;
+    z-index: 10;
+    border: .1rem solid rgba(255, 255, 255, 0.322);
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.358);
+}
+.MenuButtonMoreToolWO ul {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.MenuButtonMoreToolWO ul li button {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 0;
+    width: 100%;
+    text-align: start;
+    border-bottom: .07rem solid rgba(255, 255, 255, 0.196);
+    transition: all .2s ease-in-out;
+}
+
+.MenuButtonMoreToolWO ul li button:hover {
+    transform: scale(1.1);
+}
+
+.MenuButtonMoreToolWO ul li button:active {
+    color: black;
+}
+
+
+@media (max-width:1045px){
+    .parentComposantPersonalTraining {
+        width: 100%;
+    }
 }

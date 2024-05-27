@@ -1,16 +1,35 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Navbar from "./navbar/navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./sidebar/sidebar";
 import './exercices.css';
 
 export default function Exercices(){
+
+    const location = useLocation();
+    const [path, setPath] = useState('');
+
+
+    useEffect(() => {
+        if (location.pathname === '/exercices/overview') {
+            setPath('overview');
+        } else if (location.pathname === '/exercices/profile') {
+            setPath('profile'); 
+        } else if (location.pathname === '/exercices/list') {
+            setPath('list exercices'); 
+        } else if (location.pathname === '/exercices/my-workouts') {
+            setPath('my workouts'); 
+        }
+    }, [location.pathname]);
+
+
+
     return(
         <Fragment>
             <Navbar /> 
             <div className="parentTitleExercicesChemin">
-                <h1>Categories</h1>
-                <p><span> overview / </span> categories</p>
+                <h1>Exercices</h1>
+                <p><span> exercices / </span> {path}</p>
             </div>
             <div className="parentContentExercices">
                 <Sidebar />
