@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import { CaloriesContextt } from "../../Context/CaloriesContext";
 
 const Q5 = ({ NextQ5, BackQ5 }) => {
-  const { activite, setActivite } = useContext(CaloriesContextt);
+  const { activity, setActivity } = useContext(CaloriesContextt);
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleOptionClick = (option) => {
-    setActivite(option);
+    setActivity(option);
     setSelectedOption(option);
   };
-  console.log(activite)
+  console.log(activity)
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { CaloriesContextt } from "../../Context/CaloriesContext";
 import { FaTimes } from "react-icons/fa"; // Importing the close icon from react-icons
+import { FaSpinner } from "react-icons/fa"; // Importing a spinner icon from react-icons (optional, can be replaced with any loader)
+import axios from "axios"; // Importing Axios library
 
 export default function AddMeal({ title }) {
   const [nutritionName, setNutritionName] = useState("");
@@ -11,6 +13,8 @@ export default function AddMeal({ title }) {
   const [totalProteins, setTotalProteins] = useState(0);
   const [totalCarbs, setTotalCarbs] = useState(0);
   const [totalFats, setTotalFats] = useState(0);
+  const [loading, setLoading] = useState(false);
+
   const {
     setAddMealPopUp,
     consumedCalories,
@@ -19,10 +23,8 @@ export default function AddMeal({ title }) {
     setConsumedProtein,
     consumedCrabs,
     setConsumedCarbs,
-    ConsumedFats,
+    consumedFats,
     setConsumedFats,
-    goalCalories, setGoalCalories,
-    acheivedGoal,setAchievvedGoal
   } = useContext(CaloriesContextt);
 
   const handleNutritionNameChange = (e) => {
@@ -32,15 +34,39 @@ export default function AddMeal({ title }) {
   const handleNutritionQuantityChange = (e) => {
     setNutritionQuantity(e.target.value);
   };
-  const handleDone = () => {
-    setConsumedCalories(consumedCalories + parseFloat(totalCalories));
-    setConsumedProtein(consumedProtein + parseFloat(totalProteins));
-    setConsumedCarbs(consumedCrabs + parseFloat(totalCarbs));
-    setConsumedFats(ConsumedFats + parseFloat(totalFats));
-    handleClosePopup(); 
+
+  const handleDone = async () => {
+    const newConsumedCalories = consumedCalories + totalCalories;
+    const newConsumedProteins = consumedProtein + totalProteins;
+    const newConsumedCarbs = consumedCrabs + totalCarbs;
+    const newConsumedFats = consumedFats + totalFats;
+
+    try {
+      // after authentication
+      //"http://127.0.0.1:8000/api//macros"
+
+      const response = await axios.put(
+        "http://127.0.0.1:8000/api//macros/{id}",
+        {
+          proteins_consumed: newConsumedProteins,
+          fats_consumed: newConsumedFats,
+          carbs_consumed: newConsumedCarbs,
+          calories_consumed: newConsumedCalories,
+        }
+      );
+      console.log(response.data); // Log the response from the backend
+      setConsumedCalories(newConsumedCalories);
+      setConsumedProtein(newConsumedProteins);
+      setConsumedCarbs(newConsumedCarbs);
+      setConsumedFats(newConsumedFats);
+      handleClosePopup();
+    } catch (error) {
+      setError("An error occurred while updating consumed macros");
+    }
   };
 
   const handleAdd = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         `https://api.api-ninjas.com/v1/nutrition?query=${nutritionName}`,
@@ -79,6 +105,8 @@ export default function AddMeal({ title }) {
       }
     } catch (error) {
       setError("An error occurred while fetching data");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -99,6 +127,7 @@ export default function AddMeal({ title }) {
             type="text"
             id="nutritionName"
             value={nutritionName}
+            placeholder="name"
             onChange={handleNutritionNameChange}
           />
         </div>
@@ -109,16 +138,24 @@ export default function AddMeal({ title }) {
             id="nutritionQuantity"
             value={nutritionQuantity}
             onChange={handleNutritionQuantityChange}
-            placeholder="gramms"
+            placeholder="grams"
             pattern="[0-9]*" // Allow only numeric input
             inputMode="numeric"
           />
         </div>
         <div className="addMealButtons">
-          <button onClick={handleAdd}  className="AddButt">Add</button>
-          <button className="DoneButt" onClick={handleDone}>Done</button>
+          <button onClick={handleAdd} className="AddButt">
+            Add
+          </button>
+          <button className="DoneButt" onClick={handleDone}>
+            Done
+          </button>
         </div>
-        
+        {loading && (
+          <div className="loader">
+            <FaSpinner className="spinner" /> Loading...
+          </div>
+        )}
         <table>
           <thead>
             <tr>

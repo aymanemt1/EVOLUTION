@@ -49,7 +49,7 @@ export default function Navbar() {
           <i className="bx bx-menu-alt-left" onClick={handleMenu}></i>
         </div>
         <div className="storelogo">
-          <Link to="/CaloriesCalculator">
+          <Link to="/CaloriesCalculator/home">
             <img src="/logo.svg" alt="Evolution" title="Evolution" />
           </Link>
         </div>
@@ -59,8 +59,8 @@ export default function Navbar() {
         onClick={handleUserClick}
         ref={userMenuRef}
       >
-        <div className="userName">Talibi</div>
-        <img src="imageProfileExample.png" alt="" className="user-image" />
+        <div className="userName">Ibrahim</div>
+        <img src="/imageProfileExample.jpg" alt="" className="user-image" />
         {userMenuActive && <DropdownMenu />}
       </div>
     </div>

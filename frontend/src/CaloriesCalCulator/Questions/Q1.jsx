@@ -28,6 +28,7 @@ const Q1 = ({ NextQ1 }) => {
             </div>
             <h2 className="caloriesCalculatorContentHeader" >What is your birth day?</h2>
             <form onSubmit={handleSubmit}>
+             
               <input
                 type="date"
                 value={birthday}

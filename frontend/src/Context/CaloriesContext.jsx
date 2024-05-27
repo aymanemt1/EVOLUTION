@@ -4,10 +4,10 @@ export const CaloriesContextt = createContext();
 
 export default function CaloriesContext({ children }) {
   const [birthday, setBirthday] = useState("");
-  const [height, setHeight] = useState(0);
-  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [goal, setGoal] = useState("");
-  const [activite, setActivite] = useState("");
+  const [activity, setActivity] = useState("");
   const [addMealPopUp, setAddMealPopUp] = useState(false);
   const [consumedCalories, setConsumedCalories] = useState(0);
   const [age, setAge] = useState(0);
@@ -19,8 +19,8 @@ export default function CaloriesContext({ children }) {
   const [fatsGoal, setFatsGoal] = useState(0);
   const [ConsumedFats, setConsumedFats] = useState(0);
   const [acheivedGoal, setAchievvedGoal] = useState(false);
-  const [activityMultiplier, setActivityMultiplier] = useState(1.2); // Default multiplier for sedentary
-  const [goalCaloriesAdjustment, setGoalCaloriesAdjustment] = useState(0); // Adjustment for goal calories
+  const [activityMultiplier, setActivityMultiplier] = useState(1.2); 
+  const [goalCaloriesAdjustment, setGoalCaloriesAdjustment] = useState(0); 
   const [editedMode,setEditMode]=useState(false)
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function CaloriesContext({ children }) {
 
   useEffect(() => {
     // Calculate activity multiplier based on selected activity level
-    switch (activite) {
+    switch (activity) {
       case 'Sedentary':
         setActivityMultiplier(1.2);
         break;
@@ -89,7 +89,7 @@ export default function CaloriesContext({ children }) {
       default:
         setActivityMultiplier(1.2); // Default to sedentary
     }
-  }, [activite]);
+  }, [activity]);
 
   useEffect(() => {
     // Calculate the adjustment for goal calories based on the selected goal
@@ -154,8 +154,8 @@ export default function CaloriesContext({ children }) {
         setConsumedFats,
         acheivedGoal,
         setAchievvedGoal,
-        activite,
-        setActivite,
+        activity,
+        setActivity,
         activityMultiplier,
       }}
     >

@@ -1,34 +1,49 @@
 import React, { useContext, useState } from 'react';
 import './ChangeGoal.css';
+import axios from 'axios'; // Import Axios library
 
 import { FaTimes } from "react-icons/fa";
 import { CaloriesContextt } from '../../Context/CaloriesContext';
 
 export default function ChangeGoalEdit() {
-  const { setEditMode, weight, setWeight, height, setHeight, goal, setGoal, activite, setActivite } = useContext(CaloriesContextt);
+  const { setEditMode, weight, setWeight, height, setHeight, goal, setGoal, activity, setActivity } = useContext(CaloriesContextt);
   const [editedWeight, setEditedWeight] = useState(weight);
   const [editedHeight, setEditedHeight] = useState(height);
   const [editedGoal, setEditedGoal] = useState(goal);
-  const [editedActivity, setEditedActivity] = useState(activite);
+  const [editedActivity, setEditedActivity] = useState(activity);
 
   const handleEditGoal = () => {
-    // Here you should start your calculations based on the edited values
-    // You can access editedWeight, editedHeight, editedGoal, and editedActivity here
-    setWeight(editedWeight);
-    setHeight(editedHeight);
-    setGoal(editedGoal);
-    setActivite(editedActivity);
+    // Make a PUT request to update user info
+    axios.put('/api/calories_users', {
+      weight: editedWeight,
+      height: editedHeight,
+      goal: editedGoal,
+      activity: editedActivity
+    })
+    .then(response => {
+      // Update context state with new values
+      setWeight(editedWeight);
+      setHeight(editedHeight);
+      setGoal(editedGoal);
+      setActivity(editedActivity);
 
-    setEditMode(false);
+      // Exit edit mode
+      setEditMode(false);
+    })
+    .catch(error => {
+      console.error('Error updating user info:', error);
+      // Handle error if needed
+    });
   }
 
   const handleCancelEdit = () => {
-    // Reset the edited values to the original ones
+    // Reset edited values to original ones
     setEditedWeight(weight);
     setEditedHeight(height);
     setEditedGoal(goal);
-    setEditedActivity(activite);
+    setEditedActivity(activity);
 
+    // Exit edit mode
     setEditMode(false);
   }
 
