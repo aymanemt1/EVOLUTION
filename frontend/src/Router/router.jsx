@@ -29,6 +29,9 @@ import { Sellerprofile } from "../Store/Seller/Sellerprofile/SellerProfile/Selle
 import { Sellerproducts } from "../Store/Seller/Sellerprofile/Sellerproducts/Sellerproducts";
 
 import Unfounded from "../Unfounded/Unfounded";
+import ChangeGoal from "../CaloriesCalCulator/ChangeGoal/ChangeGoal";
+import CaloriesCalCulator from "../CaloriesCalCulator/CaloriesCalCulator";
+import CaloriesCalculatorMain from "../CaloriesCalCulator/Home/CaloriesCalculatorMain";
 
 export default function RouterApp(){
   const token = localStorage.getItem("token");
@@ -149,9 +152,9 @@ export default function RouterApp(){
 
                    {/* CalculatoreRoutes */}
 
-                   {/* <Route path="/CaloriesCalculator" element={<CaloriesCalCulator/>}/>
+                   <Route path="/CaloriesCalculator" element={<CaloriesCalCulator/>}/>
                     <Route path="/CaloriesCalculator/change-goal" element={<ChangeGoal/>}/>
-                    <Route path="/CaloriesCalculator/Home" element={<CaloriesCalculatorMain/>}/> */}
+                    <Route path="/CaloriesCalculator/Home" element={<CaloriesCalculatorMain/>}/>
 
         </Route>
 
