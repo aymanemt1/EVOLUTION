@@ -402,6 +402,154 @@ export const Navbar = () => {
 </nav>
 
   )
+            <ul className="sub-menu">
+              <li>
+                <a href="#">All Clothing</a>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Tops and T-Shirts
+              </Link>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Slims
+              </Link>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Shorts
+              </Link>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Caps
+              </Link>
+              </li>
+            </ul>
+          </li>
+
+          <li className="sub-dropdown-imgwomen">
+           
+            
+            </li>
+       
+        </ul>
+      </li>
+      <li className="dropdown">
+        <div ref={(el) => dropdownRefs.current.push(el)}>
+          <span> <Link to='/store/shop'>Shop</Link></span>
+          <span className="material-symbols-outlined">
+            <i class='bx bxs-chevron-down'></i>
+          </span>
+        </div>
+        <ul className="menu">
+          <li>
+            <a href="#">Categories</a>
+          </li>
+          <li className="sub-dropdown">
+           
+            <ul className="sub-menu">
+              <li>
+              <Link to='/store/shop'>
+              Shoes
+              </Link>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Clothes
+              </Link>
+              </li>
+            
+            </ul>
+          </li>
+          <li className="sub-dropdown">
+           
+          <ul className="sub-menu">
+              <li>
+                <a href="#">All Clothing</a>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Tops and T-Shirts
+              </Link>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Slims
+              </Link>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Shorts
+              </Link>
+              </li>
+              <li>
+              <Link to='/store/shop'>
+              Caps
+              </Link>
+              </li>
+            </ul>
+          </li>
+       
+        </ul>
+      </li>
+      <li className="dropdown">
+        <div >
+          <span> <Link to='/store/seller'>Be a seller </Link></span>
+          <span className="material-symbols-outlined">
+            <i class='bx bxs-chevron-down'></i>
+          </span>
+        </div>
+      </li>
+    </ul>
+  
+<div className="storeLinks">
+ <ul id="linksbar">
+     <li className='iconsbar'>
+     <IconButton  aria-label="show cart">
+
+         <i className='bx bx-shopping-bag' onClick={toggleCart}></i>
+</IconButton>
+        {count > 0 &&  <span className='badgecart'>{count}</span>}
+        </li>
+     <li className='iconsbar'>
+        
+        <Link to='/store/profile/wishlists'>
+      <IconButton  >
+        <i className='bx bx-heart' ></i>
+
+</IconButton>
+        {countwishlist > 0 &&   <span className='badgewishlits'>{countwishlist}</span>}
+        </Link>
+        </li>
+        <li className='iconsbar'>
+          <Profile />
+        
+        </li>
+   
+ </ul>
+</div>
+
+  </div>
+  <div className="buttonsnav">
+      <span className="material-symbols-outlined">
+      <i  ref={menuBtnRef} class='bx bx-menu' ></i>
+      </span>
+  </div>
+   {isCartOpen && (
+<div >
+<div className='slide-cart-layout' onClick={Closecart}>
+</div>
+<DrawerCart setIsCartOpen={setIsCartOpen}  isCartOpen={isCartOpen}/>
+</div>
+
+)}
+</nav>
+
+  )
 }
+
+ 
 
  
