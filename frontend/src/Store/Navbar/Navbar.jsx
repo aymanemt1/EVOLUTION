@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+import React, { useContext } from 'react'
+import './Navbar.css'
+import { Link, NavLink } from "react-router-dom";
+import { MenuContext } from '../../Context/MenuContext';
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Navbar.css'
@@ -12,6 +19,13 @@ import { IconButton } from '@mui/material'
 import Profile from '../../Components/Profile/Profile'
 export const Navbar = () => {
 
+<<<<<<< HEAD
+=======
+    const {isactive,setisactive} = useContext(MenuContext)
+      const handleMenu  =()=>{
+        setisactive(!isactive)
+    }
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
    const { isactive, setisactive } = useContext(MenuContext);
    const { deletedItem,addedtocart,count  } = useContext(CartContext);

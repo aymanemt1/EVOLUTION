@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+<<<<<<< HEAD
 use App\Models\Seller;
+=======
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +32,11 @@ class AuthController extends Controller
         $user->api_token = hash('sha256', $token);
         $user->save();
 
+<<<<<<< HEAD
         return response()->json(['message' => 'User registered successfully', 'user' => $user, 'token' => $token,'userid'=>$user->id], 201);
+=======
+        return response()->json(['message' => 'User registered successfully', 'user' => $user, 'token' => $token], 201);
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
     }
 
@@ -49,21 +56,28 @@ class AuthController extends Controller
                                 $token = Str::random(60);
         
                                 $user->api_token = hash('sha256', $token);
+<<<<<<< HEAD
                                 $userSeller = Seller::where('usr_id',$user->id)->first();
                                 $idseller = null;
             
                 if ($userSeller) {
                     $idseller = $userSeller->id;
                 }
+=======
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
         
                                 if ($user) {
                         return response()->json([
                             'status' => 200,
                             'valid' => true,
                             'user' =>  $user,
+<<<<<<< HEAD
                             'userid' =>  $user->id,
                             'token' => $token,
                             'idseller' => $idseller
+=======
+                            'token' => $token
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
                         ], 200);
                     } else {
                             return response()->json([
@@ -74,6 +88,7 @@ class AuthController extends Controller
                         }
             }
 
+<<<<<<< HEAD
             public function googleSignup(Request $request)
             {
                 // Check if a user with the provided email exists
@@ -164,5 +179,15 @@ public function logout(Request $request)
     return response()->json([], 204);
 
             }
+=======
+            public function logout(Request $request)
+            {
+                if ($request->user()) {
+                    $request->user()->tokens()->delete();
+                }
+                return response()->json([], 204);
+            }
+
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
 }

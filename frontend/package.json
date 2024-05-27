@@ -13,8 +13,12 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
+<<<<<<< HEAD
     "axios": "^1.6.8",
     "chart.js": "^4.4.3",
+=======
+    "axios": "^1.7.1",
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
     "react": "^18.2.0",

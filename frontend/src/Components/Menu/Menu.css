@@ -7,4 +7,17 @@
    width: 45px;
    margin-top: 1rem;
    height: 45px;
+  
+}
+.listIcons li img:hover{
+
+    border-radius: 50%;
+    box-shadow: 0 0 10px #0066EE;
+    border: 1px solid #7caceb;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.menu{
+    width: 7%;
 }

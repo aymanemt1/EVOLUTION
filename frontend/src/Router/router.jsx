@@ -16,6 +16,7 @@ import { Orders } from "../Store/Dashboard/Orders/Orders";
 import { Wishlist } from "../Store/Dashboard/Wishlist/Wishlist";
 import RequiredAuth from "./requiredAuth";
 
+<<<<<<< HEAD
 import Cookies from 'js-cookie';
 import { SellerAuth } from "../Store/SellerAuth/SellerAuth";
 import { Register } from "../Store/SellerAuth/Register/Register";
@@ -27,6 +28,12 @@ import { HomeSeller } from "../Store/Seller/Homeseller/Homeseller";
 import Sellersidebar from "../Store/Seller/Sellerprofile/Sidebarseller/Sidebaseller";
 import { Sellerprofile } from "../Store/Seller/Sellerprofile/SellerProfile/Sellerprofile";
 import { Sellerproducts } from "../Store/Seller/Sellerprofile/Sellerproducts/Sellerproducts";
+=======
+import ChangeGoal from "../CaloriesCalCulator/ChangeGoal/ChangeGoal";
+import CaloriesCalculatorMain from "../CaloriesCalCulator/Home/CaloriesCalculatorMain";
+import SellerHome from "../SellerHome/SellerHome";
+
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
 export default function RouterApp(){
   const token = localStorage.getItem("token");
@@ -40,6 +47,7 @@ export default function RouterApp(){
                         <Route path="login" element={<Login />} />
                         <Route path="signup" element={<Signup />} />
                     </Route>
+<<<<<<< HEAD
                 </Routes>
                 <Routes>
                     {/* <Route path='/auth/login' element={
@@ -151,8 +159,21 @@ export default function RouterApp(){
                 </Route>
 
         </Route>
+=======
+                    <Route path="/CaloriesCalculator" element={<CaloriesCalCulator/>}/>
+                    <Route path="/CaloriesCalculator/change-goal" element={<ChangeGoal/>}/>
+                    <Route path="/CaloriesCalculator/Home" element={<CaloriesCalculatorMain/>}/>
+                    <Route path="/sellerHome" element={<SellerHome/>}/>
+                    
+                    
+                       
+                    <Route path='/store' element={<Storeparent />} />
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
                 </Routes>
+ 
+   
+
             </BrowserRouter>
         </Fragment>
     )

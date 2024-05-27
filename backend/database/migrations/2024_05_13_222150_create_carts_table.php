@@ -10,7 +10,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
+=======
+        
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);

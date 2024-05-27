@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
+<<<<<<< HEAD
     protected $fillable = [
         'firstname',
         'lastname',
@@ -15,6 +16,9 @@ class Client extends Model
         'city',
         'address',
     ];
+=======
+    protected $fillable = ['name', 'email', 'phone', 'address'];
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
     public function products()
     {
@@ -25,8 +29,11 @@ class Client extends Model
     {
         return $this->hasMany(Wishlist::class);
     }
+<<<<<<< HEAD
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+=======
+>>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 }

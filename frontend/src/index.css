@@ -12,7 +12,3 @@
   margin: 0;
   box-sizing: border-box;
 }
-::selection {
-  background-color: var(--blackE);
-  color: var(--cityE);
-}
