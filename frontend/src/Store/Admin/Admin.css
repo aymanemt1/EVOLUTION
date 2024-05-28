@@ -1,0 +1,155 @@
+
+  .containeradmin {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .mainadmin {
+    height: calc(100% - 50px);
+    display: flex;
+    flex: 1;
+  }
+  .sidebaradmin {
+    height: 100%;
+    width: 220px;
+    box-sizing: border-box;
+    box-shadow: 0 0 2rem 0 rgb(0 0 0 / 5%);
+    overflow: hidden;
+    padding-top:0.6rem;
+
+    transition: width 0.5s ease;
+  }
+  .containeradmin.nav-closed .sidebaradmin,
+  .containeradmin.nav-closed .headeradmin-logo {
+    width: 0;
+  }
+  .sidebaradmin .uladmin {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+  .sidebaradmin .uladmin .liadmin {
+    display: flex;
+    align-items: center;
+  }
+  .sidebaradmin .uladmin .liadmin a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    white-space: nowrap;
+  }
+  .sidebaradmin .uladmin .liadmin a.active,
+  .sidebaradmin .uladmin .liadmin a:hover {
+    background: #e8ecef;
+  }
+  .sidebaradmin .uladmin .liadmin span {
+    margin-left: 16px;
+    font-size: 16px;
+  }
+  .sidebaradmin .uladmin .liadmin i {
+    font-size: 18px;
+    color: #111;
+    font-weight: normal;
+  }
+  .logoadmin{
+    width: 160px;
+  }
+  .headeradmin {
+    height: 78px;
+    background: #0153DF;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+  }
+  .sidebaradmin .uladmin .liadmin a.active i {
+    color: #0153DF;
+  }
+  .site-logo {
+    height: 32px;
+    width: 32px;
+    min-height: 32px;
+    min-width: 32px;
+    margin: 0 18px 0 15px;
+  }
+  .site-logo path {
+    fill: #fff;
+  }
+  .site-title {
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-weight: 400;
+  }
+  .page-content {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    flex: 1;
+  }
+  .page-content h1 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+  }
+  .headeradmin-search {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    padding: 0 20px;
+    flex: 1;
+  }
+  .headeradmin-search .button-menu {
+    width: 28px;
+    height: 28px;
+    margin-right: 15px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .headeradmin-logo {
+    display: flex;
+    align-items: center;
+    width: 220px;
+    overflow: hidden;
+    transition: width 0.5s ease;
+  }
+  .headeradmin-search input[type="search"] {
+    height: 100%;
+    width: 300px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 100;
+    background: none;
+    border: none;
+    color: #fff;
+  }
+  .headeradmin-search input[type="search"]:focus {
+    outline: none;
+  }
+  .headeradmin-search input[type="search"]::placeholder {
+    color: #ccc;
+  }
+  .headeradmin-search .button-menu:focus {
+    outline: none;
+    border: none;
+  }
+  .headeradmin-search .button-menu svg path {
+    fill: #fff;
+  }
+  @media screen and (max-width: 991px) {
+    .page-content {
+      width: 100vw;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .headeradmin-logo {
+      display: none;
+    }
+  }

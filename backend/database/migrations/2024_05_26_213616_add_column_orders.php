@@ -6,15 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-  
+    
     public function up(): void
     {
-        Schema::create('membres', function (Blueprint $table) {
-            $table->id();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->foreignId('delivery_id')->default(1)->constrained('deliveries');
+
         });
     }
 
@@ -23,6 +20,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('membres');
+        Schema::table('orders', function (Blueprint $table) {
+            //
+        });
     }
 };

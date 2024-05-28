@@ -47,12 +47,21 @@ window.addEventListener("resize", function () {
     </div>
     <div className="mainadmin">
       <div className="sidebaradmin">
+<<<<<<< HEAD
         <ul className='uladmin'>
         <li><Link to="#" className="active"><i className="lni lni-home"></i><span>Dashboard</span></Link></li>
 <li className='liadmin'><Link to="#"><i className="lni lni-text-format"></i><span>Products</span></Link></li>
 <li className='liadmin'><Link to="#"><i className="lni lni-text-format"></i><span>Categories</span></Link></li>
 <li className='liadmin'><Link to="#"><i className="lni lni-text-format"></i><span>Sellers</span></Link></li>
 <li className='liadmin'><Link to="#"><i className="lni lni-text-format"></i><span>Sellers</span></Link></li>
+=======
+        <ul>
+        <li><Link to="#" className="active"><i className="lni lni-home"></i><span>Dashboard</span></Link></li>
+<li><Link to="#"><i className="lni lni-text-format"></i><span>Products</span></Link></li>
+<li><Link to="#"><i className="lni lni-text-format"></i><span>Categories</span></Link></li>
+<li><Link to="#"><i className="lni lni-text-format"></i><span>Sellers</span></Link></li>
+<li><Link to="#"><i className="lni lni-text-format"></i><span>Sellers</span></Link></li>
+>>>>>>> moutoute-dev
         </ul>
       </div>
       <div className="page-content">

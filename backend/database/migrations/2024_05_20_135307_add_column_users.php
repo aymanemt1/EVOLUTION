@@ -6,15 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-  
     public function up(): void
     {
-        Schema::create('membres', function (Blueprint $table) {
-            $table->id();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('api_token', 80)->after('password')
+                  ->unique()
+                  ->nullable()
+                  ->default(null); 
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('membres');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

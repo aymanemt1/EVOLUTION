@@ -9,7 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->boolean('in_wishlist')->default(false);
+            $table->foreignId('size_id')->default(1)->constrained('sizes')->onDelete('cascade');
+            $table->foreignId('color_id')->default(1)->constrained('colors')->onDelete('cascade');
+            
 
         });
     }
