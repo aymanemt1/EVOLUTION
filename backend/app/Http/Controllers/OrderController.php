@@ -92,10 +92,10 @@ class OrderController extends Controller
                $product->is_sale = true;
                $product->stock -= $item['quantity'];
                $product->save();
-    
            }
-
        }
+   
+       Cart::where('user_id', $userId)->delete();
    
        return response()->json(['message' => 'Order added successfully'], 200);
    }

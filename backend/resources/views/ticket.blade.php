@@ -79,7 +79,7 @@
                 <th>RECEIPT#</th>
             </tr>
             <tr>
-                <td>{{ $client->name }}</td>
+                <td>{{ $order->id }}</td>
                 {{-- <td>{{ $client->name }}</td> --}}
                 {{-- <td>{{ $order->id }}</td> --}}
             </tr>

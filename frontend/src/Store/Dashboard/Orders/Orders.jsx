@@ -16,6 +16,7 @@ export const Orders = () => {
   }
   const createdAtDate = new Date();
 
+  console.log(orderss)
   const deliveryTime = "2-3 business days";
   const deliveryDaysRange = deliveryTime.split("-").map(day => parseInt(day));
   const minDeliveryDays = deliveryDaysRange[0];
@@ -37,36 +38,56 @@ export const Orders = () => {
     year: 'numeric'
   });
 
-  const totalDuration = maxExpectedDeliveryDate.getTime() - minExpectedDeliveryDate.getTime();
-
-const elapsedDuration = Date.now() - minExpectedDeliveryDate.getTime();
-
-const percentage = (elapsedDuration / totalDuration) * 100;
- 
-// const ticketBtn = async () => {
-
-//   try {
-//       const response = await axios.post('http://127.0.0.1:8000/api/ticket', orderss, {
-//           responseType: 'blob' 
-//       });
-
-//       const blob = new Blob([response.data], { type: 'application/pdf' });
-//       const url = window.URL.createObjectURL(blob);
-
-//       const link = document.createElement('a');
-//       link.href = url;
-//       link.setAttribute('download', 'ticket.pdf'); 
-//       document.body.appendChild(link);
-
-//       link.click();
-
-//       document.body.removeChild(link);
-//   } catch (error) {
-//       console.error('Error during request:', error);
-//   }
-// };
-
- 
+  console.log(formattedMaxExpectedDeliveryDate)
+  let targetDate = new Date(`${formattedMaxExpectedDeliveryDate} ${new Date().getFullYear()}`);
+  if (new Date() > targetDate) {
+    // If the date has already passed this year, consider it as the next year
+    targetDate.setFullYear(targetDate.getFullYear() + 1);
+  }
+  
+  // Get the current date
+  let currentDate = new Date();
+  
+  // Calculate the difference in milliseconds
+  let diffInMilliseconds = targetDate - currentDate;
+  
+  // Convert the difference from milliseconds to days
+  let diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+  
+  // Get the total days in a year (365 or 366 for a leap year)
+  let totalDaysInYear = (currentDate.getFullYear() % 4 === 0 && currentDate.getFullYear() % 100 !== 0) || (currentDate.getFullYear() % 400 === 0) ? 366 : 365;
+  
+  // Calculate the percentage difference
+  let percentageDiff = (diffInDays / totalDaysInYear) * 100;
+  
+  console.log(`Percentage difference: ${percentageDiff.toFixed(2) * 100}%`);
+  
+  
+  const ticketBtn = async (orderId) => {
+    try {
+      const response = await axios.post(`http://127.0.0.1:8000/api/ticket/${orderId}`, orderss, {
+        responseType: 'blob'
+      });
+  
+      // Create URL for the blob
+      const url = window.URL.createObjectURL(response.data);
+  
+      // Create a link element to trigger download
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `ticket_${orderId}.pdf`);
+  
+      // Append link to the body and trigger click event
+      document.body.appendChild(link);
+      link.click();
+  
+      // Cleanup: Remove link element
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error during request:', error);
+    }
+  };
+  
   return (
     <div>
     {orderssCount > 0 ? (
@@ -93,7 +114,9 @@ const percentage = (elapsedDuration / totalDuration) * 100;
         <div className="reviweitem">
           <p>#Order{ord.id}</p>
           <div className="statu">
-          {/* <button className='ticketBtn' onClick={ticketBtn}>telecharger</button> */}
+
+            <span>{ord.status}</span>
+          {/* <button className='ticketBtn' onClick={()=>ticketBtn(ord.id)}>telecharger</button> */}
           </div>
           <div className="date">
             <span>{ord.created_at}</span>
@@ -111,7 +134,7 @@ const percentage = (elapsedDuration / totalDuration) * 100;
         </div>
         <div class="dateExp">
         <div class="range">
-        <div className="fill" style={{ width: `${percentage}%` }}>
+        <div className="fill" style={{ width: `${percentageDiff.toFixed(2) * 100}%` }}>
             </div>
         </div>
     </div>

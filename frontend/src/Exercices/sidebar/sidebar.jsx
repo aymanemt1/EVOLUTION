@@ -8,11 +8,11 @@ export default function Sidebar(){
 
     return (
         <Fragment>
-            <div className="parentSideBarExercices">
-                <ul>
+            <div className="parentSideBarProfile">
+                <ul className="sidebarClientUl">
                     <li>
                         <Link to='/exercices/overview' className="Link">
-                            <button id={location.pathname == '/exercices/overview' ? "btnSideBarActive" : null}>
+                            <button className="buttonsidebarClient" id={location.pathname == '/exercices/overview' ? "btnSideBarClientActive" : null}>
                                 <span>
                                 <i className='bx bxs-category-alt' ></i> <span>Overview</span>
                                 </span>
@@ -22,7 +22,7 @@ export default function Sidebar(){
                     </li>
                     <li>
                         <Link to='/exercices/profile' className="Link">
-                            <button id={location.pathname == '/exercices/profile' ? "btnSideBarActive" : null}>
+                            <button className="buttonsidebarClient" id={location.pathname == '/exercices/profile' ? "btnSideBarClientActive" : null}>
                                 <span>
                                 <i className='bx bxs-user-detail'></i> <span>Profile</span>
                                 </span>
@@ -32,7 +32,7 @@ export default function Sidebar(){
                     </li>
                     <li>
                         <Link to='/exercices/list' className="Link">
-                            <button id={location.pathname == '/exercices/list' ? "btnSideBarActive" : null}>
+                            <button className="buttonsidebarClient" id={location.pathname == '/exercices/list' ? "btnSideBarClientActive" : null}>
                                 <span>
                                 <i className='bx bx-dumbbell'></i> <span>Exercices</span>
                                 </span>
@@ -42,7 +42,7 @@ export default function Sidebar(){
                     </li>
                     <li>
                         <Link to='/exercices/my-workouts' className="Link">
-                            <button id={location.pathname == '/exercices/my-workouts' ? "btnSideBarActive" : null}>
+                            <button id={location.pathname == '/exercices/my-workouts' ? "btnSideBarClientActive" : null}>
                                 <span>
                                     <i className='bx bxs-timer'></i> <span>My workouts</span>
                                 </span>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { AuthContext } from './AuthContext'
+import { OrderContext } from './OrderContext'
 export const CartContext = createContext()
 
  export const CartProvider = ({children}) => {
@@ -14,12 +15,12 @@ export const CartContext = createContext()
   const [isTrue, setisTrue] = useState(false)
 
   const id = localStorage.getItem('id_active');
-  
-console.log(id)
+  const {addedorder}=useContext(OrderContext)
+
   const {userisauth} =useContext(AuthContext)
   useEffect(() => {
     fetchCart();
-}, [addedtocart, deletedItem,Isaddedtocart,userisauth,id]);
+}, [addedtocart, deletedItem,Isaddedtocart,userisauth,id,addedorder]);
 
 console.log(userisauth)
 
@@ -35,6 +36,7 @@ const fetchCart = () => {
             console.error(error);
         });
 };
+
 
   return (
 

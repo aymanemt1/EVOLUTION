@@ -101,7 +101,7 @@ Route::put('/product/{id}', [ProductController::class, 'update']);
 Route::put('/seller',[SellerController::class,'update']);
 Route::get('/getProductImage/{imageName}', [ProductController::class, 'getProductImage']);
 Route::put('/product', [ProductController::class, 'updateproduct']);
-// Route::post('/ticket', [ticketController::class, 'ticket']);
+Route::post('/ticket/{id}',[ticketController::class, 'ticket']);
 
 
 //routes for calculatot

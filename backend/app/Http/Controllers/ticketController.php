@@ -15,22 +15,19 @@ use Illuminate\Http\Request;
 class ticketController extends Controller
 {
   
-    // public function ticket(Request $request)
-    // {
-
-    //     $client = Client::find($request->client_id);
-    //     $order = Order::with('items.product', 'delivery')->find($request->id);
+    public function ticket(Request $request, $id)
+    {
+        // Fetch the order using the provided ID
+        $order = Order::find($id);
     
-    //     $data = [
-    //         'client' => $client,
-    //         'order' => $order,
-    //     ];
+        if (!$order) {
+            return response()->json(['error' => 'Order not found'], 404);
+        }
     
-
-    //     $pdf = PDF::loadView('ticket', $data);
+        // Generate PDF
+        $pdf = PDF::loadView('ticket', $order);
     
-    //     return $pdf->download('ticket.pdf');
-    // }
-    
-  
+        // Return PDF as a downloadable response
+        return $pdf->download('ticket_' . $id . '.pdf');
+    }
 }
