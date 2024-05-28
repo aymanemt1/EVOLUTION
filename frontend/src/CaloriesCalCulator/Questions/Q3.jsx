@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { CaloriesContextt } from "../../Context/CaloriesContext";
+import { CaloriesProvider } from "../../Context/CaloriesContext";
 
 const Q3 = ({ BackQ3,NextQ3}) => {
-  const {weight,setWeight}=useContext(CaloriesContextt)
+  const {weight,setWeight}=useContext(CaloriesProvider)
 
   const handleChange = (e) => {
     setWeight(e.target.value);

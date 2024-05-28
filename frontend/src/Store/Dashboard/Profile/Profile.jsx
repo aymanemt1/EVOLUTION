@@ -5,10 +5,12 @@ import axios from 'axios'
 import { WishlistContext } from '../../../Context/WishlistContext'
 import { CartContext } from '../../../Context/CartContext'
 import { OrderContext } from '../../../Context/OrderContext'
+import { AuthContext } from '../../../Context/AuthContext'
 export const Profile = () => {
   const {countwishlist} =useContext(WishlistContext)
   const {count} =useContext(CartContext)
   const {orderssCount,addedorder,setaddedorder} =useContext(OrderContext)
+  const {client,setclient} =useContext(AuthContext)
   const id = localStorage.getItem('id_active');
 
 
@@ -26,7 +28,8 @@ export const Profile = () => {
 const getClients = () => {
       axios.get(`http://127.0.0.1:8000/api/client?id=${id}`)
      .then(response => {
-       setClientdata(response.data.clientdata);        
+       setClientdata(response.data.clientdata);   
+       setclient(clientData)     
        console.log(response);
      })
      .catch(error => {

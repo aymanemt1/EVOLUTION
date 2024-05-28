@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Categorytype;
 use App\Models\Color;
 use App\Models\Gender;
-<<<<<<< HEAD
 use App\Models\Order;
 use App\Models\Orderitem;
 use App\Models\Plan;
@@ -22,50 +21,27 @@ use Illuminate\Support\Facades\DB;
 
 use function PHPSTORM_META\type;
 
-=======
-use App\Models\Product;
-use App\Models\Size;
-use App\Models\Type;
-use App\Models\Wishlist;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 class ProductController extends Controller
 {
     public function create()
     {
         $productsData = [
             [
-<<<<<<< HEAD
                 'title' => "Cap",
                 'sub_description' => "High performance road cap ",
                 'description' => "These custom road cap offer the best in comfort, performance, and style. Featuring a lightweight design and breathable materials, they are perfect for long rides and races.",
-=======
-                'title' => "Shoes",
-                'sub_description' => "High performance road shoes for women",
-                'description' => "These custom road shoes offer the best in comfort, performance, and style. Featuring a lightweight design and breathable materials, they are perfect for long rides and races.",
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
                 'price' => 120,
                 'stock' => 40
             ],
          
         ];
           $images = [
-<<<<<<< HEAD
         'cap1.png',
         'cap2.png',
         'cap3.png',
         'cap4.png',
         'cap5.png',
         'cap6.png',
-=======
-        'shoes20.png',
-        'shoes21.png',
-        'shoes22.png',
-        'shoes23.png',
-        'shoes25.png',
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     ];
     
         for ($i = 0; $i < 18; $i++) {
@@ -78,15 +54,9 @@ class ProductController extends Controller
             $product->price = $productData['price'];
             $product->image =$images[array_rand($images)];;
             $product->stock = $productData['stock'];
-<<<<<<< HEAD
             $product->gender_id = 1; 
             $product->category_id = 2;
             $product->type_id = 6; 
-=======
-            $product->gender_id = 2; // Randomly assign gender_id between 1 and 2
-            $product->category_id = 1; // All products have category_id 1
-            $product->type_id = rand(1,2); // Randomly assign type_id between 1 and 3
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
     
             $product->save();
         }
@@ -144,7 +114,6 @@ public function getProductsShop()
     $allProducts = Product::select('products.*', DB::raw('(CASE WHEN wishlists.product_id IS NOT NULL THEN true ELSE false END) as in_wishlist'))
                     ->leftJoin('wishlists', 'products.id', '=', 'wishlists.product_id')
                     ->with('color', 'size','category','type')
-<<<<<<< HEAD
                     ->paginate($productCount);
 
                     // $filteredProducts = []; 
@@ -162,12 +131,6 @@ public function getProductsShop()
     return response()->json([
         'products' => $allProducts,
         // 'filteredProducts' => $filteredProducts,
-=======
-                    ->paginate($productCount); 
-
-    return response()->json([
-        'products' => $allProducts,
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
         'genders' => $genders,
         'categories' => $categories,
         'productSizes' => $productSizes,
@@ -196,16 +159,10 @@ public function show($id) {
     ->with('type','category') 
     ->paginate($count);
 
-<<<<<<< HEAD
     // Check if the product is in the wishlist table
     $isInWishlist = Wishlist::where('product_id', $id)
     ->exists();
 
-=======
-
-    // Check if the product is in the wishlist table
-    $isInWishlist = Wishlist::where('product_id', $id)->exists();
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 
     return response()->json([
         'product' => $product,
@@ -219,7 +176,6 @@ public function show($id) {
 }
 
 
-<<<<<<< HEAD
 public function showformproduct(){
 
     $categories = Category::all();
@@ -463,6 +419,4 @@ public function deleteprod($id){
     
 }
   
-=======
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
 }

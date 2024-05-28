@@ -3,10 +3,10 @@ import { Outlet, useNavigate } from 'react-router';
 import axios from 'axios';
 import '../SellerAuth.css'
 import { Link } from 'react-router-dom';
+import { Alert } from '@mui/material';
 export const Register = () => {
     const userId = localStorage.getItem('id_active');
-   
-  
+    const [messageError,setmessageError]=useState('')
     const nav = useNavigate()
       const [formData,setformData] = useState({
         name: '',
@@ -65,11 +65,13 @@ export const Register = () => {
           })
           .catch(error => {
               console.error(error);
+              setmessageError(error.response.data.error);
           });
     };
     
     
   return (
+    <>
     <form onSubmit={AddSeller} className='formseller'>
       <h2>Create Seller Account</h2>
       <input  name='usr_id' hidden />
@@ -88,5 +90,9 @@ export const Register = () => {
     <Link to='/store/seller-auth/login'>Login</Link>
    </div>
 </form>
+{messageError && <Alert className='msgalertlogin' severity="error">{messageError}</Alert>}
+
+</>
+
   )
 }

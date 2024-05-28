@@ -5,12 +5,12 @@ import Q2 from "./Questions/Q2";
 import Q3 from "./Questions/Q3";
 import Q4 from "./Questions/Q4";
 import Q5 from "./Questions/Q5";
-import { CaloriesContextt } from '../Context/CaloriesContext';
+import { CaloriesProvider } from '../Context/CaloriesContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function CaloriesCalCulator() {
-  const { birthday, height, weight, goal, activity } = useContext(CaloriesContextt);
+  const { birthday, height, weight, goal, activity } = useContext(CaloriesProvider);
   const [Q1Display, setQ1Display] = useState(true);
   const [Q2Display, setQ2Display] = useState(false);
   const [Q3Display, setQ3Display] = useState(false);

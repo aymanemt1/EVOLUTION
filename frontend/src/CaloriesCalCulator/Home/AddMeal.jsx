@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { CaloriesContextt } from "../../Context/CaloriesContext";
+import { CaloriesProvider } from "../../Context/CaloriesContext";
 import { FaTimes } from "react-icons/fa"; // Importing the close icon from react-icons
 import { FaSpinner } from "react-icons/fa"; // Importing a spinner icon from react-icons (optional, can be replaced with any loader)
 import axios from "axios"; // Importing Axios library
@@ -25,7 +25,7 @@ export default function AddMeal({ title }) {
     setConsumedCarbs,
     consumedFats,
     setConsumedFats,
-  } = useContext(CaloriesContextt);
+  } = useContext(CaloriesProvider);
 
   const handleNutritionNameChange = (e) => {
     setNutritionName(e.target.value);

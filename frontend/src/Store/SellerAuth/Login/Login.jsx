@@ -4,11 +4,15 @@ import axios from 'axios';
 import '../SellerAuth.css'
 import { Link } from 'react-router-dom';
 import { SellerContext } from '../../../Context/Sellercontext';
+import { Alert } from '@mui/material';
+import { AuthContext } from '../../../Context/AuthContext';
 
 export const LoginSeller = () => {
     const userId = localStorage.getItem('id_active');
    const {seller}= useContext(SellerContext)
+   const {userisauth, setuserisauth}= useContext(AuthContext)
   
+   const [messageError,setmessageError]=useState('')
     const nav = useNavigate()
       const [formData,setformData] = useState({
         nameseller: '',
@@ -57,30 +61,42 @@ export const LoginSeller = () => {
     };
       axios.post('http://127.0.0.1:8000/api/LoginSeller', SellerData)
           .then(response => {
-              console.log(response);
-              const  sellerid = response.data.seller_id;
-              console.log(response.data.seller)
+            const  sellerid = response.data.seller_id;
+            console.log(response.data.seller)
               localStorage.setItem('seller_id', sellerid);
               localStorage.setItem('isSeller', true);
+              setuserisauth(true)
               nav('/store/seller')
-  
           })
           .catch(error => {
-              console.error(error);
-          });
+              console.error(error.message);
+              setmessageError(error.response.data.message);
+            });
     };
    
+
   return (
+    <>
     <form onSubmit={LoginSeller} className='formseller'>
       <h2>Login into your seller account</h2>
       <input onChange={handleChange} className="input" name='nameseller' type='text' placeholder="Name" />
+<p>
       {Errors.nameseller && <span className='errorMessage'>{Errors.nameseller} <i className='bx bxs-error'></i></span>} 
+
+</p>
       <input   onChange={handleChange} className="input"  name='emailseller' type='text' placeholder="Email" />
+      <p>
+
       {Errors.emailseller && <span className='errorMessage'>{Errors.emailseller} <i className='bx bxs-error'></i></span>} 
+      </p>
    <div>
    <button type='submit' className='btn-authseller'>submit</button>
     <Link to='/store/seller-auth/register'><span></span> register</Link>
    </div>
+
 </form>
+   {messageError && <Alert className='msgalertlogin' severity="error">{messageError}</Alert>}
+   </>
+
   )
 }

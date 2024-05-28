@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { FaMinus } from "react-icons/fa";
 import { TiEquals } from "react-icons/ti";
-import { CaloriesContextt } from "../../Context/CaloriesContext";
+import { CaloriesProvider } from "../../Context/CaloriesContext";
 
 export default function CaloriesHome() {
   const { isactive, setisactive } = useContext(MenuContext);
@@ -21,8 +21,7 @@ export default function CaloriesHome() {
     setFatsGoal,
     ConsumedFats,
     setConsumedFats,
-    acheivedGoal,setAchievvedGoal
-  } = useContext(CaloriesContextt);
+  } = useContext(CaloriesProvider);
   const [selectedMenu, setSelectedMenu] = useState("macros");
 
   return (
@@ -65,7 +64,7 @@ function MacrosContent() {
     setFatsGoal,
     ConsumedFats,
     setConsumedFats,
-  } = useContext(CaloriesContextt);
+  } = useContext(CaloriesProvider);
   const proteinPercentage = (consumedProtein / proteinsGoal) * 100;
   const fatPercentage = (ConsumedFats / fatsGoal) * 100;
   const carbsPercentage = (consumedCrabs / carbsGoal) * 100;
@@ -134,7 +133,7 @@ function MacrosContent() {
 }
 
 function CaloriesContent() {
-  const { goalCalories, consumedCalories } = useContext(CaloriesContextt);
+  const { goalCalories, consumedCalories } = useContext(CaloriesProvider);
   const netCalories = goalCalories - consumedCalories;
   const [positiveNet, setPositiveNet] = useState(true);
   const [warningMessage, setWarningMessage] = useState("");

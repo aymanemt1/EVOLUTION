@@ -1,5 +1,6 @@
 import axios from 'axios'
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { AuthContext } from './AuthContext'
 export const CartContext = createContext()
 
  export const CartProvider = ({children}) => {
@@ -12,11 +13,14 @@ export const CartContext = createContext()
   const [Cart, setCart] = useState([])
   const [isTrue, setisTrue] = useState(false)
   const id = localStorage.getItem('id_active');
+
+  const {userisauth} =useContext(AuthContext)
   useEffect(() => {
 
     fetchCart();
-}, [addedtocart, deletedItem,Isaddedtocart]);
+}, [addedtocart, deletedItem,Isaddedtocart,userisauth,id]);
 
+console.log(userisauth)
 
 const fetchCart = () => {
   axios.get(`http://127.0.0.1:8000/api/getCartItem?id=${id}`)

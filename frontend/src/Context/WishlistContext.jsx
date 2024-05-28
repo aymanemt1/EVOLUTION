@@ -1,5 +1,6 @@
 import axios from 'axios'
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { AuthContext } from './AuthContext'
 
 export const WishlistContext = createContext()
 
@@ -9,11 +10,12 @@ export const WishlistContext = createContext()
   const [addedtowishlist,setaddedtowishlist]=useState(false)
   const [countwishlist,setcountwishlist]=useState(0)
   const id = localStorage.getItem('id_active');
+  const {userisauth} =useContext(AuthContext)
 
   const [wishlist, setwishlist] = useState([])
   useEffect(() => {
     fetchwishlist();
-  }, [addedtowishlist,deletedItemwishlist,id]);
+  }, [addedtowishlist,deletedItemwishlist,id,userisauth]);
 
 
   const fetchwishlist = () => {

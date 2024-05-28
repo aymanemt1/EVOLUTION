@@ -22,6 +22,7 @@ const nav = useNavigate()
 const {setaddedorder,addedorder} =useContext(OrderContext)
 const [clientdata,setClientdata]=useState([])
 const [deliveryPrice, setDeliveryPrice] = useState(0);
+const [messageError, setmessageError] = useState();
 
 const [deliveryoption,setdeliveryoption]=useState('')
   const [formData,setformData] = useState({
@@ -116,10 +117,12 @@ const isFormValid = validateForm();
           console.log(response);
     nav('/store/checkout-3')
     setaddedorder(true)
-    Alert(response.data.error)
+   
       })
       .catch(error => {
           console.error(error);
+          setmessageError(error.response.data.error);
+
       });
 };
 
@@ -211,7 +214,9 @@ getClients()
             </div>
            
             </div>
+{messageError && <Alert className='msgalertlogin' severity="error">{messageError}</Alert>}
        </fieldset>
+
        <fieldset className='fieldset'>
         <span className='step-check'>2</span>
      <div className="centerdel">
