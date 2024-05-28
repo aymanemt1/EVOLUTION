@@ -1,8 +1,10 @@
-import React, { createContext, useState, useEffect } from "react";
 
-export const CaloriesProvider = createContext();
 
-export default function CaloriesContext({ children }) {
+import axios from 'axios';
+import React, { createContext, useEffect, useState } from 'react'
+export const CaloriesContext = createContext()
+
+export const CaloriesProvider = ({ children }) => {
   const [birthday, setBirthday] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
@@ -122,8 +124,8 @@ export default function CaloriesContext({ children }) {
   }, [height, weight, age, activityMultiplier, goalCaloriesAdjustment]);
 
   
-  return (
-    <CaloriesProvider.Provider
+    return (
+      <CaloriesContext.Provider
       value={{
         birthday,
         setBirthday,
@@ -160,6 +162,7 @@ export default function CaloriesContext({ children }) {
       }}
     >
       {children}
-    </CaloriesProvider.Provider>
-  );
+    </CaloriesContext.Provider>
+
+    )
 }
