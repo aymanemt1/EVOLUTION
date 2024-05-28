@@ -42,8 +42,31 @@ export const Orders = () => {
 const elapsedDuration = Date.now() - minExpectedDeliveryDate.getTime();
 
 const percentage = (elapsedDuration / totalDuration) * 100;
+ 
+// const ticketBtn = async () => {
 
-  console.log(orderss)
+//   try {
+//       const response = await axios.post('http://127.0.0.1:8000/api/ticket', orderss, {
+//           responseType: 'blob' 
+//       });
+
+//       const blob = new Blob([response.data], { type: 'application/pdf' });
+//       const url = window.URL.createObjectURL(blob);
+
+//       const link = document.createElement('a');
+//       link.href = url;
+//       link.setAttribute('download', 'ticket.pdf'); 
+//       document.body.appendChild(link);
+
+//       link.click();
+
+//       document.body.removeChild(link);
+//   } catch (error) {
+//       console.error('Error during request:', error);
+//   }
+// };
+
+ 
   return (
     <div>
     {orderssCount > 0 ? (
@@ -70,7 +93,7 @@ const percentage = (elapsedDuration / totalDuration) * 100;
         <div className="reviweitem">
           <p>#Order{ord.id}</p>
           <div className="statu">
-            <span>{ord.status}</span>
+          {/* <button className='ticketBtn' onClick={ticketBtn}>telecharger</button> */}
           </div>
           <div className="date">
             <span>{ord.created_at}</span>
@@ -106,12 +129,12 @@ const percentage = (elapsedDuration / totalDuration) * 100;
                 <div className='order-content'>
                   <div className="detail-order-item">
                     <p><span>Product:</span> {item.product.title}</p>
-                    <p><span>Category:</span> {item.product.category}</p> {/* Assuming category is different from title */}
+                    <p><span>Category:</span> {item.product.category}</p>
+                    
                     <p><span>Price:</span> {item.product.price}</p>
                     <p><span>Quantity:</span> {item.quantity}</p>
                   </div>
                   <div className="price">${item.price}</div>
-                  
                 </div>
               </div>
             ))}

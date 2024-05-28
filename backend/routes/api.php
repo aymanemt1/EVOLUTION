@@ -13,6 +13,7 @@ use App\Http\Controllers\MacrosConsumedController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ticketController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -93,6 +94,7 @@ Route::put('/product/{id}', [ProductController::class, 'update']);
 Route::put('/seller',[SellerController::class,'update']);
 Route::get('/getProductImage/{imageName}', [ProductController::class, 'getProductImage']);
 Route::put('/product', [ProductController::class, 'updateproduct']);
+// Route::post('/ticket', [ticketController::class, 'ticket']);
 
 
 //routes for calculatot 
@@ -103,7 +105,7 @@ Route::put('/macros/{id}', [MacrosConsumedController::class, 'update']);
 Route::put('/calories_users/{id}', [CaloriesUserController::class, 'update']);
 
 // after authentication 
-//Route::middleware('auth:api')->put('/macros', [MacrosConsumedController::class, 'update']);
+// Route::middleware('auth:api')->put('/macros', [MacrosConsumedController::class, 'update']);
 
 
 

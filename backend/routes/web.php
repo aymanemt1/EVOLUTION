@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,16 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-// Route::get('/', function () {
-//     return ['Laravel' => app()->version()];
-// });
+Route::get('/', function () {
+    return ['Laravel' => app()->version()];
+});
 
-// Route::get('/prod', [ProductController::class, 'create']);
-// Route::get('/updating', [ProductController::class, 'updating']);
+Route::get('/prod', [ProductController::class, 'create']);
+Route::get('/updating', [ProductController::class, 'updating']);
 
-// Route::get('/cat', [CategoryController::class, 'create']);
-// Route::get('/gender', [GenderController::class, 'create']);
-// Route::get('/createSizes', [ProductController::class, 'createSizes']);
-// Route::get('/createColor', [ProductController::class, 'createColor']);
+Route::get('/cat', [CategoryController::class, 'create']);
+Route::get('/gender', [GenderController::class, 'create']);
+Route::get('/createSizes', [ProductController::class, 'createSizes']);
+Route::get('/createColor', [ProductController::class, 'createColor']);
 
 // require __DIR__.'/auth.php';

@@ -20,6 +20,7 @@ class OrderController extends Controller
     $orderss = Order::where('client_id', $clientData->id)->with('items.product.type','delivery')->get();
     $orderssCount = $orderss->count();
    
+    
      return response()->json([
         'orderssCount' => $orderssCount,
         'orderss' => $orderss,
