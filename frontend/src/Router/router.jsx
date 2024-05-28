@@ -1,9 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import LandingPage from "../LandingPage/landingPage";
-import Login from "../Auth2/login/login";
-import Signup from "../Auth2/signup/signup";
-import Auth from "../Auth2/auth";
 import { Storeparent } from "../Store/Storeparent";
 import { Productdetail } from "../Store/ProductDetail/Productdetail";
 import { ProductsShop } from "../Store/Shop/Shop";
@@ -30,6 +27,16 @@ import { Sellerproducts } from "../Store/Seller/Sellerprofile/Sellerproducts/Sel
 import CaloriesCalCulator from "../CaloriesCalCulator/CaloriesCalCulator";
 import CaloriesCalculatorMain from "../CaloriesCalCulator/Home/CaloriesCalculatorMain";
 import ChangeGoal from "../CaloriesCalCulator/ChangeGoal/ChangeGoal";
+import Login from "../Auth/login/login";
+import Signup from "../Auth/signup/signup";
+import Auth from "../Auth/auth";
+import Unfounded from "../Unfounded/Unfounded";
+import Exercices from "../Exercices/exercices";
+import ExercicesList from "../Exercices/exercicesList/exercicesList";
+import Profile from "../Exercices/Profile/profile";
+import Home from "../Home/home";
+import Workouts from "../Exercices/workouts/workouts";
+import Categories from "../Exercices/categories/categories";
 
 export default function RouterApp(){
   const token = localStorage.getItem("token");
@@ -52,9 +59,17 @@ export default function RouterApp(){
       <Navigate to="/store" />
 )
 } /> */}
+
+{/* <Route path="*" element={<Unfounded/>} /> */}
                     
         <Route element={<RequiredAuth />}>
-
+        <Route path='/home' element={<Home />} />
+                    <Route path='/exercices' element={<Exercices />}>
+                        <Route path="overview" element={<Categories/>} />
+                        <Route path="profile" element={<Profile />} />
+                        <Route path="list" element={<ExercicesList />} />
+                        <Route path="my-workouts" element={<Workouts />} />
+                    </Route>
                 
                  <Route path="/store/seller-auth" element={
                  <Fragment>

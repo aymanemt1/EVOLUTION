@@ -1,15 +1,11 @@
 :root {
-    --blackE: #0c010b;
-    --blueE: #0151e4;
-    --cityE : #1a9ff5;
-    --cityEshadow : #1a9df573 ; 
-    --whiteE : #f2f1f5;
-    --grey : #eef0ef;
-    --radius : 10px;
+    --blueChelsea : #0153DF;
+    --blueCity : #3F85FF;
+    --blackNewcastle : #000000;
 }
 
 .parentFooter {
-    background-image: linear-gradient(140deg, rgb(1,81,228),rgb(112,199,255));
+    background-color: var(--blueChelsea);
 }
 .arraySocialMedia {
     padding-top: 2rem;
