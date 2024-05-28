@@ -10,8 +10,8 @@
   margin: 0;
   box-sizing: border-box;
 }
-<<<<<<< HEAD
-=======
+
+
 ::selection {
   background-color: black;
   color: var(--blueCity);
@@ -236,4 +236,3 @@
 @keyframes prog {
   to  {   width: 100%;}
 }
->>>>>>> talibi-dev

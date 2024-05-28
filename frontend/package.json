@@ -12,26 +12,13 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "animejs": "^3.2.2",
     "antd": "^5.17.0",
-    "aos": "^2.3.4",
-<<<<<<< HEAD
     "axios": "^1.7.1",
-=======
-    "axios": "^1.6.8",
-    "chart.js": "^4.4.3",
->>>>>>> talibi-dev
     "gsap": "^3.12.5",
-    "install": "^0.13.0",
-    "npm": "^10.8.0",
-=======
     "aos": "^2.3.4",
-    "axios": "^1.6.8",
     "chart.js": "^4.4.3",
-    "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
->>>>>>> e85dd40aeaea789b3f4efe8140e8c1ca1cd874d2
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
@@ -41,8 +28,6 @@
     "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
-    "redux": "^5.0.1",
->>>>>>> e85dd40aeaea789b3f4efe8140e8c1ca1cd874d2
     "web-vitals": "^2.1.4"
   },
   "scripts": {

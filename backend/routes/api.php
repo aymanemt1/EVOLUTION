@@ -37,7 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-<<<<<<< HEAD
+
 
 Route::get('/getcollections', [ProductController::class, 'getProductsHome']);
 Route::get('/getProductsShop', [ProductController::class, 'getProductsShop']);
@@ -104,17 +104,16 @@ Route::put('/product', [ProductController::class, 'updateproduct']);
 //routes for calculatot
 // routes/api.php
 
-// use App\Http\Controllers\CaloriesUserController;
-// Route::post('/calories-users', [CaloriesUserController::class, 'store']);
-// Route::put('/macros/{id}', [MacrosConsumedController::class, 'update']);
-// Route::put('/calories_users/{id}', [CaloriesUserController::class, 'update']);
+use App\Http\Controllers\CaloriesUserController;
+Route::post('/calories-users', [CaloriesUserController::class, 'store']);
+Route::put('/macros/{id}', [MacrosConsumedController::class, 'update']);
+Route::put('/calories_users/{id}', [CaloriesUserController::class, 'update']);
 
 // after authentication
 //Route::middleware('auth:api')->put('/macros', [MacrosConsumedController::class, 'update']);
 
 
-<<<<<<< HEAD
-=======
+
 Route::controller(FavoriteExerciceController::class)->group(function () {
     Route::get('favorite-exercice/{id}', 'index');
     Route::post('/favorite-exercice', 'store');
@@ -139,7 +138,3 @@ Route::controller(WorkoutController::class)->group(function () {
     Route::delete('/workouts/{id}', 'destroy');
     Route::get('/workouts/{id}/exercises', 'getWorkoutExercises');
 });
->>>>>>> talibi-dev
-=======
->>>>>>> a06c60eaf17ff86a8ac4f04aaa7e06396050765b
->>>>>>> e85dd40aeaea789b3f4efe8140e8c1ca1cd874d2

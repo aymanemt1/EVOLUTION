@@ -3,12 +3,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from "../Auth/login/login";
 import Signup from "../Auth/signup/signup";
 import Auth from "../Auth/auth";
-import Home from "../Home/home";p
+import Home from "../Home/home";
 import LandingPage from "../LandingPage/landingPage";
 import Exercices from "../Exercices/exercices"; 
 import Unfounded from "../Unfounded.jsx/Unfounded";
 import CaloriesCalCulator from "../CaloriesCalCulator/CaloriesCalCulator";
-import Unfounded from "../Unfounded.jsx/Unfounded";
+import Categories from "../Exercices/categories/categories";
+import Profile from "../Exercices/Profile/profile";
+import ExercicesList from "../Exercices/exercicesList/exercicesList";
+import { Storeparent } from "../Store/Storeparent";
+import Workouts from "../Exercices/workouts/workouts";
 
 
 export default function RouterApp() {
@@ -16,7 +20,7 @@ export default function RouterApp() {
         <Fragment>
             <BrowserRouter>
                 <Routes>
-                    <Route path="*" element={<Unfounded />} />
+                    <Route path="*" element={<Unfounded/>} />
                     <Route path='/' element={<LandingPage />} />
                     <Route path="/auth" element={<Auth />}>
                         <Route path="log-in" element={<Login />} />
@@ -24,7 +28,7 @@ export default function RouterApp() {
                     </Route>
                     <Route path='/home' element={<Home />} />
                     <Route path='/exercices' element={<Exercices />}>
-                        <Route path="overview" element={<Categories />} />
+                        <Route path="overview" element={<Categories/>} />
                         <Route path="profile" element={<Profile />} />
                         <Route path="list" element={<ExercicesList />} />
                         <Route path="my-workouts" element={<Workouts />} />
