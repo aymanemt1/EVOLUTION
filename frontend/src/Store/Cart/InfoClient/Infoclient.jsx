@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router'
 import { Steper } from '../Steper'
 import { OrderContext } from '../../../Context/OrderContext'
 import { Alert } from '@mui/material'
+import { AuthContext } from '../../../Context/AuthContext'
 export const Infoclient = () => {
   const { setinterface } = useContext(StepCheckoutcontent)
   const userId = localStorage.getItem('id_active');
@@ -20,6 +21,7 @@ export const Infoclient = () => {
 const nav = useNavigate()
 
 const {setaddedorder,addedorder} =useContext(OrderContext)
+const {isclient,setisclient} =useContext(AuthContext)
 const [clientdata,setClientdata]=useState([])
 const [deliveryPrice, setDeliveryPrice] = useState(0);
 const [messageError, setmessageError] = useState();
@@ -117,6 +119,7 @@ const isFormValid = validateForm();
           console.log(response);
     nav('/store/checkout-3')
     setaddedorder(true)
+    setisclient(true)
    
       })
       .catch(error => {

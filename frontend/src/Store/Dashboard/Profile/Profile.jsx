@@ -10,7 +10,7 @@ export const Profile = () => {
   const {countwishlist} =useContext(WishlistContext)
   const {count} =useContext(CartContext)
   const {orderssCount,addedorder,setaddedorder} =useContext(OrderContext)
-  const {client,setclient} =useContext(AuthContext)
+  const {client,setclient,user_db, setuser_db} =useContext(AuthContext)
   
   const id = localStorage.getItem('id_active');
 
@@ -25,6 +25,7 @@ export const Profile = () => {
     user_id: id
   });
 
+  console.log(clientData)
 
 const getClients = () => {
       axios.get(`http://127.0.0.1:8000/api/client?id=${id}`)

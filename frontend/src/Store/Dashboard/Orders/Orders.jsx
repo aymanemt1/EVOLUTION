@@ -115,8 +115,8 @@ export const Orders = () => {
           <p>#Order{ord.id}</p>
           <div className="statu">
 
-            <span>{ord.status}</span>
-          {/* <button className='ticketBtn' onClick={()=>ticketBtn(ord.id)}>telecharger</button> */}
+            {/* <span>{ord.status}</span> */}
+          <button className='ticketBtn' onClick={()=>ticketBtn(ord.id)}>telecharger</button>
           </div>
           <div className="date">
             <span>{ord.created_at}</span>

@@ -114,13 +114,12 @@ export default function Login() {
               var userDataString = JSON.stringify(User);
              const token = checkResponse.data.token;
              const idseller = checkResponse.data.idseller;
-
               const userid = checkResponse.data.userid;
               localStorage.setItem('user', userDataString);
               localStorage.setItem('token', token);
               localStorage.setItem('id_active', userid);
                localStorage.setItem('seller_id', idseller);
-
+               
               navigate('/home');
             } else {
               console.error('User not registered');

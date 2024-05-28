@@ -18,16 +18,19 @@ class ticketController extends Controller
     public function ticket(Request $request, $id)
     {
         // Fetch the order using the provided ID
-        $order = Order::find($id);
+        // $order = Order::find($id);
     
-        if (!$order) {
-            return response()->json(['error' => 'Order not found'], 404);
-        }
+        // if (!$order) {
+        //     return response()->json(['error' => 'Order not found'], 404);
+        // }
+
+        $data = [
+            'nom' => 'aymane',
+        ];
     
-        // Generate PDF
-        $pdf = PDF::loadView('ticket', $order);
+        $pdf = PDF::loadView('ticket', $data);
     
-        // Return PDF as a downloadable response
-        return $pdf->download('ticket_' . $id . '.pdf');
+        // Return the PDF as a downloadable response
+        return $pdf->download('ticket.pdf');
     }
 }

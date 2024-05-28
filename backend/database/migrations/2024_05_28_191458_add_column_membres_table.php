@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-  
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('membres', function (Blueprint $table) {
-            $table->id();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
+        Schema::table('membres', function (Blueprint $table) {
+            $table->string('username')->after('id');
+            $table->string('email')->unique()->after('username');
+
         });
     }
 
@@ -23,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('membres');
+        Schema::table('membres', function (Blueprint $table) {
+            //
+        });
     }
 };

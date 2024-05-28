@@ -16,7 +16,6 @@ export default function Profile() {
   const {setuser_id,user_id,user_db,setuserisauth} =React.useContext(AuthContext)
  console.log(user_db.client)
 
-
  const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,7 +33,7 @@ export default function Profile() {
     const id =  localStorage.getItem('id_active');
     setuser_id(id)
     
-  },[])
+  },[user_db])
   const user =  localStorage.getItem('user');
   const token =  localStorage.getItem('token');
 
@@ -63,7 +62,7 @@ export default function Profile() {
 
   return (
     <React.Fragment>
- {user ?
+ {user_db.client ?
 
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
               <IconButton
