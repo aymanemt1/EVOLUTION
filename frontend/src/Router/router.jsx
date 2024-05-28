@@ -27,6 +27,7 @@ import { HomeSeller } from "../Store/Seller/Homeseller/Homeseller";
 import Sellersidebar from "../Store/Seller/Sellerprofile/Sidebarseller/Sidebaseller";
 import { Sellerprofile } from "../Store/Seller/Sellerprofile/SellerProfile/Sellerprofile";
 import { Sellerproducts } from "../Store/Seller/Sellerprofile/Sellerproducts/Sellerproducts";
+import { Admin } from "../Store/Admin/Admin";
 
 export default function RouterApp(){
   const token = localStorage.getItem("token");
@@ -141,15 +142,13 @@ export default function RouterApp(){
                      <Sellerprofile />
                         </Fragment>
                     }/>
-                    <Route path="/store/seller/products" element={
-                        <Fragment>
-                     <Navbar />
-                     <Sellerproducts />
-                        </Fragment>
-                    }/>
 
                 </Route>
-
+                    <Route path="/store/admin" element={
+                        <Fragment>
+                     <Admin />
+                        </Fragment>
+                    }/>
         </Route>
 
                 </Routes>
