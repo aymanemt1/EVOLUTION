@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CaloriesUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
@@ -97,10 +98,9 @@ Route::put('/product', [ProductController::class, 'updateproduct']);
 //routes for calculatot 
 // routes/api.php
 
-// use App\Http\Controllers\CaloriesUserController;
-// Route::post('/calories-users', [CaloriesUserController::class, 'store']);
-// Route::put('/macros/{id}', [MacrosConsumedController::class, 'update']);
-// Route::put('/calories_users/{id}', [CaloriesUserController::class, 'update']);
+Route::post('/calories-users', [CaloriesUserController::class, 'store']);
+Route::put('/macros/{id}', [MacrosConsumedController::class, 'update']);
+Route::put('/calories_users/{id}', [CaloriesUserController::class, 'update']);
 
 // after authentication 
 //Route::middleware('auth:api')->put('/macros', [MacrosConsumedController::class, 'update']);
