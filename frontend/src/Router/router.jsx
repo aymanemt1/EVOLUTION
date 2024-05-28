@@ -29,8 +29,6 @@ export default function RouterApp(){
                     <Route path="/CaloriesCalculator/change-goal" element={<ChangeGoal/>}/>
                     <Route path="/CaloriesCalculator/Home" element={<CaloriesCalculatorMain/>}/>
                     <Route path="/sellerHome" element={<SellerHome/>}/>
-                    
-                       
                     <Route path='/store' element={<Storeparent />} />
 
                 </Routes>
