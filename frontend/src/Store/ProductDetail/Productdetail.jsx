@@ -22,6 +22,7 @@ export const Productdetail = () => {
 
   const [reviews,setreviews] = useState([])
   const [message,setmessage] = useState('')
+  const [messageError,setmessageError] = useState('')
 
     const [sizes, setSizes] = useState([]);
     const [colors, setColors] = useState([]);
@@ -97,6 +98,7 @@ export const Productdetail = () => {
             setaddedtocart(!addedtocart)
         } catch (error) {
             console.error("Error adding to cart:", error);
+            setmessageError(error.response.data.message)
         }
     };
 
@@ -124,15 +126,15 @@ export const Productdetail = () => {
         }
       };
 
-     
-      
-
+      console.log(res)
     return (
         <div className="productdetailParent">
             {!IsShow? <SimpleBackdrop /> :
             <div className='productdetail'>
                 <div className="product-banner">
                 <img src={`/store/Collections/${res.image}`} width={600} height={600} className="img-cover"  />
+                        <span className="stockstatu">{res.stock === 0 ? "Stock out" : 'In stock'}</span>
+                
                 </div>
                 <div className="product-content">
                     
@@ -183,6 +185,7 @@ export const Productdetail = () => {
                             </Link>
                         </div>
    {message && <Alert className='msgalert' severity="success">{message}</Alert>}
+   {messageError && <Alert className='msgalert' severity="error">{messageError}</Alert>}
 
                     </form>
                 </div>

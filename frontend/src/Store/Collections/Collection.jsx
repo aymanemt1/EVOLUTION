@@ -11,21 +11,21 @@ export const Collection = () => {
 
 
 const [collections,setcollections] = useState([])
-const {user_db,user_id} = useContext(AuthContext)
 const {setaddedtocart,addedtocart,setIsaddedtocart} = useContext(CartContext)
 const {addedtowishlist,setaddedtowishlist,setdeletedItem,deletedItem} = useContext(WishlistContext)
+const iduser = localStorage.getItem('id_active');
 
 useEffect(() => {
 
   fetchProducts();
  
-}, [addedtowishlist,deletedItem]);
+}, [deletedItem],addedtowishlist);
 
 
   const fetchProducts = () => {
     axios.get('http://127.0.0.1:8000/api/getcollections')
         .then(response => {
-          setcollections(response.data.products.data);
+          setcollections(response.data.products);
           console.log(response.data)
         })
         .catch(error => {
@@ -33,9 +33,10 @@ useEffect(() => {
         });
 };
 
+
 const handlecart = async (id) => {
   const formData = {
-      userId: user_id,
+      userId: iduser,
       productId: id,
       quantity: 1,
   };
@@ -52,7 +53,7 @@ const handlecart = async (id) => {
 
 const handleWishlist = async (id) => {
   const WishlistData = {
-      userId: user_id,
+      userId: iduser,
       productId: id,
   };
   try {
@@ -63,7 +64,7 @@ const handleWishlist = async (id) => {
       console.error("Error adding to WISHLIST:", error);
   }
 };
-
+console.log(collections)
  
   return (
     <div id='collectionStore'>
@@ -75,6 +76,18 @@ const handleWishlist = async (id) => {
             </div>
             <div id='productParent'>
           {
+            collections.length <=0 ?
+            <>
+            <span className="collectionloader"></span>
+            <span className="collectionloader"></span>
+            <span className="collectionloader"></span>
+            <span className="collectionloader"></span>
+            <span className="collectionloader"></span>
+            <span className="collectionloader"></span>
+            <span className="collectionloader"></span>
+            <span className="collectionloader"></span>
+            </>
+            :
             collections.map((item)=>(
               <div className='parentProducts'>
                 <div className='collection-product'>

@@ -27,24 +27,31 @@ class ProductController extends Controller
     {
         $productsData = [
             [
-                'title' => "Cap",
-                'sub_description' => "High performance road cap ",
-                'description' => "These custom road cap offer the best in comfort, performance, and style. Featuring a lightweight design and breathable materials, they are perfect for long rides and races.",
-                'price' => 120,
+                'title' => "Slim ",
+                'sub_description' => "High-performance men's Slim",
+                'description' => "This custom men's shoes offers the best in comfort, performance, and style. Featuring a lightweight design and breathable materials, it's perfect for long rides and races.",
+                'price' => 150,
                 'stock' => 40
             ],
-         
+            [
+                'title' => "Slim ",
+                'sub_description' => "Premium men's Slim",
+                'description' => "Ride in style with this premium mens's Slim. Made from high-quality materials, it offers superior comfort and performance for your cycling adventures.",
+                'price' => 180,
+                'stock' => 35
+            ],
         ];
-          $images = [
-        'cap1.png',
-        'cap2.png',
-        'cap3.png',
-        'cap4.png',
-        'cap5.png',
-        'cap6.png',
-    ];
     
-        for ($i = 0; $i < 18; $i++) {
+        $images = [
+            'slim1.png',
+            'slim2.png',
+            'slim3.png',
+            'slim4.png',
+            'slim5.png',
+            'slim6.png',
+        ];
+    
+        for ($i = 0; $i < 15; $i++) {
             $productData = $productsData[array_rand($productsData)];
             $product = new Product();
     
@@ -52,25 +59,26 @@ class ProductController extends Controller
             $product->sub_description = $productData['sub_description'];
             $product->description = $productData['description'];
             $product->price = $productData['price'];
-            $product->image =$images[array_rand($images)];;
+            $product->image = $images[array_rand($images)];
             $product->stock = $productData['stock'];
-            $product->gender_id = 1; 
-            $product->category_id = 2;
-            $product->type_id = 6; 
+            $product->gender_id = 1; // Assuming 2 represents women's category
+            $product->category_id = 1; // Assuming 2 represents jerseys category
+            $product->type_id =5; // Assuming 3 represents cycling type
     
             $product->save();
         }
     
-        return response()->json(['message' => '50 products created successfully.']);
+        return response()->json(['message' => '18 men\'s jerseys created successfully.']);
     }
+    
     
 
     public function updating()
     {
-        $products = Product::where('image', "cap1.png")->get();
+        $products = Product::where('type_id', "4")->get();
     
         foreach ($products as $product) {
-            $product->image = 'cap6.png';
+            $product->title = 'Short men';
             $product->save(); 
         }
     }
@@ -86,10 +94,12 @@ public function getProductsHome()
     $categories = Categorytype::with('category','type')->get();
 
     // Fetching products with colors, sizes, and a flag indicating whether they are in the wishlist
-    $allProducts = Product::select('products.*', DB::raw('(CASE WHEN wishlists.product_id IS NOT NULL THEN true ELSE false END) as in_wishlist'))
-                    ->leftJoin('wishlists', 'products.id', '=', 'wishlists.product_id')
-                    ->with('color', 'size','category','type')
-                    ->paginate(12); 
+    $allProducts = Product::select('products.*')
+->with('color', 'size', 'category', 'type')
+->inRandomOrder()
+->take(12) // Adjust the number of products you want to fetch
+->get();
+
 
     return response()->json([
         'products' => $allProducts,

@@ -22,6 +22,17 @@ class CartController extends Controller
         $sizeId = $request->size;
         $colorId = $request->color;
     
+        // Check if the product exists and its stock is sufficient
+        $product = Product::findOrFail($productId);
+        if ($product->stock < 1) {
+            return response()->json(['message' => 'Product is out of stock'], 400);
+        }
+    
+        // Check if the requested quantity exceeds available stock
+        if ($quantity > $product->stock) {
+            return response()->json(['messageError' => 'Requested quantity exceeds available stock'], 400);
+        }
+    
         $cartItem = Cart::where('user_id', $userId)
                         ->where('product_id', $productId)
                         ->first();
@@ -31,15 +42,13 @@ class CartController extends Controller
             $cartItem->save();
             return response()->json(['message' => 'Item quantity has been updated in your bag']);
         } else {
-            $product = Product::findOrFail($productId);
-    
             $cartItem = new Cart();
             $cartItem->user_id = $userId;
             $cartItem->product_id = $productId;
             $cartItem->quantity = $quantity;
             $cartItem->price = $product->price;
             $cartItem->save();
-
+    
             $prod = new ProductVariant();
             $prod->product_id = $productId;
             $prod->size_id = $sizeId;

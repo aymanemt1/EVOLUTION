@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
@@ -13,21 +14,32 @@ class WishlistController extends Controller
         $productId = $request->productId;
     
         $existingWishlistItem = Wishlist::where('user_id', $userId)
-                                         ->where('product_id', $productId)
-                                         ->first();
-    
-        if ($existingWishlistItem) {
-            $existingWishlistItem->delete();
+        ->where('product_id', $productId)
+        ->first();
 
-            return response()->json(['message' => 'Product already exists in wishlist'], 400);
-        }
-    
-        $wishlistItem = new Wishlist();
-        $wishlistItem->user_id = $userId;
-        $wishlistItem->product_id = $productId;
-        $wishlistItem->save();
-    
-        return response()->json(['message' => 'Item added to wishlist successfully'], 200);
+if ($existingWishlistItem) {
+$existingWishlistItem->delete();
+
+// Update 'in_wishlist' to false
+$product = Product::findOrFail($productId);
+$product->in_wishlist = false;
+$product->save();
+
+return response()->json(['message' => 'Product removed from wishlist'], 200);
+}
+
+$wishlistItem = new Wishlist();
+$wishlistItem->user_id = $userId;
+$wishlistItem->product_id = $productId;
+$wishlistItem->save();
+
+// Update 'in_wishlist' to true
+$product = Product::findOrFail($productId);
+$product->in_wishlist = true;
+$product->save();
+
+return response()->json(['message' => 'Item added to wishlist successfully'], 200);
+
     }
 
     public function getWishlist(Request $request)
