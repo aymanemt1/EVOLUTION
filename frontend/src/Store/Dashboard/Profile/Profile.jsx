@@ -11,6 +11,7 @@ export const Profile = () => {
   const {count} =useContext(CartContext)
   const {orderssCount,addedorder,setaddedorder} =useContext(OrderContext)
   const {client,setclient} =useContext(AuthContext)
+  
   const id = localStorage.getItem('id_active');
 
 

@@ -12,11 +12,12 @@ export const CartContext = createContext()
   const [totalCartPrice, settotalCartPrice] = useState(0)
   const [Cart, setCart] = useState([])
   const [isTrue, setisTrue] = useState(false)
-  const id = localStorage.getItem('id_active');
 
+  const id = localStorage.getItem('id_active');
+  
+console.log(id)
   const {userisauth} =useContext(AuthContext)
   useEffect(() => {
-
     fetchCart();
 }, [addedtocart, deletedItem,Isaddedtocart,userisauth,id]);
 

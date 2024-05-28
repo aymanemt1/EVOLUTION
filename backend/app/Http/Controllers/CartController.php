@@ -57,6 +57,7 @@ class CartController extends Controller
         if (!$userId) {
             return response()->json(['error' => 'User ID is required'], 400);
         }
+        
         $cartItems = Cart::with('product')->where('user_id',$userId)->get();
         $cartCount = $cartItems->count();
         
