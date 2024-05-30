@@ -33,11 +33,7 @@ export default function RouterApp(){
                     
                        
                     <Route path='/store' element={<Storeparent />} />
-
                 </Routes>
- 
-   
-
             </BrowserRouter>
         </Fragment>
     );
