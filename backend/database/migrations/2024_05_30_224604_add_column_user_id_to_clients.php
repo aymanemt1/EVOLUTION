@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('exercice_work_out_apis', function (Blueprint $table) {
-                $table->id();
-                $table->string('api_id');
-                $table->timestamps();
+        Schema::table('clients', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });
     }
 
@@ -20,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('exercice_work_out_apis');
+        Schema::table('clients', function (Blueprint $table) {
+            //
+        });
     }
 };

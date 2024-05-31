@@ -6,11 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->foreignId('typecate_id')->default(1)->constrained('typescategory')->onDelete('cascade');
-
+        Schema::table('sellers', function (Blueprint $table) {
+            $table->foreignId('usr_id')->constrained('users')->onDelete('cascade');
         });
     }
 
@@ -19,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::table('sellers', function (Blueprint $table) {
             //
         });
     }

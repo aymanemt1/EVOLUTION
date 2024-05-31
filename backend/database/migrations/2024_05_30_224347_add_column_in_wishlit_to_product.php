@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('membres', function (Blueprint $table) {
-            $table->string('username')->after('id');
-            $table->string('email')->unique()->after('username');
-
+        Schema::table('products', function (Blueprint $table) {
+            $table->boolean('in_wishlist')->default(false);
         });
     }
 
@@ -23,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('membres', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }

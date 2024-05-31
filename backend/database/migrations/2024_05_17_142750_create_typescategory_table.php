@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-   
+
      public function up(): void
      {
-         Schema::create('typescategory', function (Blueprint $table) {
+         Schema::create('types', function (Blueprint $table) {
              $table->id();
              $table->string('name');
              $table->timestamps();

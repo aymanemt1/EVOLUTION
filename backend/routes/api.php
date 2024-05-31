@@ -114,8 +114,6 @@ Route::put('/calories_users/{id}', [CaloriesUserController::class, 'update']);
 
 // after authentication 
 // Route::middleware('auth:api')->put('/macros', [MacrosConsumedController::class, 'update']);
-// after authentication
-//Route::middleware('auth:api')->put('/macros', [MacrosConsumedController::class, 'update']);
 
 
 

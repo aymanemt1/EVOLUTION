@@ -8,9 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('goals', function (Blueprint $table) {
+        Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->string('label');
+            $table->string('name');
+            $table->string('description');
+            $table->string('delivery_time');
+            $table->decimal('price', 8, 2);
             $table->timestamps();
         });
     }
@@ -20,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('goals');
+        Schema::dropIfExists('deliveries');
     }
 };
