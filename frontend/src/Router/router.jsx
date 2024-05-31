@@ -49,6 +49,9 @@ export default function RouterApp() {
                         <Route path="login" element={<Login />} />
                         <Route path="signup" element={<Signup />} />
                     </Route>
+                    <Route path="/CaloriesCalculator" element={<CaloriesCalCulator />} />
+                        <Route path="/CaloriesCalculator/change-goal" element={<ChangeGoal />} />
+                        <Route path="/CaloriesCalculator/Home" element={<CaloriesCalculatorMain />} />
 
                     <Route element={<RequiredAuth />}>
                         <Route path='/home' element={<Home />} />

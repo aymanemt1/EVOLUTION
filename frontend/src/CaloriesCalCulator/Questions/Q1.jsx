@@ -36,7 +36,7 @@ const Q1 = ({ NextQ1 }) => {
                 
                 required
               />
-              <button type="submit">Next</button>
+              <button type="submit" className="nexttt">Next</button>
             </form>
             <div className="erreorCalculator2"> *required field</div>
           </div>
