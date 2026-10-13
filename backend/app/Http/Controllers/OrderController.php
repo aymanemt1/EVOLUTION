@@ -17,6 +17,17 @@ class OrderController extends Controller
     $userId = $request->query('id');
     $clientData = Client::where('user_id', $userId)->first();
 
+    // A shopper has no client row until their first order. The dashboard
+    // still requests this endpoint, so return an empty list instead of
+    // reading id on null.
+    if (!$clientData) {
+        return response()->json([
+            'orderssCount' => 0,
+            'orderss' => [],
+            'clientId' => $userId,
+        ]);
+    }
+
     $orderss = Order::where('client_id', $clientData->id)->with('items.product.type','delivery')->get();
     $orderssCount = $orderss->count();
    
